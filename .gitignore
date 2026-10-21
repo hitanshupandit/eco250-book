@@ -1,0 +1,36 @@
+# This repository holds ONLY original course writing.
+#
+# The book lives inside the ECO250 teaching folder, which also contains student
+# marks, exam answer keys, a copyrighted textbook, another instructor's course
+# material and video transcripts. NONE of that may ever be committed here.
+#
+# The repository root is book/, so nothing outside it is tracked by default.
+# These rules are a second line of defence in case files are copied in.
+
+# student data -- never
+*marks*.csv
+*grades*.csv
+grading/
+
+# exams and answer keys -- never while a paper is still live
+*KEY*.pdf
+*Answer key*
+EXAMS/
+
+# third-party material -- copyrighted, not ours to redistribute
+*.epub
+statistics-management-economics*.pdf
+BC_intro_stats/
+transcripts/
+
+# data files used in lab, which belong on Lyceum rather than here
+*.dta
+*.log
+
+# build noise
+__pycache__/
+*.pyc
+.DS_Store
+*.aux
+*.out
+*.synctex.gz
