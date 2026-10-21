@@ -116,7 +116,23 @@ would need either pandoc installed or a converter written.
 
 | Chapter | State |
 |---|---|
-| Front matter | drafted |
-| 1 | drafted |
-| 2 | drafted |
-| 3–18 | not started |
+| Front matter, index | published |
+| 1, 2 | published |
+| 11, 12, 13, 14 | published — written first, as the Checkpoint 2 material |
+| Practice problems (20) | published |
+| 3–10, 15–18 | not started |
+
+## Publishing model
+
+Slides go to Lyceum as now. The book replaces the student-facing teaching notes
+and is linked from the course website, one chapter at a time as we reach each
+topic.
+
+GitHub Pages serves every chapter at a stable URL — `…/14_hypothesis_testing.html`
+— which does not change when later chapters are added, so a link posted in week 8
+still works in week 14.
+
+**The instructor teaching notes are a separate thing and stay private.** Those carry
+timing, board plans and what to expect students to get wrong. The book is the
+student version and must never pick up any of that; `build.py` has no check for it,
+so the discipline is manual.

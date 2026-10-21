@@ -1,0 +1,31 @@
+title: Statistics for Economists
+description: A reading companion for Econ 250 — Bates College
+author: Hitanshu Pandit
+
+# GitHub Pages renders every .md file here as a page. Chapter 14 becomes
+#   https://USERNAME.github.io/REPO/14_hypothesis_testing.html
+# and that URL never changes once published, so it is safe to link from the
+# course website and from Lyceum.
+theme: jekyll-theme-cayman
+
+markdown: kramdown
+kramdown:
+  math_engine: mathjax
+  input: GFM
+
+# jekyll-relative-links rewrites the .md links in index.md to .html, so the
+# same links work both on GitHub and on the published site.
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: false
+
+# Build scripts, the assembled single file, and the plan are for me, not for
+# students. They stay in the repository but are not published as pages.
+exclude:
+  - build.py
+  - make_practice.py
+  - ECO250.md
+  - PLAN.md
+  - README.md
