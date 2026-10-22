@@ -6,11 +6,16 @@ Hitanshu Pandit · Department of Economics
 
 ---
 
-There is no assigned textbook for this course. This is what replaces it.
+**Your textbooks are Keller and OpenIntro.** This is not a replacement for either —
+it is my teaching notes written up, so that what I say in the lecture exists in a
+form you can read again afterwards.
 
-Chapters are published as we reach them. Read the chapter for the week before
-Wednesday — it covers the same ground as Monday's lecture, in the same order, with
-the same examples, and it is where the worked solutions live.
+Use it for three things: to **read** the week's material in the order we actually
+teach it, to work the **practice problems**, and to drill the **multiple-choice
+banks** for each module. Keller is where you go for more exercises and the full
+treatment; this is where you go for how we did it on Monday.
+
+Chapters are published as we reach them.
 
 ## Out now
 
@@ -30,6 +35,10 @@ the same examples, and it is where the worked solutions live.
 | 12 | [The Central Limit Theorem](12_central_limit_theorem.md) | why $\bar X$ goes normal, how large $n$ must be, the binomial case |
 | 13 | [Estimation and confidence intervals](13_estimation.md) | point vs interval, what "95% confident" means, margin of error, sample size |
 | 14 | [Hypothesis testing, and what a p-value is](14_hypothesis_testing.md) | the eight steps, one tail vs two, p-values, Type I and II errors |
+| 15 | [Comparing two means](15_two_means.md) | independent samples and matched pairs, and why pairing is stronger |
+| 16 | [Comparing several means: ANOVA](16_anova.md) | why not three $t$ tests, between vs within variation, the $F$ table |
+| 17 | [Categorical data](17_categorical.md) | proportions, goodness of fit, and tests of independence |
+| 18 | [Regression](18_regression.md) | least squares, $R^2$, testing a slope, and what a line does not license |
 
 ## Practice problems
 

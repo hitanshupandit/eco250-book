@@ -5,11 +5,12 @@ rather than to any textbook's table of contents.
 
 ## Why it exists
 
-Students have no assigned textbook. Keller is the reference the course was built
-against and the video series are good, but neither is something a student can be
-told to read: Keller is long and ordered differently from our lectures, and a
-transcript is not prose. So the course needs one document that runs start to
-finish in our sequence.
+Students are assigned Keller and OpenIntro, and both stay assigned. What neither
+gives them is the course *as taught*: Keller is long and ordered differently from
+our lectures, OpenIntro differs again, and a lecture leaves nothing behind to read.
+So this is the teaching notes written up — one document that runs start to finish
+in our sequence, with the practice problems and the per-module MCQ banks attached.
+It sits alongside the textbooks, not in place of them.
 
 ## Sources, and what we take from each
 

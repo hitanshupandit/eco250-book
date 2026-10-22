@@ -10,7 +10,11 @@ This is the course written down, in the order we teach it. It is not a reference
 work and it does not try to be complete the way a textbook is complete. It covers
 what we cover, in our sequence, with our examples.
 
-There is no assigned textbook for Econ 250. This is what replaces it.
+The assigned textbooks for Econ 250 are **Keller, *Statistics for Management and
+Economics*** and **OpenIntro Statistics**. This repository is not a replacement for
+either — it is the course's teaching notes written up, so students can read the
+material in the order it is actually taught, work the practice problems, and drill
+the per-module multiple-choice banks.
 
 ## Contents
 
