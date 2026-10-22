@@ -6,7 +6,10 @@ author: Hitanshu Pandit
 #   https://USERNAME.github.io/REPO/14_hypothesis_testing.html
 # and that URL never changes once published, so it is safe to link from the
 # course website and from Lyceum.
-theme: jekyll-theme-cayman
+#
+# NO THEME. The themes ship a coloured banner and, more importantly, none of
+# them loads MathJax -- so every $\chi^2$ in the book rendered as literal dollar
+# signs. _layouts/default.html is a plain layout that typesets the maths.
 
 markdown: kramdown
 kramdown:
