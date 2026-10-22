@@ -177,6 +177,82 @@ summarize y u
 histogram y, normal
 ```
 
+## In Python — what the normal actually is
+
+The formula for the normal density is unpleasant and you are never asked to use it.
+What you do need is a feel for **what the two parameters do** and **what the areas
+look like**, and a picture settles both in seconds.
+
+![What the normal distribution is](figures/normal_anatomy.png)
+
+The left panel is the whole definition. $\mu$ **slides** the curve left or right
+without changing its shape; $\sigma$ **widens or narrows** it without moving its
+centre. Those are the only two things you can change, which is why naming $\mu$ and
+$\sigma$ names the entire distribution.
+
+The right panel is the empirical rule drawn as areas rather than quoted as a rule:
+**68.3%** within one standard deviation, **95.4%** within two, **99.7%** within three.
+
+Change the parameters and re-run:
+
+```python
+MU, SIGMA = 72, 8        # <-- change these
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+xs = np.linspace(MU - 4*SIGMA, MU + 4*SIGMA, 600)
+plt.plot(xs, stats.norm.pdf(xs, MU, SIGMA), color="#8b1a1a", lw=1.8)
+
+for k in (1, 2, 3):                       # shade one, two, three sigma
+    m = (xs >= MU - k*SIGMA) & (xs <= MU + k*SIGMA)
+    plt.fill_between(xs[m], stats.norm.pdf(xs[m], MU, SIGMA),
+                     color="#8b1a1a", alpha=0.12, linewidth=0)
+    pct = stats.norm.cdf(k) - stats.norm.cdf(-k)
+    print(f"within {k} sigma: {pct:.4f}")
+
+plt.yticks([]); plt.show()
+```
+
+Notice the printed percentages **do not change** when you change `MU` and `SIGMA`.
+That is the point of standardising: every normal is the same curve in different units.
+
+### The two directions, in Python
+
+Chapter 9's worked example, done both ways. `sf` is the *survival function* — the area
+to the right — so you never have to subtract from 1:
+
+```python
+mu, sigma = 72, 8
+
+# value -> probability
+print(stats.norm.sf(80, mu, sigma))                  # P(X > 80)   = 0.1587
+print(stats.norm.cdf(80, mu, sigma)
+      - stats.norm.cdf(64, mu, sigma))               # P(64<X<80)  = 0.6827
+
+# probability -> value
+print(stats.norm.ppf(0.90, mu, sigma))               # top 10% start at 82.25
+```
+
+`ppf` is the inverse — Stata's `invnormal()`. The two are exact inverses, which is worth
+confirming once: `stats.norm.cdf(stats.norm.ppf(0.9))` returns `0.9`.
+
+### Stata to Python
+
+| Stata | Python |
+|---|---|
+| `normal(z)` | `stats.norm.cdf(z)` |
+| `1 - normal(z)` | `stats.norm.sf(z)` |
+| `invnormal(p)` | `stats.norm.ppf(p)` |
+| `display exp(-6/4)` | `stats.expon.sf(6, scale=4)` |
+| `runiform(10, 50)` | `rng.uniform(10, 50, size)` |
+| `rnormal(72, 8)` | `rng.normal(72, 8, size)` |
+
+Python is **not taught and not examined** in this course — your problem sets are done in
+Stata. It is here because seeing the same operation written twice is a cheap way to
+notice which part is the statistics and which part is the software.
+
 ## What goes wrong
 
 **Looking for $\mathrm{P}(X = a)$ on a continuous variable.** It is zero. The question

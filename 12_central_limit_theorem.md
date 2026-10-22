@@ -198,6 +198,76 @@ For the theoretical probability once you trust the approximation:
 display "P(xbar > 19) = " 1 - normal((19 - 18)/(6/sqrt(36)))
 ```
 
+## In Python — change $n$ yourself
+
+Stata showed you the simulation. Python shows you the *picture*, and the point of
+this one is that **you change the number and watch what happens.**
+
+![The CLT as n increases](figures/clt_convergence.png)
+
+The population on the left is deliberately nasty — strongly right-skewed with a lump
+near zero, nothing bell-like about it. Read the two numbers in each title as $n$ grows:
+
+| $n$ | SD of $\bar{X}$ | skewness |
+|---|---|---|
+| 1 | 8.36 | $+3.76$ |
+| 5 | 3.67 | $+1.59$ |
+| 30 | 1.49 | $+0.65$ |
+| 100 | 0.82 | $+0.37$ |
+
+The spread falls like $\sigma/\sqrt{n}$ and the skewness falls like
+$\text{skew}/\sqrt{n}$, exactly as the chapter claims — and by $n = 100$ the red normal
+curve sits on the histogram.
+
+Here is the code that drew it. **Change the first line** and run it again:
+
+```python
+N_VALUES = [1, 5, 30, 100]      # <-- change these and re-run
+REPS     = 20000                # how many sample means to simulate
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import stats
+
+rng = np.random.default_rng(250)
+
+def draw(size):
+    """A deliberately ugly population: mostly short values, a long right tail."""
+    a = rng.exponential(2.0, size)
+    b = rng.exponential(12.0, size)
+    return np.where(rng.random(size) < 0.30, b, a)
+
+pop = draw(200_000)
+mu, sigma = pop.mean(), pop.std()
+
+fig, axes = plt.subplots(1, len(N_VALUES), figsize=(3.1*len(N_VALUES), 2.7))
+for ax, n in zip(np.atleast_1d(axes), N_VALUES):
+    means = draw(REPS*n).reshape(REPS, n).mean(axis=1)
+
+    ax.hist(means, bins=60, density=True, color="#999999", edgecolor="white")
+    xs = np.linspace(means.min(), means.max(), 300)
+    ax.plot(xs, stats.norm.pdf(xs, mu, sigma/np.sqrt(n)), color="#8b1a1a", lw=1.6)
+
+    ax.set_title(f"n = {n}\nSD {means.std():.2f}   skew {stats.skew(means):+.2f}")
+    ax.set_yticks([])
+plt.tight_layout(); plt.show()
+```
+
+**Things worth trying.**
+
+Set `N_VALUES = [1, 2, 3, 4]` and watch how slowly it starts — a population this skewed
+is nowhere near normal at $n = 4$, which is the honest answer to "is 30 enough?"
+
+Replace `draw` with `rng.normal(100, 15, size)`. Now even $n = 1$ is a perfect bell,
+because the population was already normal and averaging had nothing to fix.
+
+Replace it with `rng.uniform(0, 1, size)` — flat, not remotely bell-shaped. It converges
+in a handful of draws, far faster than the skewed case. **How fast the CLT works depends
+on how far the population starts from normal**, and this is the cheapest way to see it.
+
+Set `REPS = 200` instead of 20,000. The bell gets lumpy — a reminder that you are
+looking at a simulation, not the theorem itself.
+
 ## What goes wrong
 
 **Applying the CLT to one observation.** The most common error in this chapter. The
