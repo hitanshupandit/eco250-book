@@ -31,9 +31,20 @@ the same examples, and it is where the worked solutions live.
 | 13 | [Estimation and confidence intervals](13_estimation.md) | point vs interval, what "95% confident" means, margin of error, sample size |
 | 14 | [Hypothesis testing, and what a p-value is](14_hypothesis_testing.md) | the eight steps, one tail vs two, p-values, Type I and II errors |
 
-**[Twenty practice problems, with solutions](90_practice_problems.md)** — everything
-from descriptive statistics through hypothesis testing. Good preparation for
-Checkpoint 2.
+## Practice problems
+
+All with full solutions. Work them with the answers covered.
+
+| Set | Covers |
+|---|---|
+| [Describing data](91_practice_part1_describing_data.md) | chapters 1–4 — 15 problems |
+| [Chance](92_practice_part2_chance.md) | chapters 5–7 — 15 problems |
+| [Distributions](93_practice_part3_distributions.md) | chapters 8–10 — 15 problems |
+| [From sample to population](94_practice_part4_inference.md) | chapters 11–14 — 15 problems |
+| [Mixed set](90_practice_problems.md) | the whole course to date — 20 problems |
+
+**Eighty problems in total.** The mixed set is the one to use for Checkpoint 2
+revision; the four per-Part sets are for working through a single topic.
 
 ## Coming as we teach them
 
