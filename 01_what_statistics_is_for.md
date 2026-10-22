@@ -135,7 +135,64 @@ nobody asked.
 
 ## In Stata
 
-Two commands, and the habit of starting with them.
+### Start every do-file the same way
+
+Before any analysis, a do-file needs a header and a preamble. This is the template we
+use all term, and the one your problem sets are expected to follow — a `.do` file that
+does not run from a clean session scores zero on the computational questions, and most
+of what makes it run lives in these few lines.
+
+```stata
+/*********************************
+Name: YOUR NAME
+Aim: Problem Set 1 - describing a data set
+Date created: 02/09/2026
+Date Modified: 14/09/2026
+*********************************/
+
+clear all
+
+*********************************
+* Preamble to start a do file
+* closes previously opened log file
+capture log close
+* creates a log file
+log using hpandit_PS1.log, replace
+
+*changing working directory
+cd "/Users/yourname/Desktop/ECO250/STATA"
+* CHANGE THE LINE ABOVE to the folder that holds your DATA folder
+* show present working directory
+pwd
+* turns off pause in stata output
+set more off
+```
+
+Why each piece earns its place:
+
+**The header block** says who wrote it, what it does, and when. You will come back to a
+file months later and be grateful.
+
+**`clear all`** empties memory. Without it, a variable left over from the last run can
+silently contaminate this one.
+
+**`capture log close`** then **`log using ...`** records everything that happens. The
+`capture` matters: without it, the line fails when no log is open and the file stops
+dead. With it, Stata shrugs and carries on.
+
+**`cd`** points Stata at your folder, so every later path can be written relative to it
+— `"DATA/cps_small.dta"` rather than the full path. **This is the one line every reader
+must change.** It is also the commonest reason a classmate's do-file will not run on
+your machine.
+
+**`pwd`** prints where Stata actually ended up, which turns a silent wrong-folder error
+into an obvious one.
+
+**`set more off`** stops Stata pausing every screenful.
+
+### Then the analysis
+
+With that in place, the two commands to run before anything else:
 
 ```stata
 use "DATA/cps_small.dta", clear

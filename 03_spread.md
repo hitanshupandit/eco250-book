@@ -140,6 +140,8 @@ answer without a table.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 ```stata
 use "DATA/cps_small.dta", clear
 summarize wage

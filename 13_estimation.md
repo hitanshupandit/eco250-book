@@ -193,6 +193,8 @@ will actually meet it.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 ```stata
 use "DATA/cps_small.dta", clear
 ci means wage
@@ -232,6 +234,51 @@ For sample size, there is no special command; it is arithmetic:
 ```stata
 display "n = " ceil((invnormal(0.975)*6/1)^2)
 ```
+
+## In Python
+
+```python
+import numpy as np
+from scipy import stats
+
+xbar, s, n = 28.4, 6, 36
+se = s/np.sqrt(n)                       # 1.0
+tc = stats.t.ppf(0.975, n-1)            # 2.0301
+
+print(xbar - tc*se, xbar + tc*se)       # 26.3699  30.4301
+```
+
+Or in one call, which also gives it directly from data:
+
+```python
+stats.t.interval(0.95, df=n-1, loc=xbar, scale=se)   # the same pair
+```
+
+### What "95% confident" means, counted
+
+The claim is about the procedure, so test the procedure — build a thousand intervals
+from a population whose mean you know, and count:
+
+```python
+rng = np.random.default_rng(250)
+mu, sigma, n, reps = 100, 15, 36, 1000
+
+hits = 0
+for _ in range(reps):
+    x  = rng.normal(mu, sigma, n)
+    lo, hi = stats.t.interval(0.95, n-1, loc=x.mean(),
+                              scale=x.std(ddof=1)/np.sqrt(n))
+    hits += lo <= mu <= hi
+
+print(hits/reps)        # about 0.95
+```
+
+The ones that miss are not mistakes. They are the 5%, and this is what that number
+refers to.
+
+**Now make the population skewed** — swap `rng.normal(mu, sigma, n)` for
+`rng.exponential(mu, n)` — and re-run. Coverage falls below 0.95, because at $n = 36$ a
+skewed population has not finished converging. Raise `n` and watch it recover.
 
 ## What goes wrong
 

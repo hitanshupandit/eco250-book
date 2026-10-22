@@ -139,6 +139,8 @@ Everything else is reading the right cell.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 Probability is mostly pencil work, but a contingency table is one command:
 
 ```stata
@@ -154,6 +156,44 @@ those are **conditional** probabilities given the row variable.
 
 Running all three on the same table is the fastest way to see that joint, marginal and
 conditional are three different divisions of the same counts.
+
+## In Python
+
+### The rules, drawn
+
+![Venn diagrams for the probability rules](figures/venn_probability.png)
+
+The left panel is the addition rule and why it has a minus sign: shading both circles
+covers the lens **twice**, so you subtract it once to put it right. The middle panel
+is the intersection alone. The right panel is conditioning, which the next chapter
+takes up — $B$ becomes the whole world and $A$ is measured inside it.
+
+### Contingency tables
+
+```python
+import pandas as pd
+
+d = pd.read_stata("DATA/cps_small.dta")
+
+pd.crosstab(d.female, d.black)                      # counts
+pd.crosstab(d.female, d.black, normalize="all")     # JOINT probabilities
+pd.crosstab(d.female, d.black, normalize="index")   # CONDITIONAL, given the row
+pd.crosstab(d.female, d.black, margins=True)        # with the totals
+```
+
+Those three `normalize` options are exactly the three divisions from the chapter.
+`"all"` divides by the grand total; `"index"` divides by the row total, which *is*
+conditioning on the row. Running all three on one table is the quickest way to see
+that joint, marginal and conditional are three ways of dividing the same counts.
+
+### Stata to Python
+
+| Stata | Python |
+|---|---|
+| `tabulate x y` | `pd.crosstab(d.x, d.y)` |
+| `tabulate x y, cell` | `pd.crosstab(d.x, d.y, normalize="all")` |
+| `tabulate x y, row` | `pd.crosstab(d.x, d.y, normalize="index")` |
+| `count if x == 1` | `(d.x == 1).sum()` |
 
 ## What goes wrong
 

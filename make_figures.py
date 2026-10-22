@@ -276,6 +276,69 @@ def correlation_grid(seed=7):
     print("     " + "  ".join("r=%+.2f" % r for _, _, r in panels))
 
 
+# ------------------------------------------- 9. Venn diagrams for probability
+def venn():
+    """Three panels built from plain circles: union, intersection, conditioning.
+
+    Drawn here rather than borrowed, so the shading matches exactly the rules the
+    chapter states and the numbers in the captions are the chapter's numbers.
+    """
+    from matplotlib.patches import Circle, Rectangle
+
+    PA, PB, PAB = 0.42, 0.37, 0.15
+    cx1, cx2, cy, rad = -0.45, 0.45, 0.0, 0.85
+
+    def frame(ax, title):
+        ax.add_patch(Rectangle((-1.75, -1.15), 3.5, 2.3, fill=False,
+                               edgecolor=GREY, lw=0.8))
+        ax.set_xlim(-1.8, 1.8); ax.set_ylim(-1.95, 1.45)
+        ax.set_aspect("equal"); ax.axis("off")
+        ax.set_title(title, fontsize=9)
+        ax.text(1.62, 1.0, "S", fontsize=8, color=GREY)
+
+    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(10.5, 2.9))
+
+    #  union: both circles shaded, the lens shaded twice over
+    frame(a1, r"$\mathrm{P}(A\cup B)=\mathrm{P}(A)+\mathrm{P}(B)-\mathrm{P}(A\cap B)$")
+    a1.add_patch(Circle((cx1, cy), rad, facecolor=RED, alpha=0.30, edgecolor=INK, lw=1))
+    a1.add_patch(Circle((cx2, cy), rad, facecolor=RED, alpha=0.30, edgecolor=INK, lw=1))
+    a1.text(-0.95, 0, "A", fontsize=10, ha="center")
+    a1.text(0.95, 0, "B", fontsize=10, ha="center")
+    a1.text(0, -1.62, "the lens is inside both circles,\nso adding counts it twice",
+            fontsize=7.5, ha="center", color=INK)
+
+    #  intersection only
+    frame(a2, r"$\mathrm{P}(A\cap B) = %.2f$" % PAB)
+    a2.add_patch(Circle((cx1, cy), rad, facecolor="none", edgecolor=INK, lw=1))
+    a2.add_patch(Circle((cx2, cy), rad, facecolor="none", edgecolor=INK, lw=1))
+    #  shade the lens by clipping one circle to the other
+    lens = Circle((cx1, cy), rad, facecolor=RED, alpha=0.55, edgecolor="none")
+    a2.add_patch(lens)
+    lens.set_clip_path(Circle((cx2, cy), rad, transform=a2.transData))
+    a2.text(-0.95, 0, "A", fontsize=10, ha="center")
+    a2.text(0.95, 0, "B", fontsize=10, ha="center")
+    a2.text(0, -1.62, "only where both happen", fontsize=7.5, ha="center", color=INK)
+
+    #  conditioning: B becomes the whole world
+    frame(a3, r"$\mathrm{P}(A\mid B)=\dfrac{\mathrm{P}(A\cap B)}{\mathrm{P}(B)}"
+              r"=\dfrac{%.2f}{%.2f}=%.2f$" % (PAB, PB, PAB / PB))
+    a3.add_patch(Circle((cx1, cy), rad, facecolor="none", edgecolor=GREY, lw=0.9,
+                        linestyle=":"))
+    a3.add_patch(Circle((cx2, cy), rad, facecolor=GREY, alpha=0.35, edgecolor=INK, lw=1.6))
+    lens3 = Circle((cx1, cy), rad, facecolor=RED, alpha=0.65, edgecolor="none")
+    a3.add_patch(lens3)
+    lens3.set_clip_path(Circle((cx2, cy), rad, transform=a3.transData))
+    a3.text(-1.05, 0, "A", fontsize=10, ha="center", color=GREY)
+    a3.text(1.05, 0, "B", fontsize=10, ha="center")
+    a3.text(0, -1.62, "B is the new world;\nmeasure A inside it",
+            fontsize=7.5, ha="center", color=INK)
+
+    fig.tight_layout()
+    save(fig, "venn_probability.png")
+    print("     P(A or B) %.2f   P(A|B) %.4f   (A, B dependent: %s)"
+          % (PA + PB - PAB, PAB / PB, abs(PA * PB - PAB) > 1e-9))
+
+
 if __name__ == "__main__":
     print("Figures for the book\n")
     clt()
@@ -286,4 +349,5 @@ if __name__ == "__main__":
     normal_anatomy()
     mean_vs_median()
     correlation_grid()
+    venn()
     print("\n  all figures regenerated and their claims re-checked")

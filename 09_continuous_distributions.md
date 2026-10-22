@@ -140,6 +140,8 @@ No table needed — just the exponential function.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 The two normal functions, and the fact that they invert each other:
 
 ```stata

@@ -116,6 +116,8 @@ immediately.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 Two functions, and the distinction between them is the usual cumulative-versus-exact
 trap:
 
@@ -149,6 +151,48 @@ tabulate x
 ```
 
 The mean should land near 3 and the standard deviation near 1.4491.
+
+## In Python
+
+```python
+from scipy import stats
+
+stats.binom.pmf(3, 10, 0.3)      # 0.2668  P(X = 3)      exactly
+stats.binom.cdf(2, 10, 0.3)      # 0.3828  P(X <= 2)     at most
+1 - stats.binom.cdf(0, 8, 0.15)  # 0.7275  P(X >= 1)     at least one
+stats.binom.stats(10, 0.3)       # (3.0, 2.1)  mean and VARIANCE, not sd
+```
+
+Watch the last one: `stats.binom.stats` returns the **variance**, so take a square
+root for the standard deviation — $\sqrt{2.1} = 1.4491$.
+
+`pmf` is exact, `cdf` is cumulative. Those are the "exactly" and "at most" of the
+chapter, and mixing them up is the commonest error here.
+
+### Watching it become normal
+
+![A standardised binomial becoming the normal](figures/binomial_to_normal.png)
+
+Each panel is an exact binomial at $p = 0.3$, standardised, with the standard normal
+drawn over it. At $n = 5$ the bars are visibly lumpy and lopsided; by $n = 20$ they
+have nearly settled; by $n = 60$ you cannot separate them by eye.
+
+```python
+import numpy as np, matplotlib.pyplot as plt
+
+p, n = 0.3, 60
+k = np.arange(n + 1)
+mu, sd = n*p, np.sqrt(n*p*(1-p))
+
+plt.bar((k - mu)/sd, stats.binom.pmf(k, n, p)*sd, width=1/sd, color="#999999")
+xs = np.linspace(-4, 4, 300)
+plt.plot(xs, stats.norm.pdf(xs), color="#8b1a1a", lw=1.6)
+plt.show()
+```
+
+**Change `n` and re-run.** Then set `p = 0.03` and watch it fail — at $np = 1.8$ the
+distribution is piled against zero with no room to be symmetric, which is the
+$np \geq 5$ condition made visible.
 
 ## What goes wrong
 

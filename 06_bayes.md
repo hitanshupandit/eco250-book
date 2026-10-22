@@ -140,6 +140,8 @@ above.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 Bayes is pencil work, but you can confirm an answer by simulation, which is a genuinely
 good way to convince yourself:
 
@@ -163,6 +165,47 @@ restricts to defective parts and reports the fraction from Y — near 0.5172.
 
 That second line is "shrink the world" written as code: `if defect == 1` *is* the
 conditioning.
+
+## In Python — check Bayes by simulation
+
+Bayes is pencil work, but simulating it is the fastest way to convince yourself the
+answer is right — and "shrink the world" becomes a line of code.
+
+```python
+import numpy as np
+rng = np.random.default_rng(250)
+n = 1_000_000
+
+from_Y = rng.random(n) < 0.30                            # 30% come from Y
+defect = rng.random(n) < np.where(from_Y, 0.05, 0.02)    # rates differ by supplier
+
+print(defect.mean())            # 0.0290  -- P(D), matching the exact answer
+print(from_Y[defect].mean())    # 0.5183  -- P(Y | D), exact value 0.5172
+```
+
+The second line is the whole idea. `from_Y[defect]` keeps **only the defective parts**
+and then asks what fraction came from Y. That subsetting *is* the conditioning — you
+have shrunk the world to $D$ and measured $Y$ inside it.
+
+The simulated 0.5183 differs from the exact 0.5172 in the third decimal. That is
+simulation noise, not an error: with a million draws the standard error on a
+proportion near 0.5 is about 0.0005, so a gap of 0.001 is ordinary.
+
+### The base-rate case
+
+Worth running, because the result is hard to believe until you have counted it:
+
+```python
+prev, sens, spec = 0.01, 0.99, 0.95
+sick = rng.random(n) < prev
+pos  = rng.random(n) < np.where(sick, sens, 1 - spec)
+
+print(pos.mean())          # 0.0594  -- how many test positive at all
+print(sick[pos].mean())    # 0.1667  -- how many of those are actually sick
+```
+
+About one positive in six is real. Change `prev` to 0.10 and re-run: the same test now
+gives a predictive value near 0.69. **The test did not change — the base rate did.**
 
 ## What goes wrong
 

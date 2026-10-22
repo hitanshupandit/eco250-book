@@ -125,6 +125,8 @@ the heading.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 Two families, running in opposite directions, and keeping them straight is most of the
 skill:
 
@@ -167,6 +169,59 @@ summarize ss
 
 The mean should come out near 10 — because $E(\chi^2_\nu) = \nu$, which is another fact
 that falls out of the construction: each $Z^2$ contributes 1 on average.
+
+## In Python
+
+```python
+from scipy import stats
+
+# AREA -> CUTOFF.  ppf takes the area to the LEFT.
+stats.t.ppf(0.975, 10)        #  2.2281   invt(10, 0.975)
+stats.chi2.ppf(0.95, 10)      # 18.3070   invchi2(10, 0.95)
+stats.f.ppf(0.95, 5, 10)      #  3.3258   invF(5, 10, 0.95)
+stats.norm.ppf(0.975)         #  1.9600   the t table's infinity row
+
+# CUTOFF -> AREA.  sf is the area to the RIGHT.
+stats.t.sf(2.2281, 10)        # 0.0250   ttail(10, 2.2281)
+stats.chi2.sf(18.3070, 10)    # 0.0500
+stats.f.sf(3.3258, 5, 10)     # 0.0500
+```
+
+`ppf` and `sf` are the two directions, and they are exact inverses. **A critical value
+is `ppf`; a p-value is `sf`.**
+
+### Seeing the fat tails
+
+![The t distribution against the normal](figures/t_vs_normal.png)
+
+Same centre, same bell shape, heavier tails — and the lower the degrees of freedom the
+heavier they get. The numbers behind the picture:
+
+```python
+for df in (3, 10, 30):
+    print(df, 2*stats.t.sf(2, df))     # 0.1393, 0.0734, 0.0578
+print("normal", 2*stats.norm.sf(2))    # 0.0455
+```
+
+At $\nu = 3$ a value beyond $\pm 2$ happens three times as often as the normal says.
+By $\nu = 30$ the gap has nearly closed. That is the surcharge for estimating $\sigma$,
+shrinking as the sample grows.
+
+### Watching a chi-squared get built
+
+```python
+import numpy as np
+rng = np.random.default_rng(250)
+
+z = rng.normal(size=(100_000, 10))     # ten standard normals, many times
+chi = (z**2).sum(axis=1)               # square them and add
+
+print(chi.mean())                      # near 10 -- because E(chi2_v) = v
+print((chi > 18.3070).mean())          # near 0.05
+```
+
+Each $Z^2$ contributes 1 on average, which is why the mean is the degrees of freedom.
+Nothing about the table is needed to see it.
 
 ## What goes wrong
 

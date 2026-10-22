@@ -291,6 +291,8 @@ surprise.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 ```stata
 use "DATA/cps_small.dta", clear
 ttest wage == 5
@@ -324,6 +326,60 @@ display "p = " 2*ttail(35, 3.4)
 
 `invt` takes an **area** and returns a **cutoff**; `ttail` takes a cutoff and returns
 an area. A critical value is the first question, a p-value is the second.
+
+## In Python
+
+One call does the whole test:
+
+```python
+from scipy import stats
+import numpy as np
+
+x = np.array([...])                       # your sample
+t, p = stats.ttest_1samp(x, 25)           # tests H0: mu = 25
+```
+
+`ttest_1samp` returns the statistic and the **two-tailed** p-value. For a one-tailed
+test, halve it — but only after checking the sign points the way your $H_a$ does.
+
+From summary statistics rather than data, the p-value is one line:
+
+```python
+t, df = 3.4, 35
+print(2 * stats.t.sf(abs(t), df))         # 0.0017, the two-tailed p
+print(stats.t.sf(abs(t), df))             # 0.0009, the one-tailed p
+```
+
+That is the chapter's definition executed: the area in the tails beyond your statistic.
+
+### A p-value is a random variable
+
+![p-values when H0 is true and when it is false](figures/pvalue_uniform.png)
+
+**Left:** 20,000 tests where $H_0$ is true. The histogram is **flat** — every p-value
+is as likely as any other — and 5.1% fall below 0.05. That is $\alpha$, measured.
+
+**Right:** the same test when $H_0$ is false. Now the p-values pile up near zero, and
+48.7% fall below 0.05. That 48.7% is the **power**: a real six-point effect, missed
+more than half the time at $n = 25$.
+
+```python
+rng = np.random.default_rng(250)
+reps, n = 20_000, 25
+
+true  = rng.normal(100, 15, size=(reps, n))    # H0 is TRUE
+false = rng.normal(106, 15, size=(reps, n))    # H0 is FALSE
+
+p_true  = stats.ttest_1samp(true,  100, axis=1).pvalue
+p_false = stats.ttest_1samp(false, 100, axis=1).pvalue
+
+print((p_true  < 0.05).mean())    # 0.0514  -- the Type I error rate
+print((p_false < 0.05).mean())    # 0.4865  -- the power
+```
+
+**Change 106 to 103** and the power collapses. **Change `n` to 100** and it recovers.
+Power depends on the effect size and the sample size together, and two lines of code
+show that faster than any amount of prose.
 
 ## What goes wrong
 

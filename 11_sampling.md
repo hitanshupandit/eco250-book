@@ -186,6 +186,8 @@ too small.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 The distinction that matters:
 
 ```stata
@@ -232,6 +234,40 @@ histogram sample_mean, normal
 
 The standard deviation that `summarize` reports at the end is the standard error,
 measured rather than predicted. Compare it with $\sigma/\sqrt{36}$ and it will agree.
+
+## In Python
+
+Build a sampling distribution the same way the lab did, but in three lines:
+
+```python
+import numpy as np, pandas as pd
+rng = np.random.default_rng(250)
+
+d = pd.read_stata("DATA/cps_small.dta")
+w = d["wage"].astype(float).to_numpy()
+
+means = np.array([rng.choice(w, 36, replace=True).mean() for _ in range(2000)])
+
+print(means.std(ddof=1))        # the standard error, MEASURED
+print(w.std(ddof=1)/np.sqrt(36))  # the standard error, PREDICTED
+```
+
+Those two numbers agree to within simulation noise, which is the chapter's central
+claim checked rather than asserted. `rng.choice(..., replace=True)` is Stata's
+`bsample`.
+
+```python
+import matplotlib.pyplot as plt
+plt.hist(w, bins=60, alpha=0.5, density=True, label="individual wages")
+plt.hist(means, bins=40, alpha=0.8, density=True, label="means of 36")
+plt.legend(); plt.show()
+```
+
+Two histograms on one axis makes the point no table can: the sample means are centred
+in the same place and are **dramatically narrower**. That narrowing is $\sigma/\sqrt{n}$.
+
+**Change 36 to 144 and re-run.** The second histogram halves in width — not quarters —
+because the standard error goes as $\sqrt{n}$.
 
 ## What goes wrong
 

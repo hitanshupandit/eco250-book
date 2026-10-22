@@ -162,6 +162,8 @@ well-behaved does not make $X$ well-behaved.
 
 ## In Stata
 
+*The snippets below assume the header and preamble from [Chapter 1](01_what_statistics_is_for.md) — `clear all`, the log, and a `cd` to your own folder.*
+
 The simulation is the demonstration. Draw many samples, keep each mean, look at what
 you get:
 
