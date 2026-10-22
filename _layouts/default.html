@@ -3,7 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<!--
+  MathJax cannot typeset the <title> element -- it is plain text in the browser
+  tab -- so a heading like "$\chi^2$" would show there as raw LaTeX. Strip the
+  markup and substitute the few symbols that appear in chapter titles.
+-->
+{%- assign t = page.title
+      | replace: '\chi^2', 'chi-squared'
+      | replace: '\bar X', 'x-bar'
+      | replace: '\mu', 'mu'
+      | replace: '\sigma', 'sigma'
+      | replace: '$', ''
+      | replace: '\\', '' -%}
+<title>{% if t %}{{ t }} · {% endif %}{{ site.title }}</title>
 
 <!--
   No Jekyll theme. A theme gave us a coloured banner nobody asked for and, worse,
