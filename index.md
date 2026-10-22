@@ -46,6 +46,19 @@ All with full solutions. Work them with the answers covered.
 **Eighty problems in total.** The mixed set is the one to use for Checkpoint 2
 revision; the four per-Part sets are for working through a single topic.
 
+### Multiple choice
+
+Twenty questions per Part, **deliberately hard**. Most take more than one step, and
+every wrong option is the number you get by making one specific mistake — so the
+answer key tells you *which* mistake, not just the letter.
+
+| Bank | Covers |
+|---|---|
+| [Describing data](95_mcq_part1_describing_data.md) | chapters 1–4 |
+| [Chance](96_mcq_part2_chance.md) | chapters 5–7 |
+| [Distributions](97_mcq_part3_distributions.md) | chapters 8–10 |
+| [From sample to population](98_mcq_part4_inference.md) | chapters 11–14 |
+
 ## Coming as we teach them
 
 Chapters 3 to 10 fill in the first half of the course — spread and standardising,
