@@ -5,7 +5,7 @@ rather than to any textbook's table of contents.
 
 ## Why it exists
 
-Students are assigned Keller and OpenIntro, and both stay assigned. What neither
+Students are pointed at Keller 12e and OpenIntro 4e for reading. What neither
 gives them is the course *as taught*: Keller is long and ordered differently from
 our lectures, OpenIntro differs again, and a lecture leaves nothing behind to read.
 So this is the teaching notes written up — one document that runs start to finish

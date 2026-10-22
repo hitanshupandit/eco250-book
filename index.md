@@ -6,13 +6,14 @@ Hitanshu Pandit · Department of Economics
 
 ---
 
-**Your textbooks are Keller and OpenIntro.** This is not a replacement for either —
-it is my teaching notes written up, so that what I say in the lecture exists in a
-form you can read again afterwards.
+**For reading I recommend Keller, *Statistics for Management and Economics*, 12th
+edition, and *OpenIntro Statistics*, 4th edition.** This is not a replacement for
+either — it is my teaching notes written up, so that what I say in the lecture exists
+in a form you can read again afterwards.
 
 Use it for three things: to **read** the week's material in the order we actually
 teach it, to work the **practice problems**, and to drill the **multiple-choice
-banks** for each module. Keller is where you go for more exercises and the full
+banks** for each module. Keller is where you go for more exercises and the fuller
 treatment; this is where you go for how we did it on Monday.
 
 Chapters are published as we reach them.
