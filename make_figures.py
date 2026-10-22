@@ -220,6 +220,62 @@ def normal_anatomy():
     assert abs((stats.norm.cdf(2) - stats.norm.cdf(-2)) - 0.9545) < 5e-5
 
 
+# ------------------------------------- 7. mean against median on skewed data
+def mean_vs_median():
+    import warnings
+    warnings.filterwarnings("ignore")
+    import pandas as pd
+    #  HERE is <project>/book, so one dirname reaches the project root.
+    d = pd.read_stata(os.path.join(os.path.dirname(HERE),
+                                   "STATA", "DATA", "cps_small.dta"))
+    w = d["wage"].astype(float).to_numpy()
+
+    fig, ax = plt.subplots(figsize=(5.8, 2.9))
+    ax.hist(w, bins=60, color=GREY, edgecolor="white", linewidth=0.3)
+    ax.axvline(np.median(w), color=INK, lw=1.6,
+               label=f"median {np.median(w):.2f}")
+    ax.axvline(w.mean(), color=RED, lw=1.6, ls="--", label=f"mean {w.mean():.2f}")
+    ax.legend(frameon=False, fontsize=8)
+    ax.set_yticks([])
+    ax.set_xlabel("hourly wage, $")
+    ax.set_title(f"Right-skewed (skew {stats.skew(w):+.2f}): the mean is pulled "
+                 f"towards the tail", fontsize=9)
+    fig.tight_layout()
+    save(fig, "mean_vs_median.png")
+    assert w.mean() > np.median(w), "the mean should exceed the median here"
+    print("     mean %.4f  median %.4f  skew %+.4f"
+          % (w.mean(), np.median(w), stats.skew(w)))
+
+
+# --------------------------------------- 8. what different correlations look like
+def correlation_grid(seed=7):
+    rng = np.random.default_rng(seed)
+    n = 300
+    panels = []
+    for target in (0.95, 0.5, 0.0, -0.85):
+        x = rng.normal(size=n)
+        e = rng.normal(size=n)
+        a = target / np.sqrt(1 - target ** 2) if abs(target) < 1 else 10
+        y = a * x + e
+        panels.append((x, y, np.corrcoef(x, y)[0, 1]))
+    #  the trap: a strong relationship the correlation cannot see
+    x = rng.uniform(-3, 3, n)
+    panels.append((x, x ** 2 + rng.normal(0, 0.8, n), np.corrcoef(x, x ** 2)[0, 1]))
+
+    fig, axes = plt.subplots(1, 5, figsize=(13.5, 2.6))
+    for ax, (x, y, r) in zip(axes, panels):
+        ax.scatter(x, y, s=5, color=RED, alpha=0.45, linewidths=0)
+        ax.set_xticks([]); ax.set_yticks([])
+        ax.set_title(f"r = {r:+.2f}", fontsize=9)
+    axes[-1].set_title(f"r = {panels[-1][2]:+.2f}\n(but look at it)", fontsize=9)
+    fig.suptitle("Correlation measures straight lines, and nothing else",
+                 fontsize=10, y=1.06)
+    fig.tight_layout()
+    save(fig, "correlation_grid.png")
+    assert abs(panels[-1][2]) < 0.15, "the curved panel should have r near zero"
+    print("     " + "  ".join("r=%+.2f" % r for _, _, r in panels))
+
+
 if __name__ == "__main__":
     print("Figures for the book\n")
     clt()
@@ -228,4 +284,6 @@ if __name__ == "__main__":
     pvalues()
     binomial_normal()
     normal_anatomy()
+    mean_vs_median()
+    correlation_grid()
     print("\n  all figures regenerated and their claims re-checked")

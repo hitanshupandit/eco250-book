@@ -152,6 +152,44 @@ submitted work are not statistical errors — they are someone computing a caref
 answer about a variable that turned out to have 685 missing values, which
 `summarize` would have shown in its first column.
 
+## In Python
+
+The same two habits — look at the file, then summarise it — in pandas.
+
+```python
+import pandas as pd
+
+d = pd.read_stata("DATA/cps_small.dta")
+
+d.info()                 # Stata's  describe
+d.describe()             # Stata's  summarize
+d.head()                 # the first few rows, which Stata makes you ask for
+```
+
+`d.info()` lists the columns, their types, and — the column that matters most —
+**how many non-missing values each has**. `d.describe()` gives count, mean, standard
+deviation, minimum, quartiles and maximum in one table.
+
+Run both before anything else, every time. Most errors in submitted work are not
+statistical: they are a careful answer computed about a variable that turned out to
+have hundreds of missing values, which the count column would have shown.
+
+### Stata to Python
+
+| Stata | Python |
+|---|---|
+| `use "file.dta", clear` | `d = pd.read_stata("file.dta")` |
+| `describe` | `d.info()` |
+| `summarize` | `d.describe()` |
+| `summarize wage` | `d["wage"].describe()` |
+| `list in 1/5` | `d.head()` |
+| `count if wage > 20` | `(d["wage"] > 20).sum()` |
+
+Python is **not taught and not examined** in this course — your problem sets are done
+in Stata. It is here because a lot of economics is written in Python, and seeing the
+same operation twice makes it obvious which part is the statistics and which part is
+the software.
+
 ## What goes wrong
 
 **Mixing Greek and Roman.** Writing $\sigma$ when you computed $s$ is not a typo,

@@ -163,6 +163,46 @@ confirm the new mean is 0 and the new standard deviation is 1 — and the histog
 show you that the shape has not changed at all. Wage was right-skewed before
 standardising and is right-skewed after.
 
+## In Python
+
+The one thing to watch is `ddof`. NumPy divides by $n$ by default, which is the
+**population** formula. For a sample you must ask for $n-1$:
+
+```python
+import numpy as np
+
+D = [3, 7, 7, 9, 14]
+
+np.std(D)            # 3.5777  -- divides by n.  NOT what you want for a sample
+np.std(D, ddof=1)    # 4.0000  -- divides by n-1.  This one.
+np.var(D, ddof=1)    # 16.0000
+```
+
+pandas gets this right by default: `d["wage"].std()` already uses $n-1$. NumPy does
+not. It is the single most common silent error when people move between the two.
+
+```python
+# coefficient of variation, from the branch example
+for name, mean, sd in [("A", 42, 6), ("B", 78, 9)]:
+    print(f"{name}: CV = {sd/mean:.4f}")      # A 0.1429   B 0.1154
+```
+
+### Standardising does not reshape
+
+![Standardising recentres and rescales, but does not reshape](figures/standardising.png)
+
+Both panels are the same 20,000 values. Standardising moved the mean to 0 and set the
+standard deviation to 1 — and left the **skewness identical to four decimal places**.
+
+```python
+z = (x - x.mean()) / x.std(ddof=1)
+
+print(stats.skew(x), stats.skew(z))    # the same number, twice
+```
+
+If standardising made things normal, the right panel would be a bell. It is not, and
+this is the cheapest way to settle an argument about it.
+
 ## What goes wrong
 
 **Dividing by $n$ when you have a sample.** Use $n-1$ unless the data really is the

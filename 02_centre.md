@@ -144,6 +144,41 @@ biggest row.
 tabulate educ
 ```
 
+## In Python
+
+```python
+import pandas as pd
+from scipy import stats
+
+d = pd.read_stata("DATA/cps_small.dta")
+w = d["wage"]
+
+print(w.mean())            # 10.2130
+print(w.median())          #  8.7900
+print(d["educ"].mode())    # 12  -- mode is useful for discrete variables
+print(stats.skew(w))       #  1.9533
+```
+
+### Seeing the skew
+
+![Mean against median on skewed data](figures/mean_vs_median.png)
+
+That is the chapter's argument as a picture. The long right tail drags the **mean**
+(dashed) a dollar and a half above the **median** (solid), while the median stays with
+the bulk of the data. Draw it yourself:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.hist(w, bins=60, color="#999999", edgecolor="white")
+plt.axvline(w.median(), color="#222222", lw=1.6, label=f"median {w.median():.2f}")
+plt.axvline(w.mean(), color="#8b1a1a", lw=1.6, ls="--", label=f"mean {w.mean():.2f}")
+plt.legend(); plt.show()
+```
+
+**Try it on something symmetric.** Replace `w` with `d["educ"]` and the two lines
+almost coincide — which is the point. The gap between mean and median *is* the skew.
+
 ## What goes wrong
 
 **Reporting the mean of a skewed variable without saying so.** Not wrong,

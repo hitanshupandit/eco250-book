@@ -140,6 +140,56 @@ correlate wage_cents educ
 Identical correlations. Then run both with `, covariance` and watch the covariance
 multiply by 100.
 
+## In Python
+
+```python
+import numpy as np, pandas as pd
+
+x = [2, 4, 6, 8, 10]
+y = [9, 7, 8, 4, 2]
+
+np.cov(x, y, ddof=1)[0, 1]       # -8.5000   the covariance
+np.corrcoef(x, y)[0, 1]          # -0.9220   the correlation
+
+pd.DataFrame({"x": x, "y": y}).corr()      # the whole correlation matrix
+```
+
+Note `ddof=1` on the covariance, for the same reason as the last chapter.
+
+### What a correlation looks like
+
+Students can quote "$r$ measures linear association" and still have no picture of what
+$r = 0.5$ means. Here are five:
+
+![What different correlations look like](figures/correlation_grid.png)
+
+The fourth panel is strong and negative. The fifth is the one to remember: a **perfect**
+relationship, plainly visible, and $r = +0.04$. Correlation sees straight lines and
+nothing else.
+
+```python
+import matplotlib.pyplot as plt
+
+plt.scatter(x, y, s=12, color="#8b1a1a")
+plt.xlabel("practice hours"); plt.ylabel("errors")
+plt.show()
+```
+
+**Plot before you compute.** It takes a second and it is the only thing that reveals
+curvature, clustering, or a single point driving the whole correlation.
+
+### Stata to Python
+
+| Stata | Python |
+|---|---|
+| `summarize x` | `d["x"].describe()` |
+| `summarize x, detail` | `d["x"].describe()` plus `stats.skew(d["x"])` |
+| `correlate x y` | `np.corrcoef(x, y)[0,1]` |
+| `correlate x y, covariance` | `np.cov(x, y, ddof=1)[0,1]` |
+| `egen z = std(x)` | `(x - x.mean()) / x.std(ddof=1)` |
+| `scatter y x` | `plt.scatter(x, y)` |
+| `histogram x, normal` | `plt.hist(x, bins=...)` |
+
 ## What goes wrong
 
 **Reporting covariance as if its size meant something.** It depends on your units.
