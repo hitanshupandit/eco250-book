@@ -18,6 +18,14 @@ the same examples, and it is where the worked solutions live.
 |---|---|---|
 | 1 | [What statistics is for](01_what_statistics_is_for.md) | population and sample, data types, sampling designs, the two kinds of error |
 | 2 | [Centre: mean, median, mode](02_centre.md) | the three centres, skew, and why we report medians for income |
+| 3 | [Spread and standardising](03_spread.md) | variance, why $n-1$, the coefficient of variation, $z$-scores |
+| 4 | [Covariance and correlation](04_covariance_correlation.md) | the deviation table, why units cancel in $r$, $V(X+Y)$ |
+| 5 | [Probability: the four rules](05_probability_rules.md) | complement, addition, conditional, multiplication; contingency tables |
+| 6 | [Conditional probability and Bayes](06_bayes.md) | independence, total probability, base rates |
+| 7 | [Random variables](07_random_variables.md) | $E(X)$, $V(X)$, and the laws for $aX+b$ |
+| 8 | [Counting successes: the binomial](08_binomial.md) | the four conditions, the formula, the complement trick |
+| 9 | [Continuous distributions](09_continuous_distributions.md) | uniform, normal and exponential; probability as area |
+| 10 | [$t$, chi-squared and $F$](10_t_chi_f.md) | three distributions built out of normals, and reading their tables |
 | 11 | [Sampling: why your answer moves](11_sampling.md) | the sampling distribution, $E(\bar X)=\mu$, the standard error |
 | 12 | [The Central Limit Theorem](12_central_limit_theorem.md) | why $\bar X$ goes normal, how large $n$ must be, the binomial case |
 | 13 | [Estimation and confidence intervals](13_estimation.md) | point vs interval, what "95% confident" means, margin of error, sample size |
