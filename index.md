@@ -56,6 +56,20 @@ All with full solutions. Work them with the answers covered.
 **Eighty problems in total.** The mixed set is the one to use for Checkpoint 2
 revision; the four per-Part sets are for working through a single topic.
 
+### Checkpoint 2 practice, by topic
+
+The 130-question Checkpoint 2 practice set, split so you get only the questions for
+the chapter you are revising. Every one has a worked answer.
+
+| Set | Chapter | Questions |
+|---|---|---|
+| [Expectation and variance](80_cp2_expectation_variance.md) | 7 | 15 |
+| [The binomial](81_cp2_binomial.md) | 8 | 15 |
+| [Continuous distributions](82_cp2_distributions.md) | 9 | 20 |
+| [Sampling and the CLT](83_cp2_sampling_clt.md) | 11–12 | 17 |
+| [Estimation](84_cp2_estimation.md) | 13 | 14 |
+| [**Hypothesis testing**](85_cp2_hypothesis_testing.md) | 14 | **49** |
+
 ### Multiple choice
 
 Twenty questions per Part, **deliberately hard**. Most take more than one step, and
