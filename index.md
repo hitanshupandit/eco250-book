@@ -43,6 +43,20 @@ Chapters are published as we reach them.
 
 ## Practice problems
 
+### Inside each chapter
+
+Every chapter ends with two sets. The first is five short exercises; the second is a
+longer **More practice** block, added in October — **208 further problems** across the
+eighteen chapters, every one with a full worked answer rather than just a letter.
+
+They are not evenly spread. The Central Limit Theorem gets twenty and hypothesis
+testing gets twenty-five, because those are the two chapters where marks actually go
+missing. Estimation and sampling get fifteen each. Several problems in those sets have
+no arithmetic in them at all — they ask you to state hypotheses, or to find the error
+in somebody else's conclusion, which is the skill the exam is really testing.
+
+### Standalone sets
+
 All with full solutions. Work them with the answers covered.
 
 | Set | Covers |
@@ -53,7 +67,8 @@ All with full solutions. Work them with the answers covered.
 | [From sample to population](94_practice_part4_inference.md) | chapters 11–14 — 15 problems |
 | [Mixed set](90_practice_problems.md) | the whole course to date — 20 problems |
 
-**Eighty problems in total.** The mixed set is the one to use for Checkpoint 2
+**Eighty problems in these five sets**, on top of the 208 in the chapters themselves.
+The mixed set is the one to use for Checkpoint 2
 revision; the four per-Part sets are for working through a single topic.
 
 ### Checkpoint 2 practice, by topic

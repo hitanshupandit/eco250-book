@@ -46,7 +46,8 @@ def main():
             #  second-level headings, for the detailed contents
             for sub in re.findall(r"^## (.+)$", text, re.M):
                 if not sub.startswith(("In Stata", "What goes wrong",
-                                       "Exercises", "Answers")):
+                                       "Exercises", "Answers",
+                                       "More practice")):
                     toc.append(f"  - {sub.strip()}")
 
         body.append(text.rstrip() + "\n")

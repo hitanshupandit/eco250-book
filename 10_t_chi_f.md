@@ -284,4 +284,107 @@ to estimate something.
    remotely the same. The $F$ is a ratio, and swapping the degrees of freedom swaps
    which group is on top, which is a different question.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Nine more. These are table-reading drills, and they are worth doing because a test
+statistic computed perfectly and compared against the wrong critical value scores
+zero.
+
+1. Find each critical value.
+   (a) $t_{0.025, 15}$. (b) $t_{0.05, 15}$. (c) $t_{0.025, 24}$.
+   (d) $t_{0.025, 100}$. (e) $z_{0.025}$.
+
+2. Look at your answers to 1(c), 1(d) and 1(e) together. What is happening as the
+   degrees of freedom rise, and why?
+
+3. Find each.
+   (a) $\chi^2_{0.05, 10}$. (b) $\chi^2_{0.95, 10}$. (c) $\chi^2_{0.025, 20}$.
+
+4. Why does the chi-squared distribution have two different critical values for a
+   two-tailed problem at 5%, when the $t$ has one value used twice?
+
+5. Find (a) $F_{0.05, 5, 10}$ and (b) $F_{0.05, 10, 5}$. Explain why they differ.
+
+6. Verify that $\big(t_{0.025, 10}\big)^2 = F_{0.05, 1, 10}$, and explain the
+   relationship between the two distributions that makes this true.
+
+7. For each situation, name the distribution you would use.
+   (a) Testing a mean with $\sigma$ known.
+   (b) Testing a mean with $\sigma$ estimated from a sample of 18.
+   (c) Testing whether three group means are all equal.
+   (d) Testing whether observed counts match a claimed distribution.
+   (e) Testing a mean with $\sigma$ estimated from a sample of 2,000.
+
+8. A researcher has $n = 16$ and uses $z = 1.96$ because "the sample is large enough".
+   (a) What should they have used?
+   (b) By how much is their critical value too small, in percentage terms?
+   (c) Which way does the error push their conclusions?
+
+9. Explain, in two or three sentences each, where the degrees of freedom come from in
+   (a) a one-sample $t$ test, (b) a chi-squared test on a $3 \times 4$ table, and
+   (c) the numerator of an $F$ test comparing four group means.
+
+### Answers to the extra problems
+
+1. (a) **2.1314**. (b) **1.7531**. (c) **2.0639**. (d) **1.9840**.
+   (e) **1.9600**.
+
+2. The $t$ critical value is falling towards the $z$ value: 2.0639 at $\nu = 24$,
+   1.9840 at $\nu = 100$, against 1.9600 for the normal. The $t$ is wider than the
+   normal because $s$ is itself estimated and therefore uncertain, and that extra
+   uncertainty has to be paid for with a longer interval. As $n$ grows, $s$ pins down
+   $\sigma$ more and more tightly, the extra uncertainty vanishes, and the two
+   distributions converge. By $\nu = 100$ the difference is in the second decimal
+   place, which is why people get away with using $z$ — but it is a convenience, not a
+   rule.
+
+3. (a) **18.3070**. (b) **3.9403**. (c) **34.1696**.
+
+4. Because the chi-squared distribution is **not symmetric**. It lives on $[0,
+   \infty)$ and is right-skewed, so the point cutting off 2.5% in the upper tail is
+   not the mirror image of the point cutting off 2.5% in the lower one, and both must
+   be looked up separately. The $t$ is symmetric about zero, so one magnitude serves
+   for both tails with a sign attached.
+
+5. (a) **3.3258**. (b) **4.7351**. They differ because $F$ is a ratio of two
+   variance estimates and the two degrees of freedom do different jobs — one describes
+   the numerator, one the denominator. Swapping them is not a relabelling, it is a
+   different distribution, which is why the convention "numerator first" has to be
+   held to.
+
+6. $t_{0.025, 10} = 2.2281$, and $2.2281^2 = 4.9646$, which is
+   $F_{0.05, 1, 10} = 4.9646$. The reason: a $t$ variable is a standard normal over
+   the square root of a scaled chi-squared, so squaring it gives a chi-squared with
+   1 degree of freedom over a chi-squared with 10 — and that ratio is precisely an $F$
+   with $\nu_1 = 1$ and $\nu_2 = 10$. The practical consequence is that a two-tailed
+   $t$ test and an $F$ test on the same single parameter are the same test, which is
+   why a regression's $t$ on a lone slope and its overall $F$ always agree.
+
+7. (a) $z$. (b) $t$ with $\nu = 17$. (c) $F$. (d) $\chi^2$.
+   (e) Strictly $t$ with $\nu = 1999$, which to four decimal places is $z$ — but write
+   $t$, because what licenses $z$ is knowing $\sigma$, and a large $n$ only makes the
+   $t$ look like a $z$.
+
+8. (a) $t_{0.025, 15} = 2.1314$.
+   (b) $(2.1314 - 1.96)/2.1314 = 8.0438\%$ too small.
+   (c) Towards **over-rejection**. A critical value that is too small makes the
+   rejection region too large, so the researcher rejects null hypotheses more often
+   than their stated 5% allows — their real Type I error rate is above the one they
+   are claiming.
+
+9. (a) The deviations are taken from $\bar{x}$, which was itself computed from the
+   data. Once $\bar{x}$ and any $n-1$ observations are known, the last one is
+   determined, so only $n-1$ of the deviations are free. One estimated parameter costs
+   one degree of freedom.
+   (b) $(3-1)(4-1) = 6$. With the row and column totals fixed, you can fill in six
+   cells freely and the remaining six are forced by the margins. The margins are not
+   extra information — they are the data's own totals.
+   (c) $k - 1 = 3$ for four groups. The between-group variation is built from four
+   group means measured against the grand mean, and since the grand mean is a weighted
+   average of those four, knowing three of them and the grand mean fixes the fourth.
+
+<!-- more-practice:end -->
+
 ---

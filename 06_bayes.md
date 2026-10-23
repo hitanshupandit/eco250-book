@@ -280,4 +280,139 @@ missing.
    **No**, you cannot find $\mathrm{P}(B)$: that would need $\mathrm{P}(B \mid A^c)$ as
    well, to complete the total-probability sum.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. The screening-test problem appears three times with different base rates,
+on purpose: the arithmetic is identical and the conclusion changes completely, and
+that is the only thing about Bayes worth remembering.
+
+1. A disease affects 2% of a population. A test returns positive for 95% of people
+   who have it, and for 10% of people who do not.
+   (a) Find $\mathrm{P}(\text{positive})$.
+   (b) Find $\mathrm{P}(\text{disease} \mid \text{positive})$.
+   (c) Explain to a patient, in one sentence, why a positive result from a "95%
+   accurate" test still leaves them probably healthy.
+
+2. Repeat 1(b) for a population in which the disease affects **20%**, with the same
+   test. Compare the two answers and say what changed.
+
+3. Using the figures in question 1, find
+   $\mathrm{P}(\text{no disease} \mid \text{negative})$, and comment on why this test
+   is much more useful for ruling out than for ruling in.
+
+4. A firm buys components from two suppliers: 60% from A, which has a 2% defect rate,
+   and 40% from B, which has a 5% rate.
+   (a) Find the overall defect rate.
+   (b) A defective component arrives. Find the probability it came from A.
+   (c) A manager says "B is the problem, since B's rate is higher". Comment, using
+   your answer to (b).
+
+5. Three machines produce output: M1 makes 50% with a 1% defect rate, M2 makes 30%
+   with 2%, M3 makes 20% with 4%.
+   (a) Find the overall defect rate.
+   (b) Given a defective item, find the probability it came from each machine.
+   (c) Check that your three answers sum to 1, and say why they must.
+
+6. Explain, using the law of total probability, why the overall defect rate in
+   question 5 is not the average of 1%, 2% and 4%.
+
+7. A spam filter flags 90% of spam and 3% of legitimate email. Sixty per cent of
+   incoming email is spam.
+   (a) Find the probability a flagged message is actually spam.
+   (b) Find the probability a message that got through is actually spam.
+
+8. In a courtroom, a forensic match occurs in 1 in 10,000 innocent people, and the
+   defendant matched. The prosecutor says "so there is a 1 in 10,000 chance the
+   defendant is innocent."
+   (a) What quantity has the prosecutor actually been given?
+   (b) What quantity did they claim?
+   (c) If the match was found by searching a database of 50,000 people, roughly how
+   many innocent matches would you expect?
+
+9. Two events have $\mathrm{P}(A) = 0.3$ and $\mathrm{P}(B \mid A) = 0.3$. Are they
+   independent? What extra information would you need to be sure?
+
+10. Write down Bayes' theorem, then say in one sentence what each of the three
+    quantities in it is called and what question each one answers.
+
+### Answers to the extra problems
+
+1. (a) $\mathrm{P}(+) = 0.02(0.95) + 0.98(0.10) = 0.019 + 0.098 = 0.1170$.
+   (b) $\mathrm{P}(D \mid +) = 0.019/0.117 = 0.1624$.
+   (c) Because the disease is rare: out of 1,000 people only 20 have it and 19 of
+   those test positive, but 98 of the 980 healthy people also test positive — so 98 of
+   the 117 positives are false alarms, simply because there are so many more healthy
+   people for the test to be wrong about.
+
+2. $\mathrm{P}(+) = 0.20(0.95) + 0.80(0.10) = 0.19 + 0.08 = 0.2700$, so
+   $\mathrm{P}(D \mid +) = 0.19/0.27 = 0.7037$. **The test did not change — only the
+   base rate did**, and the answer went from 16% to 70%. The same evidence supports a
+   completely different conclusion depending on how common the condition is, which is
+   why the prevalence is not an optional extra in a diagnostic question.
+
+3. $\mathrm{P}(-) = 1 - 0.117 = 0.8830$, and
+   $\mathrm{P}(D \cap -) = 0.02(0.05) = 0.0010$, so
+   $\mathrm{P}(D \mid -) = 0.001/0.883 = 0.0011$ and
+   $\mathrm{P}(\text{no } D \mid -) = 0.9989$. A negative result is almost conclusive
+   while a positive one is weak evidence. The asymmetry comes from the base rate: when
+   a condition is rare, "you do not have it" is a claim that was very probably true
+   before the test and the test only reinforces it.
+
+4. (a) $0.60(0.02) + 0.40(0.05) = 0.012 + 0.020 = 0.0320$, so 3.2%.
+   (b) $0.012/0.032 = 0.3750$.
+   (c) The manager is right that B's *rate* is worse, but 37.5% of all defects still
+   come from A, because A supplies half again as many components. Whether to act on
+   the rate or on the count depends on the decision: renegotiating a contract is about
+   the rate, while staffing an inspection line is about the count.
+
+5. (a) $0.50(0.01) + 0.30(0.02) + 0.20(0.04) = 0.005 + 0.006 + 0.008 = 0.0190$.
+   (b) $\mathrm{P}(M1 \mid D) = 0.005/0.019 = 0.2632$;
+   $\mathrm{P}(M2 \mid D) = 0.006/0.019 = 0.3158$;
+   $\mathrm{P}(M3 \mid D) = 0.008/0.019 = 0.4211$.
+   (c) They sum to 1 because the three machines are exhaustive and mutually exclusive
+   — every defective item came from exactly one of them, so the posterior probability
+   has to be distributed entirely among the three. It is a free check on the
+   arithmetic and catches a dropped term immediately.
+
+6. Because the three rates apply to three groups of different sizes, and the law of
+   total probability weights each conditional probability by the probability of the
+   branch it sits on. The unweighted average of 1%, 2% and 4% is 2.3333%, which would
+   be correct only if each machine made a third of the output. M1 is the cleanest
+   machine and makes half of everything, so it pulls the true figure down to 1.9%.
+
+7. (a) $\mathrm{P}(\text{flagged}) = 0.60(0.90) + 0.40(0.03) = 0.54 + 0.012 = 0.5520$,
+   so $\mathrm{P}(\text{spam} \mid \text{flagged}) = 0.54/0.552 = 0.9783$.
+   (b) $\mathrm{P}(\text{through}) = 0.60(0.10) + 0.40(0.97) = 0.06 + 0.388 = 0.4480$,
+   so $\mathrm{P}(\text{spam} \mid \text{through}) = 0.06/0.448 = 0.1339$. The filter
+   is trustworthy when it flags and leaves about one message in seven of the survivors
+   as spam.
+
+8. (a) $\mathrm{P}(\text{match} \mid \text{innocent}) = 0.0001$ — the probability of
+   the evidence given innocence.
+   (b) $\mathrm{P}(\text{innocent} \mid \text{match})$ — the probability of innocence
+   given the evidence. These are not the same quantity, and converting one into the
+   other requires a prior probability that the defendant was involved at all. This is
+   the **prosecutor's fallacy**, and it is question 2 of this set wearing a wig.
+   (c) About $50{,}000 \times 0.0001 = 5$ innocent matches. Finding a match by
+   trawling a database is very different evidence from testing a suspect identified
+   some other way, and the number 1 in 10,000 does not distinguish them.
+
+9. **Yes**, as far as this goes: $\mathrm{P}(B \mid A) = 0.3$ tells you the
+   conditional probability of $B$, and independence requires that to equal
+   $\mathrm{P}(B)$. You would need $\mathrm{P}(B)$ to confirm it. The fact that
+   $\mathrm{P}(B \mid A)$ happens to equal $\mathrm{P}(A)$ is a coincidence of the
+   numbers and is irrelevant — a trap worth noticing.
+
+10. $\mathrm{P}(A \mid B) = \dfrac{\mathrm{P}(B \mid A)\mathrm{P}(A)}{\mathrm{P}(B)}$.
+    $\mathrm{P}(A)$ is the **prior** — what you believed before seeing the evidence.
+    $\mathrm{P}(B \mid A)$ is the **likelihood** — how probable this evidence would be
+    if $A$ were true. $\mathrm{P}(A \mid B)$ is the **posterior** — what you should
+    believe now. The denominator is just the total probability of the evidence,
+    computed across all the ways it could have arisen, and it is what makes the
+    posteriors sum to one.
+
+<!-- more-practice:end -->
+
 ---

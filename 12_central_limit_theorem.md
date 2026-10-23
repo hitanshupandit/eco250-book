@@ -342,4 +342,285 @@ standardising $\bar{X}$ produces a $z$ that is $\sqrt{n}$ times too small.
    and none dominates — so no single component's shape can impose itself on the
    total.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Twenty more — the longest set in the book, because this is the result the whole
+second half rests on and because it is the one people are most confident they have
+understood. Questions 12, 13 and 19 are the ones that separate reciting the theorem
+from knowing it.
+
+1. A population has $\mu = 50$ and $\sigma = 15$ and is heavily right-skewed. A
+   sample of $n = 100$ is drawn.
+   (a) State the approximate distribution of $\bar{X}$, with both parameters.
+   (b) Find $\mathrm{P}(\bar{X} < 47)$.
+   (c) Find $\mathrm{P}(\bar{X} > 52)$.
+   (d) Find $\mathrm{P}(48 < \bar{X} < 53)$.
+
+2. For the population in question 1, find $\mathrm{P}(X < 47)$ for a single
+   observation, or explain precisely why you cannot.
+
+3. For each population, state roughly how large $n$ must be before you would trust
+   the normal approximation for $\bar{X}$, and say why.
+   (a) Already normal. (b) Symmetric but with fat tails. (c) Mildly right-skewed.
+   (d) Severely right-skewed, like income. (e) Binary (0/1) with $p = 0.5$.
+   (f) Binary with $p = 0.02$.
+
+4. Weight lifted per set in a gym is strongly right-skewed with $\mu = 60$ kg and
+   $\sigma = 24$ kg. A trainer records 36 sets.
+   (a) Find the standard error of the mean.
+   (b) Find $\mathrm{P}(\bar{X} > 68)$.
+   (c) The trainer's own 36 sets averaged 68 kg. Is this good evidence they lift more
+   than the gym average? Give the number that justifies your answer.
+
+5. State the Central Limit Theorem in your own words. A complete answer says three
+   things: what becomes normal, what its mean and standard deviation are, and what is
+   required of the population.
+
+6. $X \sim \text{Bin}(100, 0.3)$.
+   (a) Find the mean and standard deviation.
+   (b) Approximate $\mathrm{P}(X \leq 25)$ using the normal with a continuity
+   correction.
+   (c) The exact binomial answer is 0.1631. How close did you get?
+
+7. Repeat 6(b) **without** the continuity correction.
+   (a) What answer do you get?
+   (b) By how much does it miss, and in which direction?
+   (c) When does the correction stop mattering?
+
+8. For each, say whether the normal approximation to the binomial is appropriate, and
+   state the check. (a) $n=50$, $p=0.4$. (b) $n=50$, $p=0.05$.
+   (c) $n=400$, $p=0.01$. (d) $n=25$, $p=0.5$.
+
+9. Time between arrivals is exponential with a mean of 8 minutes — a distribution
+   nothing like a bell. The mean of 50 such times is recorded.
+   (a) Find the standard error.
+   (b) Find $\mathrm{P}(\bar{X} > 10)$.
+   (c) Which theorem licensed you to use the normal table on an exponential
+   population?
+
+10. An insurer expects 40 claims next month, each with mean \$500 and standard
+    deviation \$200, independently.
+    (a) Find the expected total and its standard deviation.
+    (b) Find the probability the total exceeds \$22,000.
+    (c) Which quantity did the CLT apply to here — the mean or the sum?
+
+11. Write down the standardisation for a sum and for a mean side by side. Explain why
+    one has $\sqrt{n}$ multiplying and the other has $\sqrt{n}$ dividing.
+
+12. For each statement, say whether the CLT supports it.
+    (a) "With a large sample, the population becomes normal."
+    (b) "With a large sample, the sample data look normal."
+    (c) "With a large sample, the sample mean is approximately normal."
+    (d) "With a large sample, individual observations are approximately normal."
+    (e) "The CLT is why $s$ approaches $\sigma$."
+
+13. Name three situations in which the CLT does **not** rescue you, and say what fails
+    in each.
+
+14. In a simulation, 1,000 samples of $n = 36$ are drawn from a skewed population and
+    a 95% interval is built each time. 919 of them contain $\mu$.
+    (a) What should the number have been?
+    (b) Is 919 close enough to call the approximation adequate? Justify.
+    (c) At $n = 200$ the figure rises to 939. What does that trend tell you?
+
+15. The skewness of a sample mean is the population skewness divided by $\sqrt{n}$.
+    (a) A population has skewness 3. Find the skewness of $\bar{X}$ at $n = 9$,
+    $n = 36$ and $n = 144$.
+    (b) Explain how this formula makes the "how large is large enough" question
+    quantitative rather than a matter of folklore.
+
+16. Explain why so many naturally occurring measurements — heights, measurement
+    errors, test scores — are approximately normal, when nothing arranged for them to
+    be.
+
+17. A population has $\mu = 100$ and $\sigma = 20$. Compare $\mathrm{P}(X > 110)$ for
+    a single observation, assuming normality, with $\mathrm{P}(\bar{X} > 110)$ for
+    $n = 25$. Explain the gap in one sentence.
+
+18. "Thirty is large enough" is repeated everywhere.
+    (a) Is it a theorem?
+    (b) Where does the number come from?
+    (c) Give a case where 30 is far too few and one where 5 would do.
+
+19. Two populations have the same $\mu = 20$ and the same $\sigma = 5$. One is normal
+    and one is a heavily skewed distribution of waiting times. Samples of $n = 100$
+    are drawn from each.
+    (a) Are the two sampling distributions of $\bar{X}$ the same?
+    (b) Are the two populations' distributions the same?
+    (c) What does the pair of answers tell you about what a sample mean throws away?
+
+20. You are designing a study of household electricity use, which you know from
+    previous work is severely right-skewed with a handful of very large users. Your
+    budget allows $n = 40$ or $n = 400$. Argue, using this chapter, for the figure you
+    would choose and say what specifically you are buying.
+
+### Answers to the extra problems
+
+1. (a) Approximately $N(50,\ 1.5^2)$: mean 50, standard error
+   $15/\sqrt{100} = 1.5000$.
+   (b) $z = (47-50)/1.5 = -2.00$, so $\mathrm{P} = 0.0228$.
+   (c) $z = (52-50)/1.5 = 1.3333$, so $\mathrm{P} = 0.0912$.
+   (d) $z$ runs from $-1.3333$ to $2.00$, so
+   $\mathrm{P} = 0.9772 - 0.0912 = 0.8860$.
+
+2. **You cannot.** The CLT describes $\bar{X}$, not $X$. For a single observation you
+   would need the population's actual distribution, and all you have been told is that
+   it is right-skewed with a particular mean and standard deviation — which is
+   consistent with infinitely many shapes, giving different answers for
+   $\mathrm{P}(X < 47)$. No sample size changes this: $n$ affects the mean's
+   distribution, not an individual's.
+
+3. (a) **Any $n$**, including 1 — the mean of normal draws is exactly normal, no
+   approximation involved. (b) Moderate, perhaps 30 to 50: fat tails make extreme
+   draws more common, so more averaging is needed to tame them. (c) Around 20 to 30 is
+   usually ample. (d) **Several hundred.** Severe skew is slow to average away, and
+   the one-tailed probabilities stay wrong long after the two-tailed ones look fine.
+   (e) About 20 — at $p = 0.5$ the distribution is already symmetric, so only the
+   discreteness needs smoothing. (f) **Several hundred**: $np \geq 5$ requires
+   $n \geq 250$ on its own.
+
+4. (a) $24/\sqrt{36} = 4.0000$ kg.
+   (b) $z = (68-60)/4 = 2.00$, so $\mathrm{P} = 0.0228$.
+   (c) It is reasonable evidence. If the trainer were an average lifter, a 36-set mean
+   of 68 kg or more would arise about **2.3%** of the time — unlikely enough to doubt
+   the assumption. Note what made this possible: the population of individual sets is
+   badly skewed and we could say nothing about one set, but averaging 36 of them
+   produced a quantity the normal table handles.
+
+5. The **sample mean** $\bar{X}$ of $n$ independent draws becomes approximately
+   normally distributed as $n$ grows. Its mean is the population mean $\mu$ and its
+   standard deviation is $\sigma/\sqrt{n}$. What is required of the population is only
+   that it has a finite mean and a finite variance and that the draws are independent
+   — crucially, **not** that it is normal, or symmetric, or continuous.
+
+6. (a) $\mu = 100(0.3) = 30.0000$ and
+   $\sigma = \sqrt{100(0.3)(0.7)} = \sqrt{21} = 4.5826$.
+   (b) With the correction, $z = (25.5 - 30)/4.5826 = -0.9820$, so
+   $\mathrm{P} \approx 0.1630$.
+   (c) The exact answer is 0.1631, so the approximation is out by about 0.0001 —
+   accurate to three decimal places.
+
+7. (a) $z = (25 - 30)/4.5826 = -1.0911$, giving $\mathrm{P} \approx 0.1376$.
+   (b) It misses by about 0.0255, roughly **16% of the true value**, and it is too
+   **small**. The reason is geometric: the binomial puts a bar of probability *at* 25
+   and the uncorrected normal cuts straight through the middle of it, discarding half
+   the bar.
+   (c) When $n$ is large enough that a single bar is a negligible share of the
+   distribution. At $n = 100$ it still matters; by $n = 1{,}000$ it is usually below
+   the rounding in your answer. It never hurts to include it.
+
+8. The check is $np \geq 5$ and $n(1-p) \geq 5$.
+   (a) $20$ and $30$. **Yes.** (b) $2.5$ and $47.5$. **No.**
+   (c) $4$ and $396$. **No**, narrowly. (d) $12.5$ and $12.5$. **Yes.**
+
+9. (a) $8/\sqrt{50} = 1.1314$ minutes.
+   (b) $z = (10 - 8)/1.1314 = 1.7678$, so $\mathrm{P} = 0.0386$.
+   (c) The **Central Limit Theorem**. The exponential is about as un-normal as a
+   distribution gets — right-skewed, bounded below at zero, with its mode at the
+   boundary — and none of that matters, because the theorem makes no assumption about
+   the population's shape. This is the point of the whole chapter: you may use the
+   normal table on a population you know is not normal, provided you are asking about
+   an average.
+
+10. (a) $E(S) = 40(500) = \$20{,}000$ and
+    $\text{SD}(S) = 200\sqrt{40} = \$1{,}264.9111$.
+    (b) $z = (22{,}000 - 20{,}000)/1264.9111 = 1.5811$, so $\mathrm{P} = 0.0569$.
+    (c) The **sum**. The CLT applies to both, since a sum is just $n$ times the mean —
+    but the parameters differ, and using the mean's standard error of
+    $200/\sqrt{40} = 31.62$ for a question about the total would be out by a factor of
+    40.
+
+11. For a sum, $z = \dfrac{S - n\mu}{\sigma\sqrt{n}}$; for a mean,
+    $z = \dfrac{\bar{X} - \mu}{\sigma/\sqrt{n}}$. Both come from the same fact that
+    variances add, giving $V(S) = n\sigma^2$. The sum keeps all of that accumulated
+    variance, so its standard deviation *grows* as $\sqrt{n}$. The mean divides the
+    sum by $n$, which divides its variance by $n^2$, leaving $\sigma^2/n$ — so its
+    standard deviation *shrinks* as $\sqrt{n}$. Adding things up makes them more
+    variable; averaging them makes them less.
+
+12. (a) **No** — the population is a fixed set of numbers and nothing about it changes
+    when you sample. (b) **No** — a histogram of a large sample converges on the
+    *population's* shape, skew and all; it does not become a bell. (c) **Yes** — this
+    is the theorem. (d) **No** — see question 2. (e) **No** — that $s \to \sigma$ is
+    the Law of Large Numbers, a different result about consistency rather than about
+    shape. (b) and (c) being different is the distinction this chapter exists to make:
+    the histogram of *your data* and the histogram of *the mean across repeated
+    samples* are not the same picture.
+
+13. (i) **The population has no finite variance** — Cauchy-type heavy tails. The
+    theorem's hypothesis fails outright, and the mean of a million draws is no better
+    behaved than one. (ii) **The draws are not independent** — clustered sampling,
+    time series with autocorrelation, students who studied together. The effective
+    sample size is far below $n$, so the standard error is understated, sometimes
+    badly. (iii) **$n$ is too small relative to the skew.** The theorem is asymptotic;
+    at $n = 10$ from an income distribution it simply has not arrived yet, and the
+    one-tailed probabilities will be wrong in a predictable direction.
+
+14. (a) About **950** of 1,000 — a 95% interval should contain $\mu$ 95% of the time.
+    (b) Not really. 919 against an expected 950 is a coverage of 91.9% when 95% was
+    claimed, and the shortfall is about three times what sampling variation in the
+    simulation itself would explain. The intervals are too narrow, and anyone using
+    them believes they are being more careful than they are.
+    (c) That the failure is the **approximation**, not the method. As $n$ rises the
+    coverage climbs towards its nominal level, exactly as the CLT predicts — the
+    intervals were not wrong in principle, they were being used at an $n$ the
+    approximation had not reached.
+
+15. (a) Skewness 3 gives $3/\sqrt{9} = 1.0000$ at $n=9$, $3/\sqrt{36} = 0.5000$ at
+    $n=36$, and $3/\sqrt{144} = 0.2500$ at $n=144$.
+    (b) Because it tells you how far along you are. If you regard a skewness below
+    about 0.25 as negligible, then a population with skewness 3 needs $n = 144$ and a
+    population with skewness 6 needs $n = 576$ — numbers you can compute rather than
+    guess. "Thirty is enough" is the answer this formula gives for a population with
+    skewness under about 1.4, which is why the rule works for the mildly skewed data
+    textbooks use and fails for income.
+
+16. Because such measurements are themselves sums or averages of many small
+    independent contributions. A person's height is the accumulation of a great many
+    genetic and environmental influences; a measurement error is the accumulation of
+    many small independent errors; a test score is the sum of performance on many
+    items. The CLT says any such accumulation tends to normality regardless of what the
+    individual pieces look like, so the bell curve appears throughout nature without
+    anything in nature having arranged it. It is a theorem about addition, not a law of
+    biology.
+
+17. For a single observation $z = (110-100)/20 = 0.50$, so
+    $\mathrm{P} = 0.3085$. For the mean of 25, the standard error is 4, so
+    $z = 2.50$ and $\mathrm{P} = 0.0062$. One person being 10 above average is
+    unremarkable; twenty-five people averaging 10 above requires them to be unusual
+    collectively, and that is about fifty times rarer.
+
+18. (a) **No.** The CLT is a statement about the limit as $n \to \infty$ and contains
+    no number 30.
+    (b) From practice: for the mildly skewed distributions common in textbook examples,
+    the approximation is adequate around $n = 30$, and the figure got repeated until it
+    sounded like a rule.
+    (c) **Far too few:** household wealth, insurance claims, or any binary variable
+    with $p = 0.01$ — all need hundreds. **Five would do:** a population already
+    normal, or very nearly so, where no approximation is needed at all.
+
+19. (a) **Yes, approximately** — both are approximately $N(20,\ 0.5^2)$, since the CLT
+    delivers the same answer from the same $\mu$ and $\sigma$ whatever the shape. (At
+    $n = 100$ the skewed one will be very slightly off, by question 15's formula.)
+    (b) **No** — one is a bell and one is a long-tailed waiting-time distribution.
+    They are not remotely alike.
+    (c) That a sample mean discards almost everything about the shape of the
+    population. It is sensitive to $\mu$ and $\sigma$ and essentially blind to the
+    rest, which is simultaneously why inference about $\mu$ is so portable across
+    fields and why reporting a mean can be so misleading — two populations that no one
+    would confuse produce the same confidence interval.
+
+20. Choose **400**. Severe right skew with a few very large users is precisely the case
+    in which $n = 40$ is not enough: by question 15's formula, if the skewness is
+    around 4 then at $n=40$ the sample mean still has skewness $4/\sqrt{40} = 0.6325$,
+    which is enough to make one-tailed probabilities and interval endpoints noticeably
+    wrong. At $n = 400$ that falls to $4/\sqrt{400} = 0.2000$. What you are buying is
+    two separate things: a standard error half the size, and — the point of this
+    chapter — the right to use the normal table at all. The second is the one that
+    would have invalidated the study rather than merely widened it.
+
+<!-- more-practice:end -->
+
 ---

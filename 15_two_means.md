@@ -222,4 +222,185 @@ times the other, use the unequal-variance version.
    and a two-tailed test at $\alpha = 0.05$ rejects exactly when the 95% interval
    excludes the claimed value — here, zero.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Twelve more. Question 4 is the one to get right first — every other question in this
+chapter is downstream of deciding whether the design is paired or independent.
+
+1. Two plants are compared. Plant A: $n_1 = 18$, $\bar{x}_1 = 64$, $s_1 = 9$.
+   Plant B: $n_2 = 22$, $\bar{x}_2 = 58$, $s_2 = 11$. Assume equal variances.
+   (a) Find $s_p^2$ and $s_p$.
+   (b) Find the standard error of the difference.
+   (c) Find $t$ and state $\nu$.
+   (d) Test at $\alpha = 0.05$, two-tailed.
+   (e) Find the p-value.
+
+2. For the data in question 1, build a 95% confidence interval for
+   $\mu_1 - \mu_2$.
+   (a) Give the interval.
+   (b) Confirm it agrees with your test, and say which of the two is more informative.
+
+3. Seven trainees are tested before and after a course. The improvements are
+   $2,\ 5,\ 3,\ 6,\ 4,\ 7,\ 5$.
+   (a) Find $\bar{d}$ and $s_d$.
+   (b) Find the standard error and $t$, with $\nu$.
+   (c) Test at $\alpha = 0.05$ against a one-sided alternative that the course helps.
+   (d) Find the p-value.
+
+4. For each, state whether the design is independent or matched pairs.
+   (a) Forty men and forty-five women at a firm, comparing salaries.
+   (b) Twenty patients' blood pressure before and after a drug.
+   (c) Fifteen fields split in half, one half treated with fertiliser.
+   (d) Reaction times of each subject's left and right hand.
+   (e) Exam marks of this year's class and last year's class.
+   (f) Twenty-five pairs of twins, one of each pair in a programme.
+   (g) The same thirty shops' sales in January and in July.
+   (h) Thirty randomly assigned to treatment and thirty to control.
+
+5. Compare question 1 (40 observations, not significant) with question 3 (7 pairs,
+   significant). Explain how the smaller study produced the stronger result.
+
+6. Why is the variance of $\bar{X}_1 - \bar{X}_2$ a **sum** of the two variances
+   rather than a difference? Answer from the formula for the variance of a difference.
+
+7. When would you use the unequal-variance (Welch) version rather than the pooled one?
+   (a) Give the rule of thumb.
+   (b) Say what goes wrong if you pool when you should not.
+   (c) Why is Welch not simply the default?
+
+8. State the degrees of freedom for (a) a pooled two-sample $t$ with $n_1 = 12$ and
+   $n_2 = 15$, (b) a matched-pairs $t$ on 12 pairs, (c) a one-sample $t$ with
+   $n = 27$. Note which two coincide and say why that is a coincidence.
+
+9. A researcher has 20 subjects measured before and after a treatment, and runs an
+   independent-samples test on the two columns of 20.
+   (a) What has gone wrong?
+   (b) Which direction does the error push the $t$ statistic, and why?
+   (c) What would you expect to happen to the p-value?
+
+10. A 95% interval for $\mu_1 - \mu_2$ is $(-1.8,\ 7.4)$.
+    (a) What do you conclude at $\alpha = 0.05$?
+    (b) A colleague writes "the two groups are the same". Correct them.
+
+11. Using the data in question 1, test the one-sided alternative $\mu_1 > \mu_2$ at
+    $\alpha = 0.05$.
+    (a) What changes, and what is the conclusion?
+    (b) Under what circumstances would this have been the legitimate test to run?
+
+12. Write the sentence you would put in a report for question 3, in language a
+    training manager would act on. It should contain the effect size, not just the
+    verdict.
+
+### Answers to the extra problems
+
+1. (a) $s_p^2 = \dfrac{17(81) + 21(121)}{38} = \dfrac{1377 + 2541}{38} = 103.1053$,
+   so $s_p = 10.1541$.
+   (b) SE $= 10.1541\sqrt{\tfrac{1}{18} + \tfrac{1}{22}} =
+   10.1541(0.3178) = 3.2272$.
+   (c) $t = (64 - 58)/3.2272 = 1.8592$ with $\nu = 18 + 22 - 2 = 38$.
+   (d) $t_{0.025,38} = 2.0244$. Since $1.8592 < 2.0244$, **do not reject** — there is
+   insufficient evidence of a difference in mean output.
+   (e) $p = 0.0707$.
+
+2. (a) $6 \pm 2.0244(3.2272) = 6 \pm 6.5331 = (-0.5331,\ 12.5331)$.
+   (b) The interval **contains zero**, so it does not reject $H_0: \mu_1 = \mu_2$ —
+   the same verdict as the test, as it must be. The **interval is more informative**:
+   it says the gap could plausibly be anywhere from Plant B being half a unit ahead to
+   Plant A being twelve and a half ahead. "Not significant" sounds like "no
+   difference"; the interval shows that a large difference is entirely consistent with
+   this data, and that the study was simply too small to settle the matter.
+
+3. (a) $\bar{d} = 32/7 = 4.5714$. The deviations square to
+   $\sum d^2 - (\sum d)^2/n = 164 - 146.2857 = 17.7143$, so
+   $s_d^2 = 17.7143/6 = 2.9524$ and $s_d = 1.7183$.
+   (b) SE $= 1.7183/\sqrt{7} = 0.6494$, so $t = 4.5714/0.6494 = 7.0391$ with
+   $\nu = 6$.
+   (c) One-tailed, so the critical value is $t_{0.05,6} = 1.9432$. Since
+   $7.0383 > 1.9432$, **reject** — the course improves scores.
+   (d) $p = 0.0002$.
+
+4. (a) Independent. (b) **Paired**. (c) **Paired** — the two halves of one field share
+   its soil, weather and drainage. (d) **Paired**. (e) Independent. (f) **Paired** —
+   twins are deliberately matched. (g) **Paired** — the same shops twice.
+   (h) Independent. The test: if each observation in group 1 has a specific partner in
+   group 2, it is paired; if the two groups could have had different sizes without
+   anything breaking, they are independent.
+
+5. Pairing removed the between-subject variation. In question 1 the denominator
+   contains $s_p = 10.1541$, which is mostly differences *between workers* — a source
+   of noise that has nothing to do with the question. In question 3 each trainee is
+   compared with themselves, so that variation subtracts out and the denominator
+   contains only $s_d = 1.7183$, the variation in the *improvement*. A standard
+   deviation six times smaller more than compensates for having a fifth as many
+   observations. The lesson is that design beats sample size: 7 well-paired
+   observations here outperform 40 unpaired ones.
+
+6. Because $V(X - Y) = V(X) + V(Y) - 2\text{COV}(X,Y)$, and with independent samples
+   the covariance is zero, leaving $V(X) + V(Y)$. Uncertainty does not cancel when you
+   subtract: two noisy estimates make a noisier difference, and the minus sign in the
+   numerator has no effect on the denominator. (Note that a *paired* design is exactly
+   the case where the covariance is **not** zero and is positive, so the $-2\text{COV}$
+   term bites and the variance of the difference falls — which is question 5 written
+   algebraically.)
+
+7. (a) Pool only if the two sample variances are of similar size; the common rule of
+   thumb is that the larger $s^2$ should be no more than about four times the smaller.
+   Here $121/81 = 1.4938$, comfortably within that.
+   (b) Pooling averages the two variances, so if they genuinely differ the pooled value
+   overstates the uncertainty for the group with the smaller variance and understates
+   it for the other. The resulting $t$ has neither the right value nor the right
+   distribution, and the error is worst when the sample sizes are also unequal — the
+   smaller sample's variance gets too little weight precisely when it matters most.
+   (c) Welch is close to the default in modern practice, and Stata's `unequal` option
+   is cheap to use. It is taught second because the pooled version makes the structure
+   visible — you can see the weighted average of variances and the $n_1 + n_2 - 2$
+   degrees of freedom — whereas Welch's fractional degrees of freedom are impossible to
+   compute by hand and teach nothing.
+
+8. (a) $12 + 15 - 2 = 25$. (b) $12 - 1 = 11$. (c) $27 - 1 = 26$. None of these
+   coincide — but note how close (a) and (c) are, with 27 observations in each case.
+   The difference is that the two-sample test estimated **two** means from the data and
+   so pays twice; the one-sample test estimated one.
+
+9. (a) The pairing has been discarded. The test now treats the 20 "before" and 20
+   "after" values as two unrelated groups of people, when in fact each after-value
+   belongs with a specific before-value.
+   (b) **Downward**, usually sharply. The denominator becomes a pooled standard
+   deviation reflecting differences between subjects, which is typically far larger
+   than the standard deviation of the within-subject changes. The numerator is
+   unchanged — $\bar{x}_1 - \bar{x}_2$ equals $\bar{d}$ — so a bigger denominator means
+   a smaller $t$.
+   (c) It will be much larger, and a real effect may well come out "not significant".
+   This is the error the chapter exists to prevent, and it is expensive because it
+   produces a null result that looks perfectly respectable.
+
+10. (a) The interval contains zero, so **do not reject** at the 5% level.
+    (b) "The two groups are the same" overstates it. The interval says the difference
+    could be anything from $-1.8$ to $7.4$, which includes values that would matter a
+    great deal in practice. The correct statement is that this study cannot distinguish
+    the two means — absence of evidence, not evidence of absence, and the width of the
+    interval is the measure of how little was learned.
+
+11. (a) Only the critical value: it becomes $t_{0.05,38} = 1.6860$, with all 5% in the
+    upper tail. Since $1.8592 > 1.6860$, you would now **reject**, and the one-tailed
+    p-value is 0.0354.
+    (b) Only if the direction had been specified **before** seeing the data, on
+    substantive grounds — for instance if Plant A had new equipment and the whole point
+    of the study was to test whether it raised output. If the direction was chosen after
+    noticing that $\bar{x}_1 > \bar{x}_2$, the stated 5% is really 10% and the
+    rejection is not credible. Note how much hangs on this: the identical data give
+    opposite verdicts, and nothing in the output distinguishes the honest version from
+    the other one.
+
+12. One acceptable answer: "Across seven trainees, scores rose by an average of 4.57
+    points after the course, and the improvement was consistent — every trainee
+    improved, by between 2 and 7 points. An improvement this consistent would arise by
+    chance about twice in ten thousand such studies, so the course is doing something.
+    The caution is the sample: seven trainees is enough to establish that the effect is
+    real and not enough to pin down its size for the wider intake."
+
+<!-- more-practice:end -->
+
 ---

@@ -316,4 +316,127 @@ variance or the standard deviation.
 
 5. The top 2.5% starts at $z = 1.96$, so the cut-off is $500 + 1.96(100) = 696$.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more, across all three distributions. Draw the picture first every single time —
+every mistake in this chapter is a shaded region on the wrong side of a line, and a
+sketch costs ten seconds.
+
+1. Waiting time at a service desk is uniform on $[10, 50]$ minutes.
+   (a) Find the mean, variance and standard deviation.
+   (b) Find $\mathrm{P}(X < 25)$.
+   (c) Find $\mathrm{P}(20 < X < 35)$.
+   (d) Find $\mathrm{P}(X = 25)$, and explain the answer.
+
+2. Test scores are $N(500, 100^2)$.
+   (a) Find $\mathrm{P}(X > 650)$.
+   (b) Find $\mathrm{P}(400 < X < 600)$.
+   (c) Find $\mathrm{P}(X < 430)$.
+   (d) Find the 90th percentile.
+
+3. For the same distribution, a scholarship goes to the top 5%. What is the cut-off,
+   and which direction does the $z$ run?
+
+4. The time between arrivals at a till is exponential with a mean of 8 minutes.
+   (a) Find $\lambda$ and the standard deviation.
+   (b) Find $\mathrm{P}(X > 10)$.
+   (c) Find $\mathrm{P}(X < 5)$.
+   (d) Find the median waiting time, and say why it is not 8.
+
+5. For the same arrivals: five minutes have passed with no one arriving. Find the
+   probability you wait at least ten more. Compare it with your answer to 4(b) and
+   name the property.
+
+6. Explain why $\mathrm{P}(X = c) = 0$ for any continuous random variable, and why
+   this does not mean the value $c$ is impossible.
+
+7. For each quantity, name the distribution you would reach for first and say what
+   feature of the situation decides it.
+   (a) The height of adult women. (b) The time until a lightbulb fails.
+   (c) A random number generated between 0 and 1. (d) The sum of 40 small independent
+   shocks. (e) The time between emails arriving.
+
+8. A process is $N(\mu, \sigma^2)$ and 2.5% of output falls below 46 while 2.5% falls
+   above 74. Find $\mu$ and $\sigma$ without using a single probability table entry
+   beyond $z = 1.96$.
+
+9. A student computes $z = (430 - 500)/100 = -0.70$ and reports
+   $\mathrm{P}(X < 430) = 0.7580$. Identify the error and give the correct answer.
+
+10. Scores are $N(500, 100^2)$. Explain why
+    $\mathrm{P}(X > 650)$ and $\mathrm{P}(\bar{X} > 650)$ for a sample of 25 are
+    wildly different numbers, without computing the second one.
+
+### Answers to the extra problems
+
+1. (a) Mean $= (10+50)/2 = 30.0000$;
+   $V = (50-10)^2/12 = 1600/12 = 133.3333$; SD $= 11.5470$.
+   (b) The density is $1/40$ throughout, so the probability is the width over the
+   range: $(25-10)/40 = 0.3750$.
+   (c) $(35-20)/40 = 0.3750$ — the same answer, because the interval has the same
+   width. Under a uniform, only the width matters, never the location.
+   (d) **Zero.** A single point has no width, and probability is area. See question 6.
+
+2. (a) $z = (650-500)/100 = 1.50$, so $\mathrm{P} = 0.0668$.
+   (b) $z = \pm 1.00$, so $\mathrm{P} = 0.6827$ — the familiar 68%.
+   (c) $z = -0.70$, so $\mathrm{P} = 0.2420$.
+   (d) $z_{0.90} = 1.2816$, so the 90th percentile is
+   $500 + 1.2816(100) = 628.1552$.
+
+3. The top 5% means 5% in the **upper** tail, so $z = +1.6449$ and the cut-off is
+   $500 + 1.6449(100) = 664.4854$. The sign is the thing to get right: a cut-off above
+   the mean must have a positive $z$, and if your arithmetic returns something below
+   500 you have used $-1.6449$ by mistake.
+
+4. (a) $\lambda = 1/8 = 0.1250$ per minute. For an exponential the standard deviation
+   equals the mean, so SD $= 8.0000$ minutes.
+   (b) $\mathrm{P}(X > 10) = e^{-10/8} = e^{-1.25} = 0.2865$.
+   (c) $\mathrm{P}(X < 5) = 1 - e^{-5/8} = 1 - 0.5353 = 0.4647$.
+   (d) The median solves $e^{-\lambda m} = 0.5$, giving
+   $m = \ln 2/\lambda = 0.6931 \times 8 = 5.5452$ minutes. It is below the mean
+   because the exponential is strongly right-skewed — most waits are short and a few
+   very long ones drag the mean up past the middle.
+
+5. $\mathrm{P}(X > 15 \mid X > 5) = e^{-10/8} = 0.2865$, identical to 4(b). This is
+   the **memoryless** property: the distribution of the remaining wait does not depend
+   on how long you have already waited. It is the defining feature of the exponential
+   and the reason it describes arrivals that have no pattern — the process does not
+   know you are standing there.
+
+6. Probability is the area under the density, and the area above a single point is a
+   rectangle of zero width, hence zero. It does not mean $c$ is impossible, because
+   *every* value has probability zero and yet one of them occurs. For a continuous
+   variable, zero probability and impossibility are different things — which is why
+   continuous questions are always asked about intervals, and why it makes no
+   difference whether you write $<$ or $\leq$.
+
+7. (a) **Normal** — a quantity built from many small additive influences.
+   (b) **Exponential** — a waiting time with a constant failure rate.
+   (c) **Uniform** — every value in the range equally likely by construction.
+   (d) **Normal**, by the CLT — the giveaway is the word "sum".
+   (e) **Exponential** — a gap between events in a memoryless process.
+
+8. The two cut-offs are symmetric about the mean, so
+   $\mu = (46 + 74)/2 = 60.0000$. Each is 14 away from the mean and sits at
+   $z = \pm 1.96$, so $1.96\sigma = 14$ and $\sigma = 14/1.96 = 7.1429$. Reading a
+   normal problem backwards like this — from the tails to the parameters — is exactly
+   what confidence intervals will ask you to do in Chapter 13.
+
+9. The $z$ is right and the probability is the **complement of the answer**. The
+   student has looked up $\mathrm{P}(Z < 0.70) = 0.7580$, dropping the minus sign. For
+   a negative $z$ the lower-tail area must be below 0.5, so 0.7580 should have been
+   rejected on sight. The correct answer is $\mathrm{P}(Z < -0.70) = 0.2420$, and
+   $0.2420 + 0.7580 = 1$ confirms the relationship between the two.
+
+10. Because the two questions are about different random variables. A single score has
+    standard deviation 100, so 650 is 1.5 standard deviations out — unusual but
+    ordinary. A sample mean of 25 scores has standard error $100/\sqrt{25} = 20$, so
+    650 is seven and a half standard errors out. Averaging destroys the extremes: for
+    the mean of 25 students to exceed 650, essentially all of them have to be
+    exceptional at once, and that is enormously rarer than one student being so.
+
+<!-- more-practice:end -->
+
 ---

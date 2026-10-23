@@ -293,4 +293,158 @@ variance. Here $E(X^2) = 3.7$ while $[E(X)]^2 = 2.89$.
    its variance falls from 148 to 100 — the same return with less risk. That is
    diversification, and it is entirely a statement about the covariance term.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. Question 10 is the derivation itself — if you can reproduce it from a
+blank page you will never again wonder which of $E(X^2)$ and $E(X)^2$ gets
+subtracted from which.
+
+1. The number of claims a policyholder files in a year, $X$, has
+
+   | $x$ | 0 | 1 | 2 | 3 |
+   |---|---|---|---|---|
+   | $\mathrm{P}(X=x)$ | 0.1 | 0.3 | 0.4 | 0.2 |
+
+   (a) Confirm this is a valid probability distribution.
+   (b) Find $E(X)$.
+   (c) Find $E(X^2)$, then $V(X)$ and the standard deviation.
+
+2. Using the distribution in question 1, let $Y = 3X + 2$.
+   (a) Find $E(Y)$ and $V(Y)$ without re-tabulating.
+   (b) Find the standard deviation of $Y$.
+   (c) Why does the $+2$ affect the mean but not the variance?
+
+3. An insurer charges a premium of \$50 and pays out \$10,000 if a claim occurs,
+   which happens with probability 0.003.
+   (a) Find the expected profit per policy.
+   (b) The insurer writes 20,000 such policies. Find the expected total profit.
+   (c) Why is the expected value a sensible basis for pricing 20,000 policies but a
+   poor guide to whether *you* should buy one?
+
+4. $X$ and $Y$ have the joint distribution
+
+   | | $Y=0$ | $Y=1$ |
+   |---|---|---|
+   | $X=0$ | 0.2 | 0.1 |
+   | $X=1$ | 0.3 | 0.4 |
+
+   (a) Find the marginal distributions of $X$ and $Y$, and $E(X)$, $E(Y)$.
+   (b) Find $E(XY)$ and hence $\text{COV}(X,Y)$.
+   (c) Are $X$ and $Y$ independent? Show the check.
+   (d) Find $V(X+Y)$.
+
+5. A game pays \$10 with probability 0.2, \$2 with probability 0.5, and nothing
+   otherwise. It costs \$4 to play.
+   (a) Find the expected net gain.
+   (b) Would you play it repeatedly? Once?
+
+6. $X$ has mean 20 and standard deviation 4. Find the mean and standard deviation of
+   (a) $X + 10$, (b) $5X$, (c) $(X - 20)/4$.
+
+7. Two independent random variables have $V(X) = 9$ and $V(Y) = 16$.
+   (a) Find $V(X+Y)$ and $V(X-Y)$.
+   (b) Now suppose instead that $\text{COV}(X,Y) = -6$. Recompute both.
+   (c) In (b), is it possible for $V(X-Y)$ to exceed $V(X)+V(Y)$? Explain.
+
+8. $S = X_1 + X_2 + \cdots + X_{25}$, where the $X_i$ are independent with mean 8 and
+   standard deviation 3.
+   (a) Find $E(S)$ and the standard deviation of $S$.
+   (b) Find $E(\bar{X})$ and the standard deviation of $\bar{X}$.
+   (c) Note that one of these grows with $n$ and one shrinks. Say which, and why.
+
+9. A student computes $V(X) = -2$ and concludes the variable is "negatively
+   variable". What has gone wrong, and what is the most likely arithmetic slip?
+
+10. Starting from $V(X) = E\big[(X-\mu)^2\big]$, derive
+    $V(X) = E(X^2) - \big[E(X)\big]^2$, justifying each step.
+
+### Answers to the extra problems
+
+1. (a) All four probabilities are between 0 and 1 and they sum to
+   $0.1+0.3+0.4+0.2 = 1$. Valid.
+   (b) $E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 1.7000$.
+   (c) $E(X^2) = 0(0.1) + 1(0.3) + 4(0.4) + 9(0.2) = 3.7000$, so
+   $V(X) = 3.7 - 1.7^2 = 3.7 - 2.89 = 0.8100$ and the standard deviation is
+   **0.9000**. Note $E(X^2) = 3.70 \neq [E(X)]^2 = 2.89$; the gap between them *is*
+   the variance.
+
+2. (a) $E(Y) = 3(1.7) + 2 = 7.1000$ and $V(Y) = 3^2(0.81) = 7.2900$.
+   (b) $\sqrt{7.29} = 2.7000$ — which is $3 \times 0.9$, as it must be.
+   (c) Adding 2 shifts every outcome and the mean by the same amount, so every
+   deviation from the mean is unchanged and the spread is untouched. Multiplying by 3
+   stretches the deviations by 3, so the standard deviation scales by 3 and the
+   variance by $3^2$. Location and spread respond to different parts of a linear
+   transformation.
+
+3. (a) $50 - 0.003(10{,}000) = 50 - 30 = \$20.0000$.
+   (b) $20{,}000 \times 20 = \$400{,}000$.
+   (c) Because expectation is an average over many repetitions, and the insurer gets
+   those repetitions — across 20,000 policies the realised total will land close to
+   the expected one. You buy one policy once. For you the distribution is \$50 lost
+   with probability 0.997 and \$9,950 gained with probability 0.003, and the
+   \$20 "expected" figure describes neither outcome. Insurance is rational for the
+   buyer because of the *shape* of that distribution, not its mean.
+
+4. (a) $X$: $\mathrm{P}(0) = 0.3$, $\mathrm{P}(1) = 0.7$, so $E(X) = 0.7000$ and
+   $V(X) = 0.7 - 0.49 = 0.2100$. $Y$: $\mathrm{P}(0) = 0.5$, $\mathrm{P}(1) = 0.5$,
+   so $E(Y) = 0.5000$ and $V(Y) = 0.2500$.
+   (b) $XY$ is 1 only in the bottom-right cell, so $E(XY) = 0.4000$ and
+   $\text{COV} = 0.4 - 0.7(0.5) = 0.0500$.
+   (c) **Not independent**: $\mathrm{P}(X{=}1, Y{=}1) = 0.4$ but
+   $\mathrm{P}(X{=}1)\mathrm{P}(Y{=}1) = 0.7(0.5) = 0.35$. One failing cell is enough.
+   (d) $V(X+Y) = 0.21 + 0.25 + 2(0.05) = 0.5600$.
+
+5. (a) $E(\text{payout}) = 10(0.2) + 2(0.5) + 0(0.3) = 2 + 1 = \$3.0000$, so the
+   expected net gain is $3 - 4 = -\$1.0000$.
+   (b) Not repeatedly — you lose a dollar a go on average, and over many plays that
+   average is what you get. Once is a different question: a single play is a 20%
+   chance of being \$6 up against a 30% chance of being \$4 down, and whether that
+   trade appeals is about your tolerance for the spread, not about the mean.
+
+6. (a) Mean 30, standard deviation **4** — unchanged.
+   (b) Mean 100, standard deviation 20.
+   (c) Mean **0**, standard deviation **1**. This is the $z$-score transformation
+   from Chapter 3, and the general rule $E(aX+b) = aE(X)+b$,
+   $\text{SD}(aX+b) = |a|\,\text{SD}(X)$ is what guarantees it always lands on mean 0
+   and standard deviation 1.
+
+7. (a) Independent, so the covariance is zero and both are $9 + 16 = 25.0000$.
+   (b) $V(X+Y) = 9 + 16 + 2(-6) = 13.0000$ and
+   $V(X-Y) = 9 + 16 - 2(-6) = 37.0000$.
+   (c) **Yes, and it just did.** Subtracting a negatively correlated variable adds
+   variance, because the minus sign in $-2\text{COV}$ meets the minus sign in the
+   covariance. Variances add; the covariance term is the only one whose sign can go
+   either way, and it is where every interesting answer in this section comes from.
+
+8. (a) $E(S) = 25(8) = 200$ and $V(S) = 25(9) = 225$, so
+   $\text{SD}(S) = 15.0000$.
+   (b) $E(\bar{X}) = 8$ and $\text{SD}(\bar{X}) = 3/\sqrt{25} = 0.6000$.
+   (c) The standard deviation of the **sum** grows, as $\sqrt{n}\sigma$; the standard
+   deviation of the **mean** shrinks, as $\sigma/\sqrt{n}$. Both follow from the same
+   fact that variances add: a sum of 25 things accumulates 25 variances, while the
+   mean divides that accumulated total by $25^2$. This is the result Chapter 11 is
+   built on.
+
+9. Variance is an expected **squared** deviation, so it is an average of non-negative
+   numbers and cannot be negative. The likely slip is subtracting the wrong way round
+   — computing $[E(X)]^2 - E(X^2)$ instead of $E(X^2) - [E(X)]^2$. A negative variance
+   is always an arithmetic error, never a finding, and it is worth treating as a
+   built-in alarm.
+
+10. Expand the square inside the expectation:
+    $$E\big[(X-\mu)^2\big] = E\big[X^2 - 2\mu X + \mu^2\big]$$
+    Expectation is linear, so it passes through the sum:
+    $$= E(X^2) - 2\mu E(X) + \mu^2$$
+    The step that needs care is $E(\mu^2) = \mu^2$ and $E(2\mu X) = 2\mu E(X)$: $\mu$
+    is a fixed number, not a random variable, so it comes out of the expectation
+    untouched. Now substitute $E(X) = \mu$:
+    $$= E(X^2) - 2\mu^2 + \mu^2 = E(X^2) - \mu^2 = E(X^2) - \big[E(X)\big]^2$$
+    Check it against question 1: $3.70 - 1.7^2 = 0.81$, which is what the deviation
+    route gave. The identity is not a different definition of variance — it is the
+    same quantity rearranged so you only need one pass through the table.
+
+<!-- more-practice:end -->
+
 ---

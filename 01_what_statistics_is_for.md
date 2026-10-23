@@ -308,4 +308,116 @@ meaning. Stata will compute it cheerfully.
 
 5. (a) $\bar{x}$. (b) $\mu$. (c) neither — that is $n$.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Eight more. These are mostly about *naming* things correctly, which sounds like the
+easy part of the course and is the part people lose marks on in week one.
+
+1. For each, name the population, the sample, and say whether the number given is a
+   parameter or a statistic.
+   (a) The registrar reports that the mean GPA of all 1,800 Bates students is 3.41.
+   (b) A pollster calls 600 Maine voters and finds 54% support a bond measure.
+   (c) A firm records the salary of every one of its 40 employees; the mean is
+   \$58,200.
+
+2. Classify each variable as nominal, ordinal, or interval/ratio.
+   (a) Postcode. (b) Course grade (A, B, C, D, F). (c) Household income in dollars.
+   (d) Jersey number. (e) Temperature in degrees Celsius. (f) Number of children.
+   (g) Rank in a marathon. (h) Blood type.
+
+3. Name the sampling design in each case.
+   (a) Every 25th name on an alphabetical list of 5,000 members.
+   (b) The college is split into four class years; 50 students are drawn at random
+   from each.
+   (c) Twelve of Maine's 490 towns are chosen at random, and *every* household in
+   those twelve is surveyed.
+   (d) A researcher posts a link on social media and analyses whoever replies.
+
+4. A survey of commuting times is mailed to 4,000 households; 380 reply, and the mean
+   reported commute is 19 minutes. The researcher plans to fix the problem by mailing
+   to 40,000 households next time.
+   (a) What kind of error is the main threat here?
+   (b) Will the bigger mailing fix it? Explain in one sentence.
+   (c) Which direction do you expect the bias to run, and why?
+
+5. Explain the difference between a **sampling error** and a **nonsampling error**,
+   and give one example of each from a study you could actually run at Bates.
+
+6. A researcher wants the mean weekly spending of students at a college with 2,000
+   students, 1,400 of whom live on campus and 600 off. Off-campus students spend far
+   more on average, and there are fewer of them.
+   (a) Which design would you use, and why?
+   (b) If you drew 200 students by simple random sampling, roughly how many
+   off-campus students would you expect, and what is the risk?
+
+7. For each statement, say whether it is descriptive or inferential.
+   (a) "The median wage in this sample of 300 workers is \$21.40."
+   (b) "We are 95% confident the population mean lies between 19.8 and 23.0."
+   (c) "Forty-two per cent of respondents said yes."
+   (d) "The difference between the two groups is unlikely to be chance."
+
+8. You are asked to estimate the mean number of hours Bates students sleep. Write
+   down, in four lines, a design: who the population is, how you would draw the
+   sample, what could go wrong, and one thing you would do to reduce that risk.
+
+### Answers to the extra problems
+
+1. (a) Population: all 1,800 Bates students. Sample: none — this is a census.
+   3.41 is a **parameter**. (b) Population: all Maine voters. Sample: the 600 called.
+   54% is a **statistic**. (c) Population: all 40 employees, and every one was
+   measured, so \$58,200 is a **parameter** even though 40 sounds like a sample size.
+   What makes something a parameter is that it describes the whole group you care
+   about, not that the group is large.
+
+2. (a) Nominal — a postcode is a label, and averaging postcodes is meaningless.
+   (b) Ordinal — ordered, but the gap from A to B is not a measured quantity.
+   (c) Interval/ratio. (d) **Nominal** — numerals used as names.
+   (e) **Interval, not ratio** — 0°C is not "no temperature", so 20°C is not twice
+   10°C. (f) Ratio. (g) Ordinal — first and second are ordered, but the time gap
+   between them is unknown. (h) Nominal.
+
+3. (a) Systematic. (b) Stratified, with class year as the stratum.
+   (c) Cluster — whole towns are sampled and then enumerated.
+   (d) A self-selected or convenience sample, which is not a probability sample at
+   all, and no amount of statistics repairs it.
+
+4. (a) **Nonsampling error** — specifically nonresponse bias. Only 9.5% replied.
+   (b) **No.** A larger mailing with the same response rate gives you more of the
+   same biased respondents; it shrinks the standard error around the wrong number.
+   (c) Probably **upward**: people with unusually long or unusually memorable
+   commutes have more reason to bother replying, so the sample over-represents them.
+
+5. Sampling error is the difference between a sample statistic and the parameter that
+   arises purely because you looked at some units and not others. It is unavoidable,
+   it is random, and it shrinks as $n$ grows — that is what the whole second half of
+   this course measures. Nonsampling error is everything else: a badly worded
+   question, a frame that omits people, nonresponse, data entry mistakes. It does not
+   shrink with $n$ and it is often not random. Example of each: drawing 100 students
+   and getting a mean sleep of 6.9 hours when the true mean is 7.1 (sampling);
+   sampling from a list of students who use the library, so you miss everyone who
+   does not (nonsampling).
+
+6. (a) **Stratified**, with on-campus and off-campus as strata. The two groups differ
+   sharply on the thing being measured, which is exactly the condition under which
+   stratifying buys precision.
+   (b) About $200 \times 0.30 = 60$. The risk is not the expected count but the
+   variability around it — an unlucky draw could give 40 or 80, and since off-campus
+   spending is so different, the estimate would swing with it. Stratifying fixes the
+   count at 60 by construction.
+
+7. (a) Descriptive. (b) Inferential. (c) Descriptive. (d) Inferential.
+
+8. One acceptable answer. **Population:** all currently enrolled Bates students.
+   **Sample:** a stratified random sample of 150, drawn proportionally from the four
+   class years using the registrar's list as the frame. **What could go wrong:**
+   nonresponse, and specifically that students who are sleeping badly during exam
+   period are the least likely to fill in a survey — the bias runs in a known
+   direction. **Reduction:** run the survey in an ordinary teaching week rather than
+   finals, and follow up twice with nonrespondents so the response rate is high
+   enough that the people who never reply cannot dominate the answer.
+
+<!-- more-practice:end -->
+
 ---

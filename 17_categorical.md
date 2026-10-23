@@ -239,4 +239,138 @@ new costume.
    the other, or a third could drive both. The chi-squared test says the two are not
    independent and is silent on why.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Eight more. Watch the degrees of freedom in questions 2 and 3 — they are the single
+commonest slip in this chapter, and a correct $\chi^2$ compared against the wrong row
+of the table scores nothing.
+
+1. In a survey of 300 customers, 108 say they would recommend the product.
+   (a) Find $\hat{p}$ and its standard error.
+   (b) Build a 95% confidence interval.
+   (c) Check the condition for the approximation.
+   (d) Why is the critical value $z$ and not $t$, when the standard error was
+   estimated from the data?
+
+2. A firm expects its four regional offices to handle equal shares of enquiries. Out
+   of 200 enquiries the counts are 42, 55, 61 and 42.
+   (a) State the hypotheses and the expected counts.
+   (b) Compute $\chi^2$ and state the degrees of freedom.
+   (c) Test at $\alpha = 0.05$, given $\chi^2_{0.05,3} = 7.8147$.
+   (d) Find the p-value.
+
+3. Two hundred and fifty applicants are classified by outcome and by which of three
+   channels they applied through:
+
+   | | A | B | C | Total |
+   |---|---|---|---|---|
+   | **Accepted** | 30 | 45 | 25 | 100 |
+   | **Rejected** | 50 | 35 | 65 | 150 |
+   | **Total** | 80 | 80 | 90 | 250 |
+
+   (a) Compute all six expected counts.
+   (b) Compute $\chi^2$ and state the degrees of freedom.
+   (c) Test at $\alpha = 0.05$, given $\chi^2_{0.05,2} = 5.9915$.
+   (d) State the conclusion in words.
+
+4. State the degrees of freedom for a test of independence on a table that is
+   (a) $2 \times 2$, (b) $4 \times 5$, (c) $2 \times 6$, (d) $3 \times 3$. Then say why
+   a $2 \times 2$ table has 1 and not 3.
+
+5. A researcher's $2 \times 2$ table has one cell with an observed count of 2 and an
+   expected count of 8.
+   (a) Is the condition satisfied?
+   (b) Which of the two numbers does the condition apply to, and why does that make
+   sense?
+
+6. A student converts a table of counts into row percentages, then feeds the
+   percentages into $\chi^2 = \sum (O-E)^2/E$.
+   (a) What goes wrong?
+   (b) Why does the statistic depend on the counts rather than only the proportions?
+
+7. Explain why the chi-squared test is always upper-tailed, and what an unusually
+   *small* $\chi^2$ would suggest.
+
+8. A test of independence between an applicant's channel and their outcome rejects
+   $H_0$. A manager concludes "channel C is causing rejections."
+   (a) What does the test establish?
+   (b) Give two explanations consistent with the result that are not causal.
+
+### Answers to the extra problems
+
+1. (a) $\hat{p} = 108/300 = 0.3600$ and
+   SE $= \sqrt{0.36(0.64)/300} = \sqrt{0.000768} = 0.0277$.
+   (b) $0.36 \pm 1.96(0.0277) = 0.36 \pm 0.0543 = (0.3057,\ 0.4143)$.
+   (c) $n\hat{p} = 108$ and $n(1-\hat{p}) = 192$, both far above 5. Valid.
+   (d) Because the $t$ distribution arises from a very specific construction — a
+   standard normal over the square root of an independent scaled chi-squared, which is
+   what you get when $s$ and $\bar{x}$ are computed from normal data. For a proportion
+   there is no separate $s$: the standard error is a function of $\hat{p}$ itself, so
+   the ratio is not a $t$ variable. "Estimated denominator means $t$" is a useful
+   habit and not a rule, and this is the counterexample.
+
+2. (a) $H_0$: the four offices handle equal shares, so each expected count is
+   $200/4 = 50$. $H_a$: the shares are not all equal.
+   (b) $\chi^2 = \dfrac{64 + 25 + 121 + 64}{50} = \dfrac{274}{50} = 5.4800$ with
+   $\nu = k - 1 = 3$.
+   (c) $5.4800 < 7.8147$, so **do not reject** — the observed split is consistent with
+   equal shares.
+   (d) $p = 0.1398$.
+
+3. (a) Each is row total times column total over 250:
+   Accepted — $32.0000$, $32.0000$, $36.0000$; Rejected — $48.0000$, $48.0000$,
+   $54.0000$. They reproduce the margins, which is the check.
+   (b) $\chi^2 = \dfrac{4}{32} + \dfrac{169}{32} + \dfrac{121}{36} + \dfrac{4}{48}
+   + \dfrac{169}{48} + \dfrac{121}{54} = 14.6128$ with
+   $\nu = (2-1)(3-1) = 2$.
+   (c) $14.6128 > 5.9915$, so **reject $H_0$** ($p = 0.0007$).
+   (d) Outcome and channel are not independent. Channel B's applicants are accepted far
+   more often than its share of applications would suggest — 45 accepted against an
+   expected 32 — while channel C's are accepted far less, 25 against an expected 36.
+
+4. (a) 1. (b) 12. (c) 5. (d) 4. A $2 \times 2$ table has 1 rather than 3 because the
+   row and column totals are fixed by the data itself, not supplied from outside: once
+   you know the margins and any **one** cell, the other three are forced by
+   subtraction. Only one number in the table is free to vary, so there is one degree of
+   freedom. Counting four cells and subtracting one is the wrong arithmetic and happens
+   to give 3.
+
+5. (a) **Yes.** The condition is that every *expected* count be at least 5, and 8
+   clears it.
+   (b) It applies to the **expected** count. That makes sense because $E$ is the
+   denominator in each term of $\chi^2 = \sum (O-E)^2/E$ — a tiny expectation makes the
+   term explode and destroys the chi-squared approximation, regardless of what was
+   observed. A cell can observe zero and be perfectly well behaved provided enough was
+   expected there.
+
+6. (a) The test statistic changes, usually becoming far too small. Converting 60 out of
+   100 into "60%" and 600 out of 1,000 into "60%" makes two completely different bodies
+   of evidence look identical, and $\chi^2$ computed on percentages effectively asserts
+   $n = 100$ for every row.
+   (b) Because the strength of evidence depends on how much data there is, not only on
+   the pattern. A 10-point gap in proportions from 40 observations is noise; the same
+   gap from 4,000 is decisive. Proportions describe the pattern, counts carry the
+   sample size, and $\chi^2$ needs both — which is exactly why it is built from counts.
+
+7. The statistic is a sum of squared discrepancies, so it is zero when observation
+   matches expectation exactly and grows as they diverge — in either direction, since
+   the squaring removes the sign. Only *large* values are evidence against $H_0$, so
+   all of $\alpha$ goes in the upper tail. An unusually **small** $\chi^2$ means the
+   data fit the expectation more closely than chance would normally allow, which is not
+   evidence for $H_0$ so much as grounds for suspecting the data were not generated the
+   way they were described — the classic reason to be sceptical of results that are
+   *too* good.
+
+8. (a) Only **association**: the distribution of outcomes differs across channels by
+   more than chance would explain. It identifies no cause and no direction.
+   (b) (i) **Selection** — stronger applicants may choose channel B, so the channel is
+   marking a difference in applicants rather than creating one. (ii) **A confounder** —
+   channels may differ in what roles they advertise, in which case both channel and
+   outcome are driven by the type of position. A third: the channels may be used at
+   different times of year, with different acceptance rates for unrelated reasons.
+
+<!-- more-practice:end -->
+
 ---

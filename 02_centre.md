@@ -237,4 +237,127 @@ answer when nothing repeats.
    $n$ is even and the two middle values differ. **Mode**: no, never — it is defined
    as a value that occurs, so it must be one of them.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. The arithmetic is deliberately light; what is being tested is whether you
+can say *which* centre answers the question in front of you.
+
+1. For the data $12,\ 15,\ 15,\ 18,\ 22,\ 27,\ 31$:
+   (a) Find the mean, median and mode.
+   (b) Is the distribution left- or right-skewed? Say how you can tell from (a).
+
+2. Add the value 140 to the data in question 1.
+   (a) Recompute the mean and the median.
+   (b) Which moved more, and by how much?
+   (c) What does this tell you about which centre to report for house prices?
+
+3. Five numbers have a mean of 24. Four of them are $18,\ 22,\ 27,\ 31$. Find the
+   fifth.
+
+4. A course is graded 20% coursework, 30% midterm, 50% final. A student scores 85,
+   78 and 92.
+   (a) Find the weighted mean.
+   (b) Find the unweighted mean of the three scores, and explain in one sentence why
+   it is the wrong number to report.
+
+5. A survey records commuting time in four classes:
+
+   | Minutes | 0–10 | 10–20 | 20–30 | 30–40 |
+   |---|---|---|---|---|
+   | Households | 8 | 12 | 15 | 5 |
+
+   (a) Estimate the mean using class midpoints.
+   (b) Which class contains the median?
+   (c) Why is (a) an estimate rather than the mean?
+
+6. An investment returns $+10\%$, then $+5\%$, then $-5\%$.
+   (a) Find the arithmetic mean of the three returns.
+   (b) Find the geometric mean return.
+   (c) \$100 invested at the start — what is it worth at the end? Which of (a) and (b)
+   reproduces that figure?
+
+7. A firm reports that its mean salary is \$74,000 and its median salary is \$46,000.
+   (a) What shape is the salary distribution?
+   (b) The union quotes the median and management quotes the mean. Neither is lying.
+   Explain what each is really saying.
+
+8. For each, name the centre you would report and why.
+   (a) The most common shoe size a shop should stock.
+   (b) The typical household income of a US county.
+   (c) The average exam mark in a class of 40 with no outliers.
+   (d) The typical brand of car in a car park.
+
+9. A dataset of 50 values has a mean of 30. Every value is then increased by 4, and
+   the result is doubled. What is the new mean? State the rule you used.
+
+10. "The mean is the balance point of the data." Explain what that sentence means
+    arithmetically, using the fact that deviations from the mean sum to zero.
+
+### Answers to the extra problems
+
+1. (a) Sum $= 140$, so mean $= 140/7 = 20$. The middle value of seven sorted numbers
+   is the fourth, so median $= 18$. Mode $= 15$, the only repeated value.
+   (b) **Right-skewed.** Mean $>$ median $>$ mode, which is the signature of a long
+   right tail — the large values 27 and 31 pull the mean up while leaving the middle
+   value where it is.
+
+2. (a) Sum $= 280$ over 8 values, so mean $= 35$. With eight values the median is the
+   average of the fourth and fifth: $(18+22)/2 = 20$.
+   (b) The mean moved **15** (from 20 to 35); the median moved **2** (from 18 to 20).
+   One observation in eight shifted the mean by three-quarters of its original value.
+   (c) Report the **median**. House prices have a long right tail and a handful of
+   very expensive sales, and the mean describes none of the houses anyone is actually
+   buying.
+
+3. The five values sum to $5 \times 24 = 120$. The four given sum to 98. The fifth is
+   $120 - 98 = 22$.
+
+4. (a) $0.20(85) + 0.30(78) + 0.50(92) = 17 + 23.4 + 46 = 86.4$.
+   (b) The unweighted mean is $255/3 = 85$. It is wrong because it treats the
+   coursework, worth a fifth of the grade, as mattering as much as the final, worth a
+   half — the weights *are* the question.
+
+5. (a) Midpoints 5, 15, 25, 35 with frequencies 8, 12, 15, 5. The weighted total is
+   $40 + 180 + 375 + 175 = 770$ over $n = 40$, so the estimated mean is **19.25**.
+   (b) With 40 observations the median sits between the 20th and 21st. The cumulative
+   counts are 8, 20, 35, 40 — so the 21st value is in the **20–30** class.
+   (c) Because the individual values were thrown away. Using the midpoint assumes
+   every household in the 20–30 class sits at exactly 25, and unless the values are
+   symmetric within each class that is not true.
+
+6. (a) $(10 + 5 - 5)/3 = 3.3333\%$.
+   (b) The growth factors are 1.10, 1.05, 0.95, whose product is 1.09725. The
+   geometric mean factor is $1.09725^{1/3} = 1.0314$, so **3.14%** a year.
+   (c) \$100 becomes $100(1.09725) = \$109.73$. Compounding at 3.14% for three years
+   gives $100(1.0314)^3 = \$109.73$; compounding at the arithmetic mean of 3.3333%
+   gives \$110.34, which is too high. **The geometric mean is the one that reproduces
+   the actual outcome**, and the arithmetic mean of growth rates always overstates it.
+
+7. (a) Strongly **right-skewed** — the mean sits far above the median, so a small
+   number of very large salaries are pulling it up.
+   (b) The median says "half the staff earn under \$46,000", which is a statement
+   about a typical employee. The mean says "total payroll divided by headcount is
+   \$74,000", which is a statement about the wage bill. Both are true; they answer
+   different questions, and the gap between them is itself the interesting number.
+
+8. (a) **Mode** — a shop stocks the size most people ask for, and no one wears the
+   mean size. (b) **Median** — income is right-skewed. (c) **Mean** — with no
+   outliers it uses every observation and is the most efficient. (d) **Mode** — brand
+   is nominal, so the mean and median do not exist.
+
+9. Adding 4 shifts the mean to 34; doubling scales it to 68. The rule is that for a
+   linear transformation, $\overline{aX+b} = a\bar{x} + b$ — here
+   $2(30 + 4) = 68$.
+
+10. If you place the observations on a number line as equal weights, the mean is the
+    point at which the line balances. Arithmetically, that is the statement
+    $\sum(x_i - \bar{x}) = 0$: the deviations above the mean and the deviations below
+    it sum to exactly the same amount. No other point has that property, which is also
+    why a single extreme value drags the mean so far — it is a long lever arm, and the
+    balance point must move to compensate.
+
+<!-- more-practice:end -->
+
 ---

@@ -259,4 +259,146 @@ produce an impressive $R^2$ and a systematically wrong line.
    **not** reveal it: it can be high while the line is systematically wrong, which is
    exactly why the residual plot is not optional.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Eight more. Question 1 is a full fit by hand — slow, and worth doing once, because
+every quantity in a regression output is built from the two sums you compute there.
+
+1. Advertising spend $x$ (thousands) and sales $y$ (thousands of units):
+
+   | $x$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+   |---|---|---|---|---|---|---|---|---|
+   | $y$ | 14 | 21 | 18 | 23 | 27 | 26 | 35 | 36 |
+
+   (a) Find $\bar{x}$, $\bar{y}$, $\sum(x-\bar{x})(y-\bar{y})$ and
+   $\sum(x-\bar{x})^2$.
+   (b) Find $b_1$ and $b_0$, and write the fitted line.
+   (c) Interpret the slope in the units of the problem.
+   (d) Verify that the line passes through $(\bar{x}, \bar{y})$.
+
+2. For the same data:
+   (a) Find SST, SSE and SSR.
+   (b) Find $R^2$ and interpret it.
+   (c) Find $r$, and say how you know its sign.
+
+3. Still with the same data, SE$(b_1) = 0.3883$.
+   (a) Find $t$ and state $\nu$.
+   (b) Test $H_0: \beta_1 = 0$ at $\alpha = 0.05$, given $t_{0.025,6} = 2.4469$.
+   (c) State what rejection means in the language of the problem.
+
+4. Using the fitted line from question 1:
+   (a) Predict sales at $x = 5$.
+   (b) Predict sales at $x = 20$.
+   (c) Which prediction would you report, and why?
+
+5. A different regression gives SST $= 800$ and SSE $= 200$.
+   (a) Find SSR and $R^2$.
+   (b) Find $|r|$.
+   (c) Can you determine the sign of $r$ from these figures? Explain.
+
+6. A fitted line is $\hat{y} = 80 - 2.5x$, from data where $x$ ran from 10 to 40.
+   (a) Interpret the slope.
+   (b) Interpret the intercept, or explain why you would not.
+   (c) What is $\hat{y}$ at $x = 32$, and is that a defensible prediction?
+
+7. Two residual plots are described. In the first, the residuals form a shapeless band
+   around zero. In the second, they fan out steadily as $\hat{y}$ increases.
+   (a) Which assumption does the second violate?
+   (b) Would $R^2$ have revealed it?
+   (c) Why is the plot not optional?
+
+8. A paper reports a slope of 1.4 on years of schooling in a wage regression, with
+   $p < 0.001$ and $R^2 = 0.18$.
+   (a) Does the small p-value establish that schooling raises wages?
+   (b) What does $R^2 = 0.18$ tell you?
+   (c) Are (a) and (b) in tension? Explain.
+
+### Answers to the extra problems
+
+1. (a) $\bar{x} = 4.5000$ and $\bar{y} = 25.0000$. The $x$ deviations are
+   $-3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5$ and the $y$ deviations are
+   $-11, -4, -7, -2, 2, 1, 10, 11$. The cross-products sum to $126$ and the squared $x$
+   deviations sum to $42$.
+   (b) $b_1 = 126/42 = 3.0000$ and $b_0 = 25 - 3(4.5) = 11.5000$, so
+   $\hat{y} = 11.5 + 3x$.
+   (c) Each additional **thousand dollars** of advertising is associated with about
+   **3,000 more units** sold. "Associated with", not "causes" — the data is
+   observational.
+   (d) $11.5 + 3(4.5) = 25.0000 = \bar{y}$. The least-squares line always passes
+   through the point of means, which is a free check on $b_0$.
+
+2. (a) SST $=$ the squared $y$ deviations $= 416$. SSE $= 38.0000$. SSR $= 416 - 38 =
+   378$ — or, equivalently, $b_1^2 \sum(x-\bar{x})^2 = 9(42) = 378$.
+   (b) $R^2 = 378/416 = 0.9087$. The line accounts for **90.9%** of the variation in
+   sales.
+   (c) $r = \sqrt{0.9087} = 0.9532$, **positive**, because the slope is positive.
+   $R^2$ on its own cannot give you the sign — the square root is taken with the sign
+   of $b_1$.
+
+3. (a) $t = 3.0/0.3883 = 7.7256$ with $\nu = n - 2 = 6$.
+   (b) $7.7256 > 2.4469$, so **reject $H_0$**. ($p = 0.0002$.)
+   (c) The relationship between advertising and sales is not plausibly zero: a slope
+   this far from zero would arise by chance in well under one study in a thousand if
+   advertising had no association with sales at all. It does **not** establish that
+   advertising causes sales, and it says nothing about whether a slope of 3 is
+   commercially worth having — that depends on the cost of the advertising.
+
+4. (a) $11.5 + 3(5) = 26.5000$ thousand units.
+   (b) $11.5 + 3(20) = 71.5000$ thousand units.
+   (c) Only **(a)**. $x = 5$ sits in the middle of the observed range of 1 to 8;
+   $x = 20$ is two and a half times the largest value ever seen. The straight line is
+   evidence only across the range where there is data, and extrapolating assumes
+   linearity continues into territory that was never tested. Advertising returns in
+   particular almost certainly flatten, so 71.5 is not a cautious estimate — it is a
+   guess dressed as arithmetic.
+
+5. (a) SSR $= 800 - 200 = 600$, so $R^2 = 600/800 = 0.7500$.
+   (b) $|r| = \sqrt{0.75} = 0.8660$.
+   (c) **No.** $R^2$ is a squared quantity and discards the sign. You need the sign of
+   $b_1$ or of the covariance; a relationship explaining 75% of the variation could be
+   strongly rising or strongly falling.
+
+6. (a) Each one-unit increase in $x$ is associated with a decrease of **2.5** in
+   $\hat{y}$.
+   (b) **I would not interpret it.** $x = 0$ lies well outside the observed range of 10
+   to 40, so 80 is the fitted value at a point the data says nothing about. Report it
+   because the line requires it; interpret it only when $x = 0$ is genuinely in range
+   and meaningful.
+   (c) $80 - 2.5(32) = 0.0000$. That is **inside** the range of $x$, so the prediction
+   is defensible as arithmetic — but a predicted value of exactly zero at the upper end
+   of the data is worth a second look, since it suggests the relationship may bend
+   rather than continuing straight to zero and beyond. The residual plot would tell
+   you.
+
+7. (a) **Constant variance** of the residuals. A fan shape means the spread of the
+   errors grows with the fitted value, so the single $s$ that the standard errors are
+   built from describes neither end of the data.
+   (b) **No.** $R^2$ measures how much variation the line explains and is completely
+   silent on whether the residuals are well behaved. A fanning pattern can sit under a
+   high $R^2$, and the coefficient estimates will be fine while their standard errors —
+   and therefore every p-value and interval — are wrong.
+   (c) Because the two most consequential failures, non-linearity and
+   non-constant variance, are both invisible in the output table and both obvious in
+   the plot. It takes one line of code and it is the only part of the diagnostics that
+   cannot be skipped.
+
+8. (a) **No.** It establishes that the slope is very unlikely to be zero. Schooling may
+   raise wages; higher-ability people may acquire more of both; family background may
+   drive both. Identifying the causal effect requires a design, not a smaller p-value,
+   and this is the problem the rest of econometrics exists to address.
+   (b) That schooling accounts for 18% of the variation in wages, leaving 82% to
+   everything else — experience, occupation, location, luck. That is a perfectly
+   ordinary figure for a cross-section of individuals.
+   (c) **Not at all**, and the pair is worth understanding together. $p < 0.001$ is a
+   statement about whether the slope is distinguishable from zero, which with a large
+   sample it easily can be; $R^2 = 0.18$ is a statement about how much of the outcome
+   the model predicts. A variable can matter reliably and still explain only a modest
+   share of the variation, because the thing being explained has many causes. Confusing
+   the two is how a well-identified small effect gets dismissed and a large $R^2$ from
+   an uninformative model gets believed.
+
+<!-- more-practice:end -->
+
 ---

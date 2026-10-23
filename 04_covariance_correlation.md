@@ -252,4 +252,151 @@ rows sum to zero before you multiply. It is free, and it catches most slips.
    engines and cause more damage. This is the "third variable" failure, and sending
    fewer engines would make the damage worse, not better.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. Question 5 is the one worth your time — portfolio variance is covariance
+doing something useful, and it is the reason the topic is in an economics course
+rather than a maths one.
+
+1. For the pairs
+
+   | $x$ | 2 | 4 | 6 | 8 | 10 |
+   |---|---|---|---|---|---|
+   | $y$ | 5 | 9 | 10 | 14 | 17 |
+
+   (a) Set out the deviation table and find $s_{xy}$.
+   (b) Find $s_x^2$ and $s_y^2$.
+   (c) Find $r$ and interpret it.
+
+2. Using the quantities from question 1, find $V(X+Y)$ and $V(X-Y)$. Explain why one
+   is so much larger than the other.
+
+3. The $x$ values in question 1 are measured in thousands of dollars and the $y$
+   values in units sold. Suppose $x$ is re-expressed in dollars, so every value is
+   multiplied by 1,000.
+   (a) What happens to $s_{xy}$?
+   (b) What happens to $r$?
+   (c) What does this tell you about which of the two to quote in a report?
+
+4. A researcher finds $r = -0.85$ between hours of television watched and exam marks,
+   from 200 students.
+   (a) Interpret the number.
+   (b) Give three different explanations for the finding, only one of which is
+   "television lowers marks".
+
+5. A portfolio puts 60% of its money in asset 1 ($\sigma_1 = 10$) and 40% in asset 2
+   ($\sigma_2 = 16$). The correlation between them is 0.30.
+   (a) Find the covariance.
+   (b) Find the variance and standard deviation of the portfolio return.
+   (c) Now suppose the correlation were $-1$ instead. Recompute the standard
+   deviation and say what has happened.
+
+6. $X$ takes values $-2, -1, 0, 1, 2$ with equal probability, and $Y = X^2$.
+   (a) Find the covariance of $X$ and $Y$.
+   (b) Are $X$ and $Y$ independent?
+   (c) What does this pair of answers tell you about what $r = 0$ does and does not
+   mean?
+
+7. A report states $s_x = 4$, $s_y = 9$ and $s_{xy} = 40$. One of these three numbers
+   must be wrong. Explain how you know, and state the rule being violated.
+
+8. For each, say whether you would expect the covariance to be positive, negative, or
+   near zero. (a) Height and weight. (b) Price and quantity demanded.
+   (c) Shoe size and IQ. (d) A firm's advertising spend and its sales.
+   (e) Hours of sleep and hours spent on a phone at night.
+
+9. Explain why covariance is almost never reported in a published paper even though
+   correlation is reported constantly, when the two are computed from the same
+   deviation table.
+
+10. A diversified portfolio of 20 assets has a lower variance than any single asset in
+    it, even though each asset is individually risky. Explain how, using the formula
+    for the variance of a sum.
+
+### Answers to the extra problems
+
+1. (a) $\bar{x} = 6$ and $\bar{y} = 11$. Deviations in $x$: $-4, -2, 0, 2, 4$; in
+   $y$: $-6, -2, -1, 3, 6$. Products: $24, 4, 0, 6, 24$, summing to 58. So
+   $s_{xy} = 58/4 = 14.5000$.
+   (b) Squared $x$ deviations sum to 40, so $s_x^2 = 10.0000$. Squared $y$ deviations
+   sum to 86, so $s_y^2 = 21.5000$.
+   (c) $s_x = 3.1623$, $s_y = 4.6368$, so
+   $r = 14.5/(3.1623 \times 4.6368) = 0.9889$. Very strong positive linear
+   association — the points sit almost exactly on a rising straight line.
+
+2. $V(X+Y) = 10 + 21.5 + 2(14.5) = 60.5000$ and
+   $V(X-Y) = 10 + 21.5 - 2(14.5) = 2.5000$. The two variables move together almost
+   perfectly, so adding them compounds the movement while subtracting them cancels
+   nearly all of it. The difference between the two answers is $4s_{xy} = 58$, and
+   that term is where all the information about co-movement lives.
+
+3. (a) It is multiplied by **1,000**, becoming 14,500. Covariance carries the units of
+   both variables.
+   (b) **Nothing.** $r$ is unchanged at 0.9889, because the 1,000 appears in both the
+   numerator and in $s_x$ in the denominator, and cancels.
+   (c) Quote $r$. A covariance of 14,500 and a covariance of 14.5 describe the
+   identical relationship, so the number on its own tells a reader nothing until they
+   know the units — whereas $-1 \leq r \leq 1$ always, and 0.99 means the same thing
+   in every field.
+
+4. (a) A strong negative linear association: students who watch more television tend
+   to have lower marks, and the relationship is tight enough that knowing one tells
+   you a good deal about the other.
+   (b) (i) Television displaces study time, so it causes lower marks. (ii) Reverse
+   causation — students who are struggling and have given up study watch more
+   television. (iii) A third variable, such as household circumstances or a job
+   outside college, drives both. The correlation is identical under all three, and
+   nothing in $r$ distinguishes them.
+
+5. (a) $\text{COV} = \rho\sigma_1\sigma_2 = 0.30(10)(16) = 48.0000$.
+   (b) $V = 0.6^2(100) + 0.4^2(256) + 2(0.6)(0.4)(48) = 36 + 40.96 + 23.04 =
+   100.0000$, so the standard deviation is **10.0000** — the same as asset 1 alone,
+   despite 40% of the money sitting in the much riskier asset 2.
+   (c) With $\rho = -1$ the covariance is $-160$, so
+   $V = 36 + 40.96 - 76.8 = 0.1600$ and the standard deviation is **0.4000**. The two
+   assets now almost exactly offset each other, and a portfolio of two risky assets is
+   very nearly riskless. This is the whole argument for diversification, and it lives
+   entirely in the covariance term.
+
+6. (a) $E(X) = 0$ by symmetry, and $E(XY) = E(X^3) = 0$ for the same reason — the
+   cubes $-8, -1, 0, 1, 8$ cancel in pairs. So
+   $\text{COV} = E(XY) - E(X)E(Y) = 0 - 0 = 0$.
+   (b) **No.** $Y$ is a deterministic function of $X$: tell me $X$ and I know $Y$
+   exactly. Nothing could be less independent.
+   (c) $r = 0$ rules out a *linear* relationship and nothing else. Here the
+   relationship is perfect and the correlation cannot see it, because the parabola
+   rises on one side and falls on the other and the two halves cancel in the deviation
+   products. A scatterplot would show it immediately, which is why you plot before you
+   compute.
+
+7. Dividing out gives $r = 40/(4 \times 9) = 40/36 = 1.1111$, and a correlation
+   cannot exceed 1. The rule is $|s_{xy}| \leq s_x s_y$: the covariance is bounded by
+   the product of the two standard deviations, with equality only when the points lie
+   exactly on a straight line. Here the reported covariance is larger than that
+   product, so at least one of the three figures is mistyped. This is a worthwhile
+   check to run on any table you are handed — it costs one multiplication and catches
+   a transposed digit.
+
+8. (a) Positive. (b) Negative. (c) Near zero. (d) Positive.
+   (e) Negative.
+
+9. Because the magnitude of a covariance is uninterpretable without knowing the units
+   of both variables, and changing either unit changes the number without changing the
+   relationship. Correlation is the same quantity with the units divided out, bounded
+   between $-1$ and $1$, so a reader can judge it on sight. The covariance still does
+   all the work — it is what gets reported whenever the units matter, as in the
+   portfolio variance above.
+
+10. $V(\sum X_i) = \sum V(X_i) + \sum\sum_{i \neq j}\text{COV}(X_i, X_j)$. The
+    variance terms are all positive and cannot be reduced, but the covariance terms
+    can be small, zero, or negative. With 20 assets there are 20 variance terms and
+    380 covariance terms, so the covariances dominate the sum — and if the assets are
+    weakly or negatively correlated, those 380 terms drag the total far below what the
+    individual variances alone would suggest. Diversification is not about owning many
+    things; it is about owning things whose covariances are low.
+
+<!-- more-practice:end -->
+
 ---

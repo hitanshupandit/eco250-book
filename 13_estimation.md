@@ -347,4 +347,183 @@ not know your estimate.
    measurement error. Note that both studies agree on the point estimate — it is the
    precision, not the finding, that differs.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Fifteen more. The commute data from the worked example runs through the first three,
+so you can see what changes when only the confidence level moves and nothing else
+does.
+
+1. A sample of $n = 36$ commutes gives $\bar{x} = 28.4$ minutes and $s = 6$.
+   (a) Find the estimated standard error.
+   (b) Find the critical value for a 95% interval, stating the degrees of freedom.
+   (c) Build the 95% confidence interval.
+   (d) State the margin of error.
+
+2. Using the same data, build the **90%** and **99%** intervals.
+   (a) Give both.
+   (b) Compare the three widths and state the trade-off in one sentence.
+
+3. Now suppose $\sigma = 6$ were somehow known exactly, with the same $\bar{x}$ and
+   $n$.
+   (a) Build the 95% interval.
+   (b) Compare it with 1(c). Which is wider, by how much, and why?
+
+4. Explain what "95% confident" means. Then say explicitly what it does **not** mean.
+
+5. A 95% interval for a population mean is $(26.37,\ 30.43)$. For each statement, say
+   whether it is true.
+   (a) 95% of the sample values lie between 26.37 and 30.43.
+   (b) There is a 95% probability that $\mu$ lies between 26.37 and 30.43.
+   (c) If the study were repeated many times, 95% of the intervals so constructed
+   would contain $\mu$.
+   (d) A test of $H_0: \mu = 31$ at $\alpha = 0.05$ would reject.
+   (e) A test of $H_0: \mu = 27$ at $\alpha = 0.05$ would reject.
+
+6. With $\sigma = 6$ and 95% confidence, find the sample size needed for a margin of
+   error of (a) 1.0 minute, (b) 0.5 minutes.
+
+7. Look at your two answers to question 6.
+   (a) What happened to $n$ when the margin of error halved?
+   (b) Name the three ways to reduce the margin of error, and say which of the three
+   is free.
+
+8. A 95% confidence interval is reported as $(12.4,\ 19.6)$. Find the point estimate
+   and the margin of error.
+
+9. A firm claims its mean delivery time is 27 minutes. Using the interval from
+   question 1(c), what do you conclude at the 5% level, and why can you answer without
+   computing a test statistic?
+
+10. A sample of 16 gives $\bar{x} = 52$ and $s = 8$.
+    (a) Build the 95% interval.
+    (b) Why is the critical value so much larger than 1.96 here?
+
+11. A student uses $z = 1.96$ for a sample of 16 because "1.96 is the 95% number".
+    (a) What should they have used?
+    (b) Is their interval too wide or too narrow?
+    (c) What does that do to the interval's actual coverage?
+
+12. Two studies estimate the same mean. Study A has $n = 100$, Study B has $n = 400$,
+    and both find $s = 20$. Without computing the intervals, state the ratio of their
+    widths.
+
+13. A researcher writes: "there is a 95% probability that $\mu$ lies between 26.37 and
+    30.43." Rewrite the sentence correctly and explain in one line what is wrong with
+    the original.
+
+14. Using the data in question 1, construct a **one-sided** 95% lower bound for the
+    mean commute. Compare the bound with the lower end of the two-sided 95% interval
+    and explain the difference.
+
+15. The $t$ interval assumes the population is normal. A colleague has $n = 12$
+    observations from a badly skewed population and builds one anyway.
+    (a) What is the problem?
+    (b) Would $n = 300$ fix it? Which result are you appealing to?
+
+### Answers to the extra problems
+
+1. (a) $s/\sqrt{n} = 6/\sqrt{36} = 1.0000$ minute.
+   (b) $\nu = 35$, so $t_{0.025,35} = 2.0301$.
+   (c) $28.4 \pm 2.0301(1.0) = (26.3699,\ 30.4301)$.
+   (d) The margin of error is **2.0301** minutes — the critical value times the
+   standard error, which here happen to be numerically equal because SE $= 1$.
+
+2. (a) 90%: $t_{0.05,35} = 1.6896$, giving $(26.7104,\ 30.0896)$.
+   99%: $t_{0.005,35} = 2.7238$, giving $(25.6762,\ 31.1238)$.
+   (b) Widths are 3.3791, 4.0602 and 5.4476 for 90%, 95% and 99%. **Higher confidence
+   costs width**: you can be more certain of catching $\mu$ only by casting a wider
+   net, and an interval certain to contain $\mu$ would run from minus to plus
+   infinity, which is certain and useless.
+
+3. (a) With $\sigma$ known the critical value is $z_{0.025} = 1.9600$, giving
+   $28.4 \pm 1.96 = (26.4400,\ 30.3600)$.
+   (b) The $t$ interval from 1(c) is **wider**, by 0.0702 minutes in each direction.
+   The reason is that $s$ is an estimate with its own sampling variability, and the
+   wider $t$ distribution is the price of not knowing $\sigma$. At $\nu = 35$ that
+   price is small; at $\nu = 8$ it would be substantial.
+
+4. It means the **procedure** captures $\mu$ in 95% of repetitions. Build an interval
+   this way from sample after sample, and 95 in 100 of those intervals will contain
+   the true mean. It does **not** mean there is a 95% probability that $\mu$ lies in
+   the one interval you computed. $\mu$ is a fixed number and your interval is a fixed
+   pair of numbers; either it contains $\mu$ or it does not, and the 95% describes the
+   long-run reliability of the method, not the standing of a particular result.
+
+5. (a) **False** — confidence intervals are about the mean, not about where individual
+   observations fall. Most of the data lies well outside this interval.
+   (b) **False** — see question 4. This is the commonest misstatement in the subject.
+   (c) **True.** This is the correct reading.
+   (d) **True** — 31 is outside the interval, and a two-tailed test at $\alpha = 0.05$
+   rejects exactly the values the 95% interval excludes.
+   (e) **False** — 27 is inside, so the test does not reject.
+
+6. The formula is $n = (z\sigma/E)^2$.
+   (a) $n = (1.96 \times 6/1.0)^2 = 11.76^2 = 138.2976$, so round **up** to
+   $n = 139$.
+   (b) $n = (1.96 \times 6/0.5)^2 = 23.52^2 = 553.1904$, so $n = 554$.
+
+7. (a) It roughly **quadrupled**, from 139 to 554. $E$ appears squared in the
+   denominator, so halving it multiplies $n$ by four.
+   (b) Increase $n$; accept lower confidence; reduce $\sigma$. Lowering the confidence
+   level is **free in money and expensive in meaning** — you get a narrower interval
+   by making a weaker claim, which is not a gain. Reducing $\sigma$ means measuring
+   more precisely or stratifying, which is sometimes possible and is the only genuinely
+   free lunch available. Increasing $n$ costs money, at a quadratic rate.
+
+8. The point estimate is the midpoint: $(12.4 + 19.6)/2 = 16.0000$. The margin of
+   error is half the width: $(19.6 - 12.4)/2 = 3.6000$. Every reported interval can be
+   read backwards like this, which is worth knowing because papers often print the
+   interval and not the standard error.
+
+9. 27 **lies inside** $(26.3699,\ 30.4301)$, so you do not reject the firm's claim at
+   the 5% level. You can answer without a test statistic because the two procedures are
+   algebraically the same thing: a two-tailed test at $\alpha$ rejects $\mu_0$ precisely
+   when $\mu_0$ falls outside the $100(1-\alpha)\%$ interval. The interval is the set
+   of values that would not be rejected.
+
+10. (a) SE $= 8/\sqrt{16} = 2.0000$ and $t_{0.025,15} = 2.1314$, so the margin of
+    error is 4.2629 and the interval is $(47.7371,\ 56.2629)$.
+    (b) Because $\nu = 15$. With only 16 observations, $s$ is a poor estimate of
+    $\sigma$, and the $t$ distribution compensates by being wider in the tails. The
+    gap from 1.96 to 2.1314 is the cost of that ignorance, and it closes as $n$ grows.
+
+11. (a) $t_{0.025,15} = 2.1314$.
+    (b) **Too narrow** — 1.96 is smaller, so the interval is shorter than it should be.
+    (c) Its real coverage is below the advertised 95%: the interval misses $\mu$ more
+    often than once in twenty. The error flatters the result, which is the direction
+    that matters, since it makes the researcher look more precise than the data
+    supports.
+
+12. Width scales as $1/\sqrt{n}$, so Study B's interval is $\sqrt{400/100} = 2.0000$
+    times narrower. Four times the data buys twice the precision, which is the same
+    trade-off as question 7 seen from the other end.
+
+13. Correctly: **"We are 95% confident that $\mu$ lies between 26.37 and 30.43"**, or
+    more fully, "this interval was produced by a method that captures $\mu$ 95% of the
+    time." The original assigns a probability to $\mu$, treating a fixed constant as
+    random; the randomness is in the interval, which varies from sample to sample,
+    not in the parameter, which does not vary at all.
+
+14. A one-sided 95% lower bound uses $t_{0.05,35} = 1.6896$, putting all 5% in one
+    tail: the bound is $28.4 - 1.6896(1.0) = 26.7104$. It is **higher** than the
+    two-sided interval's lower end of 26.3699, and the reason is that the two-sided
+    interval spends half its error allowance guarding the upper end as well. If you
+    genuinely only care about one direction, the one-sided bound is tighter — but you
+    must decide which direction before seeing the data, exactly as with a one-tailed
+    test.
+
+15. (a) With $n = 12$ there is no normality to appeal to from either direction: the
+    population is not normal, and the CLT has not had enough observations to make
+    $\bar{X}$ normal either. The stated 95% coverage is simply not what the interval
+    delivers, and for a skewed population the two tails will be wrong by different
+    amounts.
+    (b) **Yes**, broadly — at $n = 300$ the **Central Limit Theorem** makes $\bar{X}$
+    approximately normal whatever the population looks like, so the interval recovers
+    close to its nominal coverage. The assumption was never really about the population
+    being normal; it was about $\bar{X}$ being normal, and there are two routes to that.
+
+<!-- more-practice:end -->
+
 ---

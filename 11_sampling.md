@@ -340,4 +340,159 @@ means fall between 16.04 and 19.96" says nothing about any individual outlet.
    well below 1,200, so the true standard error is larger than
    $\sigma/\sqrt{1200}$ and the reported margin is optimistic.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Fifteen more. Everything in the second half of the course is built on the standard
+error, so the arithmetic in questions 1 to 6 needs to become automatic — you should
+be able to write down $\sigma/\sqrt{n}$ without pausing.
+
+1. A population has $\mu = 80$ and $\sigma = 12$. Samples of $n = 36$ are drawn.
+   (a) Find $E(\bar{X})$ and the standard error.
+   (b) What is the shape of the sampling distribution, and what are you assuming?
+
+2. For the same population, find the standard error when (a) $n = 9$, (b) $n = 36$,
+   (c) $n = 144$.
+
+3. Look at your three answers to question 2. What has to happen to $n$ to halve the
+   standard error, and what does that imply about the cost of precision?
+
+4. Still with $\mu = 80$, $\sigma = 12$, $n = 36$:
+   (a) Find $\mathrm{P}(\bar{X} > 83)$.
+   (b) Find $\mathrm{P}(\bar{X} < 76)$.
+   (c) Find $\mathrm{P}(77 < \bar{X} < 83)$.
+
+5. A researcher wants the standard error to be 1.5 with $\sigma = 12$. What sample
+   size is needed?
+
+6. A sample of 36 gives $\bar{x} = 83$, and the population mean really is 80. Is the
+   researcher's estimate wrong? Answer carefully.
+
+7. Explain what it means to say $E(\bar{X}) = \mu$, and why this is a statement about
+   a *procedure* rather than about any one sample.
+
+8. A population consists of the four values $2,\ 4,\ 6,\ 8$. All samples of size 2
+   are drawn **with** replacement.
+   (a) How many such samples are there?
+   (b) Find the mean of the population and its standard deviation (as a population).
+   (c) Without enumerating all of them, state what the mean of the 16 sample means
+   must be, and what their standard deviation must be.
+
+9. A sample of 50 is drawn from a population of 500, with $\sigma = 12$.
+   (a) Find the standard error ignoring the finite population.
+   (b) Apply the finite population correction and recompute.
+   (c) Does the correction matter here? Use the 5% rule to justify your answer.
+
+10. In a population 40% of people hold a particular view. A sample of 100 is drawn.
+    (a) Find the standard error of the sample proportion.
+    (b) Find $\mathrm{P}(\hat{p} > 0.50)$.
+    (c) Check that the normal approximation is legitimate.
+
+11. Why does the standard error have $\sqrt{n}$ in it rather than $n$? Answer using the
+    fact that variances add.
+
+12. Two researchers study the same population. One takes a single sample of 400; the
+    other takes four samples of 100 and averages the four sample means. Compare the
+    precision of the two answers.
+
+13. A student says: "the standard deviation and the standard error are the same thing,
+    one is just for samples." Correct them in two sentences.
+
+14. A sampling distribution is sometimes called a "distribution of a statistic". Explain
+    what is random in it, given that the population is fixed and not random at all.
+
+15. The standard error $\sigma/\sqrt{n}$ requires $\sigma$, which nobody knows. State
+    what you do instead, and what that substitution costs you.
+
+### Answers to the extra problems
+
+1. (a) $E(\bar{X}) = \mu = 80$, and SE $= 12/\sqrt{36} = 2.0000$.
+   (b) Approximately normal. The assumption is either that the population is normal,
+   or — by the CLT — that $n = 36$ is large enough, which for a population that is not
+   wildly skewed it is.
+
+2. (a) $12/3 = 4.0000$. (b) $12/6 = 2.0000$. (c) $12/12 = 1.0000$.
+
+3. $n$ must be **quadrupled**. Going from 9 to 36 halved it, and 36 to 144 halved it
+   again. Precision is bought at a quadratic price: the second decimal place costs a
+   hundred times what the first did, which is why survey budgets stop where they do
+   and why no amount of money makes a sample mean exact.
+
+4. (a) $z = (83-80)/2 = 1.50$, so $\mathrm{P} = 0.0668$.
+   (b) $z = (76-80)/2 = -2.00$, so $\mathrm{P} = 0.0228$.
+   (c) $z = \pm 1.50$, so $\mathrm{P} = 0.8664$.
+
+5. $n = (\sigma/\text{SE})^2 = (12/1.5)^2 = 8^2 = 64$.
+
+6. **No.** The estimate is 3 above the parameter, but that is sampling error, not a
+   mistake — any sample of 36 would land somewhere near 80 without landing on it, and
+   a gap of 1.5 standard errors is entirely ordinary. An estimate is "wrong" only if
+   the procedure that produced it is biased, and this one is not: $E(\bar{X}) = 80$.
+   Distinguishing an unlucky draw from a bad method is most of what the rest of the
+   course does.
+
+7. It means that if you drew every possible sample of size $n$ and averaged all the
+   resulting $\bar{x}$ values, you would get exactly $\mu$. It says nothing about the
+   sample in front of you, which will generally miss. The claim is about the long-run
+   behaviour of the *method* — it is unbiased, aiming at the right target — and a
+   single draw can no more confirm it than a single coin toss confirms a coin is fair.
+
+8. (a) $4^2 = 16$.
+   (b) $\mu = 5.0000$; the deviations are $-3, -1, 1, 3$, squaring to 20, so
+   $\sigma^2 = 20/4 = 5.0000$ and $\sigma = 2.2361$.
+   (c) The mean of the 16 sample means must be $\mu = 5$, since $E(\bar{X}) = \mu$.
+   Their standard deviation must be $\sigma/\sqrt{2} = 2.2361/1.4142 = 1.5811$. You do
+   not need the enumeration — the two results in this chapter tell you both answers in
+   advance, and the enumeration in the chapter was there to show you they are true,
+   not because it is how the work is done.
+
+9. (a) $12/\sqrt{50} = 1.6971$.
+   (b) The correction factor is
+   $\sqrt{(N-n)/(N-1)} = \sqrt{450/499} = 0.9496$, so the corrected standard error is
+   $1.6971 \times 0.9496 = 1.6116$.
+   (c) **Yes, mildly.** The sample is $50/500 = 10\%$ of the population, above the 5%
+   threshold, so the uncorrected figure overstates the uncertainty — by about 5% here.
+   The intuition: once you have measured a tenth of a finite population you genuinely
+   know more than the formula for an infinite one credits you with, and in the extreme
+   case $n = N$ the correction goes to zero, as it should.
+
+10. (a) $\sqrt{0.4(0.6)/100} = \sqrt{0.0024} = 0.0490$.
+    (b) $z = (0.50 - 0.40)/0.0490 = 2.0412$, so $\mathrm{P} = 0.0206$.
+    (c) $np = 40$ and $n(1-p) = 60$, both far above 5. Legitimate.
+
+11. The variance of a sum of $n$ independent draws is $n\sigma^2$, because variances
+    add. The sample mean divides that sum by $n$, and dividing a random variable by
+    $n$ divides its *variance* by $n^2$ — so $V(\bar{X}) = n\sigma^2/n^2 =
+    \sigma^2/n$. The standard error is the square root of that, which is
+    $\sigma/\sqrt{n}$. The square root is not a modelling choice; it is what taking the
+    square root of a variance does.
+
+12. They are **identical in precision**. The average of four sample means of 100 is
+    the mean of all 400 observations, so both have standard error
+    $\sigma/\sqrt{400} = \sigma/20$. What the second researcher gains is something
+    else: four separate estimates whose spread is itself a check on whether the
+    sampling is behaving as the theory says.
+
+13. The standard deviation describes how much the individual observations vary; the
+    standard error describes how much a *statistic* computed from them varies from
+    sample to sample. They are different quantities measured on the same scale — a
+    population can have $\sigma = 12$ while the mean of 144 observations from it
+    varies by only 1.
+
+14. What is random is the **sampling** — which units happened to be drawn. The
+    population is a fixed set of numbers and $\mu$ is a fixed constant, but $\bar{x}$
+    changes from draw to draw because the draws change, and the sampling distribution
+    catalogues how it changes. Nothing about the world is random here; the randomness
+    was introduced deliberately, by you, when you chose the sample at random, and that
+    is precisely what makes the uncertainty calculable.
+
+15. You substitute the sample standard deviation $s$ for $\sigma$, giving the estimated
+    standard error $s/\sqrt{n}$. The cost is that $s$ is itself a statistic with its own
+    sampling variability, so you no longer have a standard normal — you have a $t$
+    distribution with $n-1$ degrees of freedom, which is wider. That is the entire
+    reason Chapter 10 bothered to introduce the $t$ at all.
+
+<!-- more-practice:end -->
+
 ---

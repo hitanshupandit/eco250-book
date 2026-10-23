@@ -233,4 +233,118 @@ arithmetic slips.
    the within-group noise, which is exactly what $H_0$ predicts. A small $F$ is never
    evidence *against* $H_0$ — which is why the test is one-tailed.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Eight more. The arithmetic is mechanical; what is tested is whether you can say what
+the $F$ statistic is a ratio *of*, and what rejecting it does and does not tell you.
+
+1. Three teaching methods are compared with six students each. The group means are
+   22, 26 and 30, and SSW $= 240$.
+   (a) Find the grand mean and SSB.
+   (b) State $\nu_1$, $\nu_2$ and SST.
+   (c) Find MSB, MSW and $F$.
+   (d) Test at $\alpha = 0.05$, given $F_{0.05,2,15} = 3.6823$.
+   (e) Find the p-value.
+
+2. Explain why running three separate $t$ tests on the three pairs would be wrong.
+   (a) How many pairwise tests are there with three groups? With five?
+   (b) With three groups and $\alpha = 0.05$ each, find the probability of at least one
+   false positive, assuming independence.
+   (c) Repeat for five groups.
+
+3. Complete this ANOVA table.
+
+   | Source | SS | df | MS | $F$ |
+   |---|---|---|---|---|
+   | Between | 120 | 3 | ? | ? |
+   | Within | 280 | 36 | ? | |
+   | Total | ? | ? | | |
+
+4. In question 3, how many groups were there and how many observations in total?
+
+5. An $F$ statistic comes out as 0.84.
+   (a) Can you reject $H_0$? Answer without a table.
+   (b) What does an $F$ below 1 tell you about the two sources of variation?
+
+6. State the three assumptions behind one-way ANOVA, and for each say how you would
+   check it.
+
+7. A researcher rejects $H_0$ in a four-group ANOVA and concludes "all four means
+   differ from each other."
+   (a) What is wrong?
+   (b) What does rejection actually establish?
+   (c) What would you do next?
+
+8. Explain why the $F$ test is always **upper-tailed**, when the $t$ test for two
+   means is usually two-tailed. Your answer should mention what large and small values
+   of $F$ each imply.
+
+### Answers to the extra problems
+
+1. (a) Grand mean $= (22 + 26 + 30)/3 = 26.0000$, since the groups are equal in size.
+   SSB $= 6(22-26)^2 + 6(26-26)^2 + 6(30-26)^2 = 96 + 0 + 96 = 192$.
+   (b) $k = 3$ so $\nu_1 = 2$; $N = 18$ so $\nu_2 = 15$. SST $= 192 + 240 = 432$.
+   (c) MSB $= 192/2 = 96.0000$; MSW $= 240/15 = 16.0000$; $F = 96/16 = 6.0000$.
+   (d) $6.0000 > 3.6823$, so **reject $H_0$** — the three method means are not all
+   equal.
+   (e) $p = 0.0122$.
+
+2. Because the error rate compounds. Each test carries its own 5% chance of a false
+   positive, and the chance that *at least one* of several tests misfires is much
+   larger than 5%. ANOVA asks the question once, at 5%, which is why it exists.
+   (a) $\binom{3}{2} = 3$ with three groups; $\binom{5}{2} = 10$ with five.
+   (b) $1 - 0.95^3 = 1 - 0.8574 = 0.1426$.
+   (c) $1 - 0.95^{10} = 1 - 0.5987 = 0.4013$ — a better than two-in-five chance of
+   declaring a difference that is not there, from a procedure each of whose steps was
+   run "at 5%".
+
+3. MSB $= 120/3 = 40.0000$. MSW $= 280/36 = 7.7778$.
+   $F = 40/7.7778 = 5.1429$. SST $= 120 + 280 = 400$ with
+   $3 + 36 = 39$ degrees of freedom. The row of totals is a free arithmetic check: if
+   SSB and SSW do not add to SST, something has gone wrong upstream.
+
+4. $\nu_1 = k - 1 = 3$, so $k = 4$ groups. $\nu_2 = N - k = 36$, so
+   $N = 36 + 4 = 40$ observations — and the total degrees of freedom, 39, is
+   $N - 1$ as it should be.
+
+5. (a) **No**, and you do not need a table. $F$ is a ratio of two estimates of the same
+   variance, so under $H_0$ it should hover around 1; every critical value for $F$ is
+   greater than 1, so any $F$ below 1 is automatically in the non-rejection region.
+   (b) That the between-group variation is *smaller* than the within-group variation —
+   the group means are closer together than random assignment alone would typically
+   produce. It is not evidence of anything beyond "no detectable difference", though a
+   persistently tiny $F$ across studies can hint that the grouping is capturing
+   something that was controlled rather than randomised.
+
+6. **Independence** of observations, within and between groups: check from the design,
+   not the data. **Normality** within each group: check with histograms or normal plots
+   per group, though with reasonable group sizes the CLT makes ANOVA fairly tolerant.
+   **Equal variances** across groups: compare the group standard deviations, and as a
+   rough field check the largest should be no more than about twice the smallest. This
+   last one matters most, because MSW pools the groups' variances and pooling is only
+   meaningful if there is a common variance to pool.
+
+7. (a) ANOVA tests a single composite null, $H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4$.
+   Rejecting it says that claim is false — which it would be if just one mean differed
+   and the other three were identical.
+   (b) Only that **not all** the means are equal. It identifies no particular pair and
+   gives no ranking.
+   (c) Follow up with post-hoc pairwise comparisons that adjust for multiple testing,
+   or — better in most applied work — report the group means with their confidence
+   intervals and let the reader see which gaps are large and which are not.
+
+8. Because $F$ is a ratio of between-group to within-group variance, and only one
+   direction is evidence against $H_0$. A **large** $F$ means the group means are
+   spread out by more than within-group noise can account for, which is exactly what
+   "the means differ" looks like. A **small** $F$ means the group means are unusually
+   close together, which is not evidence that they differ — it is, if anything, the
+   opposite. There is nothing in the lower tail worth rejecting for, so the whole
+   $\alpha$ goes in the upper one. The two-tailed $t$ is different because a difference
+   of means can be negative, and a negative difference is still a difference; squaring
+   things into a variance ratio throws that sign away.
+
+<!-- more-practice:end -->
+
 ---

@@ -261,4 +261,129 @@ successes.
 
 5. $\sigma^2 = n(0.5)(0.5) = 0.25n = 9$, so $n = 36$.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. Work questions 1 and 2 with the formula rather than Stata — the exam has
+no Stata in it, and the only way the factorials stop being frightening is repetition.
+
+1. A supplier's components are faulty 25% of the time, independently. Twelve are
+   installed.
+   (a) Check each of the four binomial conditions against this scenario.
+   (b) Find $E(X)$, $V(X)$ and the standard deviation of the number faulty.
+   (c) Find $\mathrm{P}(X = 3)$.
+
+2. For the same twelve components:
+   (a) Find $\mathrm{P}(X = 0)$.
+   (b) Find $\mathrm{P}(X \geq 1)$, and say which rule saved you most of the work.
+   (c) Find $\mathrm{P}(X \leq 2)$.
+
+3. A call centre's lines fail to connect 10% of the time. Twenty calls are placed.
+   (a) Find the probability exactly two fail.
+   (b) Find the probability at least three fail.
+
+4. For each scenario, say whether the binomial applies, and if not, which condition
+   fails.
+   (a) Counting heads in 50 tosses of a fair coin.
+   (b) Drawing 5 cards from a deck and counting hearts.
+   (c) Counting how many of 30 students pass, when they studied together.
+   (d) Counting the number of customers arriving in an hour.
+   (e) Counting defectives in a sample of 20 from a batch of 10,000 that is 3%
+   defective.
+
+5. Explain why $\mathrm{P}(X \geq 1) = 1 - \mathrm{P}(X = 0)$ saves so much work, and
+   write down a question for which the complement rule would *not* help.
+
+6. For each, say whether the normal approximation to the binomial is appropriate.
+   (a) $n = 40$, $p = 0.5$. (b) $n = 40$, $p = 0.08$. (c) $n = 200$, $p = 0.02$.
+   (d) $n = 15$, $p = 0.6$.
+
+7. A batch of 10,000 items is 3% defective, and 20 are sampled without replacement.
+   (a) Strictly, is this binomial?
+   (b) Why is treating it as binomial nevertheless fine here?
+   (c) At what sample size would you start to worry?
+
+8. A basketball player makes 80% of free throws. In a game they take 10.
+   (a) Find the expected number made.
+   (b) Find $\mathrm{P}(\text{all } 10)$.
+   (c) The commentator says "they make 8 out of 10, so expect exactly 8 tonight."
+   What is wrong with that?
+
+9. $X \sim \text{Bin}(n, 0.4)$. Write $E(X)$ and $\text{SD}(X)$ as functions of $n$,
+   and say which grows faster as $n$ increases. What does that imply about $X/n$?
+
+10. A table gives cumulative binomial probabilities $\mathrm{P}(X \leq x)$. Write down,
+    in terms of table entries, how you would get (a) $\mathrm{P}(X = 4)$,
+    (b) $\mathrm{P}(X \geq 4)$, (c) $\mathrm{P}(2 \leq X \leq 5)$.
+
+### Answers to the extra problems
+
+1. (a) **Fixed $n$**: 12 components, decided in advance. **Two outcomes**: faulty or
+   not. **Constant $p$**: 0.25 for each, which the question asserts. **Independence**:
+   stated. All four hold, so $X \sim \text{Bin}(12, 0.25)$.
+   (b) $E(X) = 12(0.25) = 3.0000$; $V(X) = 12(0.25)(0.75) = 2.2500$;
+   $\text{SD}(X) = 1.5000$.
+   (c) $\mathrm{P}(X=3) = \binom{12}{3}(0.25)^3(0.75)^9 = 220(0.015625)(0.0750847)
+   = 0.2581$.
+
+2. (a) $\mathrm{P}(X=0) = (0.75)^{12} = 0.0317$.
+   (b) $1 - 0.0317 = 0.9683$. The **complement rule** — the alternative is adding
+   twelve separate terms.
+   (c) $\mathrm{P}(X \leq 2) = 0.0317 + 0.1267 + 0.2323 = 0.3907$.
+
+3. (a) $\binom{20}{2}(0.1)^2(0.9)^{18} = 190(0.01)(0.1500946) = 0.2852$.
+   (b) $\mathrm{P}(X \geq 3) = 1 - \mathrm{P}(X \leq 2)
+   = 1 - (0.1216 + 0.2702 + 0.2852) = 1 - 0.6769 = 0.3231$.
+
+4. (a) Yes. (b) **No** — drawing without replacement from 52 cards changes $p$ between
+   draws, so the constant-$p$ and independence conditions fail. This is
+   hypergeometric. (c) **No** — studying together breaks independence; one student's
+   outcome carries information about another's. (d) **No** — there is no fixed $n$;
+   arrivals in a fixed period is a Poisson situation. (e) Yes in practice — see
+   question 7.
+
+5. Because "at least one" is the union of every outcome from 1 to $n$, while its
+   complement is the single outcome 0. One term replaces $n$ of them, and the single
+   term is the easiest one in the distribution, being just $(1-p)^n$. The rule does
+   **not** help for something like $\mathrm{P}(3 \leq X \leq 7)$, whose complement is
+   two separate tails and therefore no simpler than the original — there you add the
+   five terms, or use cumulative values.
+
+6. The condition is $np \geq 5$ **and** $n(1-p) \geq 5$.
+   (a) $np = 20$, $n(1-p) = 20$. **Yes.**
+   (b) $np = 3.2$. **No** — fails on the left even though $n(1-p) = 36.8$ passes.
+   (c) $np = 4$. **No**, and only just: $n = 250$ would do it.
+   (d) $np = 9$, $n(1-p) = 6$. **Yes**, if marginally.
+
+7. (a) **No.** Sampling without replacement means $p$ changes from draw to draw, so
+   strictly this is hypergeometric.
+   (b) Because the batch is enormous relative to the sample. Removing one item from
+   10,000 moves the defect rate from 0.0300 to roughly 0.0300 — the change is in the
+   fifth decimal place, so the draws are independent for every practical purpose.
+   (c) The usual rule of thumb is when the sample exceeds **5%** of the population.
+   Here that is 500 items; at 20 you are nowhere near it.
+
+8. (a) $10(0.8) = 8.0000$.
+   (b) $0.8^{10} = 0.1074$.
+   (c) The expected value is an average over many games, not a prediction for one.
+   $\mathrm{P}(X = 8)$ is only $\binom{10}{8}(0.8)^8(0.2)^2 = 0.3020$, so the single
+   most likely outcome happens under a third of the time and the other two-thirds of
+   games land somewhere else. "Expect 8" is right about the long-run mean and wrong
+   about tonight.
+
+9. $E(X) = 0.4n$ and $\text{SD}(X) = \sqrt{0.24n}$. The mean grows **linearly** in
+   $n$; the standard deviation grows only as $\sqrt{n}$. So the proportion
+   $X/n$ has mean 0.4 fixed and standard deviation $\sqrt{0.24/n}$, which shrinks
+   towards zero. The count becomes more variable in absolute terms and the proportion
+   becomes less variable — which is the whole of Chapter 11 showing up early.
+
+10. (a) $\mathrm{P}(X \leq 4) - \mathrm{P}(X \leq 3)$.
+    (b) $1 - \mathrm{P}(X \leq 3)$ — note the 3, not the 4; "at least 4" excludes only
+    0 through 3, and using $\mathrm{P}(X \leq 4)$ here is the commonest table mistake
+    in the chapter.
+    (c) $\mathrm{P}(X \leq 5) - \mathrm{P}(X \leq 1)$.
+
+<!-- more-practice:end -->
+
 ---

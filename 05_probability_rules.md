@@ -256,4 +256,141 @@ numbers and the difference matters enormously — Chapter 6 is largely about it.
    the events plainly *can* occur together and are not mutually exclusive. In fact
    $0.6 \times 0.5 = 0.30$ exactly, so they are **independent**.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. Most probability mistakes at this level are not arithmetic — they are
+reading $\mathrm{P}(A \mid B)$ when the question asked for $\mathrm{P}(B \mid A)$,
+or multiplying when the draws are not independent. These are built to catch both.
+
+1. Two hundred graduates are classified by whether they took a statistics course and
+   whether they were employed within six months:
+
+   | | Employed | Not employed | Total |
+   |---|---|---|---|
+   | **Took stats** | 60 | 40 | 100 |
+   | **Did not** | 50 | 50 | 100 |
+   | **Total** | 110 | 90 | 200 |
+
+   (a) $\mathrm{P}(\text{employed})$.
+   (b) $\mathrm{P}(\text{took stats and employed})$.
+   (c) $\mathrm{P}(\text{employed} \mid \text{took stats})$.
+   (d) $\mathrm{P}(\text{took stats} \mid \text{employed})$.
+   (e) Are the two events independent? Show the check.
+
+2. Why are the answers to 1(c) and 1(d) different? State in words what each one is
+   the answer to.
+
+3. $\mathrm{P}(A) = 0.4$, $\mathrm{P}(B) = 0.5$, $\mathrm{P}(A \cap B) = 0.2$.
+   (a) Find $\mathrm{P}(A \cup B)$.
+   (b) Find $\mathrm{P}(A \mid B)$.
+   (c) Are $A$ and $B$ independent? Mutually exclusive? Answer both.
+
+4. A machine produces items that are defective 20% of the time, independently.
+   (a) Find the probability all three of the next three are good.
+   (b) Find the probability at least one of the three is defective.
+   (c) Which of these was easier to compute directly, and why does the complement
+   rule exist?
+
+5. A box holds 10 components, 3 of them faulty. Two are drawn **without**
+   replacement.
+   (a) Find the probability both are faulty.
+   (b) Find the probability both are faulty if the draws are **with** replacement.
+   (c) Explain which rule changed between (a) and (b).
+
+6. In the same box of 10 with 3 faulty, two are drawn without replacement. Find the
+   probability that **exactly one** is faulty.
+
+7. A student says: "Mutually exclusive events are independent, because if one happens
+   the other cannot, so they have nothing to do with each other." Explain why this is
+   exactly backwards, using $\mathrm{P}(A \mid B)$.
+
+8. Of a firm's invoices, 70% are domestic and 30% foreign. Of domestic invoices 5%
+   are paid late; of foreign invoices 20% are.
+   (a) Draw the tree and find the probability a randomly chosen invoice is paid late.
+   (b) What fraction of all invoices are foreign *and* late?
+
+9. A fair coin is tossed four times.
+   (a) Find the probability of four heads.
+   (b) A gambler who has just seen three heads says the next toss is "due" to be
+   tails. What probability does the gambler have in mind, and what is the correct one?
+
+10. Explain why $\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B)$ is a *test* for
+    independence rather than a rule you may always apply.
+
+### Answers to the extra problems
+
+1. (a) $110/200 = 0.5500$. (b) $60/200 = 0.3000$. (c) $60/100 = 0.6000$.
+   (d) $60/110 = 0.5455$.
+   (e) Independence requires $\mathrm{P}(\text{stats} \cap \text{employed}) =
+   \mathrm{P}(\text{stats})\mathrm{P}(\text{employed})$, that is
+   $0.30 = 0.5(0.55) = 0.2750$. It does not, so the events are **not independent**.
+   Equivalently, $\mathrm{P}(\text{employed} \mid \text{stats}) = 0.60$ against an
+   unconditional 0.55 — knowing someone took the course changes the probability.
+
+2. (c) takes the 100 students who took statistics as the denominator and asks what
+   fraction of *them* were employed. (d) takes the 110 employed graduates as the
+   denominator and asks what fraction of *them* took statistics. Different
+   denominators, so different numbers, even though the numerator — the 60 people in
+   both groups — is the same. Mixing the two up is the single most common error in
+   this chapter and the next.
+
+3. (a) $0.4 + 0.5 - 0.2 = 0.7000$.
+   (b) $0.2/0.5 = 0.4000$.
+   (c) **Independent**: $\mathrm{P}(A \mid B) = 0.40 = \mathrm{P}(A)$, so yes — or
+   equivalently $0.4(0.5) = 0.2$ as required. **Mutually exclusive**: no, since
+   $\mathrm{P}(A \cap B) = 0.2 \neq 0$. Note that two events can be independent and
+   overlapping at once; the two ideas are unrelated.
+
+4. (a) $0.8^3 = 0.5120$.
+   (b) $1 - 0.8^3 = 0.4880$.
+   (c) (a) was easier, which is the point. "At least one" would otherwise require
+   adding the cases of exactly one, exactly two and exactly three defective; the
+   complement rule replaces three calculations with one, because the opposite of "at
+   least one defective" is the single event "all good".
+
+5. (a) $\dfrac{3}{10} \times \dfrac{2}{9} = \dfrac{6}{90} = 0.0667$.
+   (b) $0.3 \times 0.3 = 0.0900$.
+   (c) The multiplication rule. Without replacement the draws are dependent, so the
+   second factor is the *conditional* probability $\mathrm{P}(B \mid A) = 2/9$ — one
+   faulty component has been removed from a box now holding nine. With replacement the
+   draws are independent and the conditional probability equals the unconditional one.
+
+6. Two routes give exactly one faulty: faulty then good, or good then faulty.
+   $\dfrac{3}{10}\cdot\dfrac{7}{9} + \dfrac{7}{10}\cdot\dfrac{3}{9} =
+   \dfrac{21}{90} + \dfrac{21}{90} = \dfrac{42}{90} = 0.4667$. Forgetting the second
+   route and reporting 0.2333 is the standard error here.
+
+7. It is backwards because mutually exclusive events are **maximally dependent**. If
+   $A$ and $B$ cannot both happen then $\mathrm{P}(A \mid B) = 0$, and unless
+   $\mathrm{P}(A)$ was zero to begin with, that is not equal to $\mathrm{P}(A)$ —
+   learning $B$ occurred has told you everything about $A$, namely that it did not.
+   Independence means learning $B$ tells you *nothing*; exclusivity means it tells you
+   everything.
+
+8. (a) $\mathrm{P}(\text{late}) = 0.70(0.05) + 0.30(0.20) = 0.035 + 0.060 = 0.0950$.
+   (b) $0.30(0.20) = 0.0600$ — six per cent of all invoices. Note that foreign
+   invoices are 30% of the book but supply $0.06/0.095 = 63.16\%$ of the late ones,
+   which is the kind of number the finance department actually wants.
+
+9. (a) $0.5^4 = 0.0625$.
+   (b) The gambler is thinking of $\mathrm{P}(\text{four heads}) = 0.0625$ and
+   concluding a fourth head is unlikely. But that probability applied *before any
+   tosses*. Three heads have already happened, the coin has no memory, and the
+   probability of tails on the fourth toss is **0.5**. The gambler's fallacy is
+   applying an unconditional probability to a situation where the conditioning
+   information is already in hand.
+
+10. Because it is a statement that happens to be true for some pairs of events and
+    false for others, and which one you have is an empirical matter. Applying it to
+    dependent events — drawing without replacement, or anything where one outcome
+    shifts the odds of another — gives a confidently wrong answer with no warning
+    sign. The general rule is always
+    $\mathrm{P}(A \cap B) = \mathrm{P}(A)\mathrm{P}(B \mid A)$; the product form is
+    what that reduces to in the special case where $\mathrm{P}(B \mid A)$ happens to
+    equal $\mathrm{P}(B)$.
+
+<!-- more-practice:end -->
+
 ---

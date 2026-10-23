@@ -262,4 +262,127 @@ For a skewed variable they can be badly wrong.
    (c) $z = (780-500)/100 = 2.80$. Yes — nearly three standard deviations above the
    mean, which the empirical rule puts in the outer 0.3% or so.
 
+<!-- more-practice:start -->
+
+## More practice
+
+Ten more. Several of these can be done without computing a standard deviation at
+all, which is the point — knowing what the formula *does* is worth more than being
+able to grind it.
+
+1. For the sample $4,\ 8,\ 10,\ 14,\ 19$:
+   (a) Find the mean and set out the deviation table.
+   (b) Find $s^2$ and $s$.
+   (c) Find the range, and say what the range ignores that $s$ does not.
+
+2. Treat the same five numbers as a whole population.
+   (a) Find $\sigma^2$ and $\sigma$.
+   (b) Which is larger, $s$ or $\sigma$, and why must that always be so?
+
+3. Verify your answer to 1(b) using the shortcut $\sum x^2 - (\sum x)^2/n$.
+
+4. Two funds are compared. Fund A has a mean annual return of 8% with a standard
+   deviation of 12%; Fund B has a mean of 3% with a standard deviation of 6%.
+   (a) Which is riskier in absolute terms?
+   (b) Compute the coefficient of variation for each.
+   (c) Which is riskier per unit of return, and why does that question need the CV
+   rather than $s$?
+
+5. Exam marks have $\mu = 70$ and $\sigma = 8$, and the distribution is bell-shaped.
+   (a) Between which two marks do about 68% of students fall?
+   (b) About 95%?
+   (c) A student scores 86. How unusual is that?
+
+6. Now suppose the same marks are *not* bell-shaped, and you know nothing about the
+   shape.
+   (a) What is the most you can say about the fraction within 2 standard deviations?
+   (b) Within 2.5 standard deviations?
+   (c) Why is this bound so much weaker than the answer to 5(b)?
+
+7. Every value in a dataset with mean 40 and standard deviation 6 is increased by 10.
+   (a) What happens to the mean?
+   (b) What happens to the standard deviation? Explain using the deviation table.
+   (c) Now every value is instead multiplied by 3. What are the new mean and standard
+   deviation?
+
+8. A student's score is 72 on a test with mean 65 and standard deviation 10, and 81
+   on a test with mean 75 and standard deviation 4. On which did they do better
+   relative to the class? Show the comparison.
+
+9. A dataset has $s = 0$. What does the data look like? Can $s$ be negative?
+
+10. Explain, in your own words and without the algebra, why the sample variance
+    divides by $n - 1$ rather than $n$. Your answer must mention the word "mean".
+
+### Answers to the extra problems
+
+1. (a) Sum $= 55$, so $\bar{x} = 11$. Deviations: $-7, -3, -1, 3, 8$; squared:
+   $49, 9, 1, 9, 64$, summing to **132**. (The deviations summing to zero is the free
+   check: $-7-3-1+3+8 = 0$.)
+   (b) $s^2 = 132/4 = 33.00$ and $s = 5.7446$.
+   (c) Range $= 19 - 4 = 15$. The range uses only the two extreme values and throws
+   away everything in between, so two datasets with the same range can have wildly
+   different spreads. It is also, for that reason, maximally sensitive to a single
+   outlier.
+
+2. (a) $\sigma^2 = 132/5 = 26.40$ and $\sigma = 5.1381$.
+   (b) $s$ is larger. Both divide the *same* sum of squares, 132, but $s$ divides by
+   the smaller number, so the quotient is bigger. That is the whole correction: the
+   deviations were taken from $\bar{x}$, which sits in the middle of this particular
+   sample by construction, so they understate the spread around the true $\mu$, and
+   dividing by $n-1$ inflates the answer to compensate.
+
+3. $\sum x^2 = 16 + 64 + 100 + 196 + 361 = 737$, and $(\sum x)^2/n = 55^2/5 = 605$.
+   The difference is $737 - 605 = 132$, matching the deviation table exactly. The
+   shortcut is faster but tells you nothing about the shape of the data; the deviation
+   table is slower and shows you which observations are doing the damage.
+
+4. (a) **Fund A**, with a standard deviation of 12% against 6%.
+   (b) CV$_A = 12/8 = 1.5000$; CV$_B = 6/3 = 2.0000$.
+   (c) **Fund B** is riskier per unit of return. The question needs the CV because
+   $s$ has units and B's returns are on a smaller scale — 6% of variation around a 3%
+   mean is proportionally worse than 12% around 8%. Comparing raw standard deviations
+   across series with different means answers a different question from the one asked.
+
+5. (a) $70 \pm 8$, so about **62 to 78**.
+   (b) $70 \pm 16$, so about **54 to 86**.
+   (c) $z = (86-70)/8 = 2.00$, so the score is two standard deviations above the mean
+   — at the top edge of the middle 95%, which puts roughly 2.5% of the class above it.
+
+6. (a) Chebyshev gives at least $1 - 1/2^2 = 0.7500$, so **at least 75%**.
+   (b) At least $1 - 1/2.5^2 = 1 - 1/6.25 = 0.8400$, so **at least 84%**.
+   (c) Because it assumes nothing. The empirical rule's 95% is a statement about a
+   specific shape; Chebyshev's 75% has to hold for *every* distribution including the
+   nastiest one anyone can construct, so it is necessarily loose for well-behaved
+   data. The price of needing no assumptions is a weaker conclusion.
+
+7. (a) The mean becomes **50**.
+   (b) **It does not change.** Each value rose by 10 and so did the mean, so every
+   deviation $x_i - \bar{x}$ is exactly what it was. Shifting the data moves its
+   location, not its spread.
+   (c) Mean $= 120$, standard deviation $= 18$. Multiplying scales every deviation by
+   3, and since $s$ is in the original units it scales by 3 too — note that $s^2$
+   scales by 9.
+
+8. Test 1: $z = (72-65)/10 = 0.7000$. Test 2: $z = (81-75)/4 = 1.5000$. The second
+   score is 1.5 standard deviations above its class mean against 0.7 for the first, so
+   **the 81 was the better performance relative to the class**, even though the raw
+   gap above the mean was smaller in absolute terms on the test with the tighter
+   spread.
+
+9. Every value is identical and equal to the mean, so every deviation is zero. $s$
+   **cannot** be negative: it is the square root of a sum of squares divided by a
+   positive number, and that sum is zero at best.
+
+10. The deviations are measured from the sample mean, and the sample mean is itself
+    computed from the very data whose spread you are measuring. It sits, by
+    construction, in the middle of this particular sample rather than at the
+    population's true centre — so the squared deviations around it are systematically
+    a little too small. Dividing by $n-1$ instead of $n$ makes the answer slightly
+    larger, by exactly the right amount on average. The other way to say it: once you
+    know $\bar{x}$ and any $n-1$ of the observations, the last one is determined, so
+    only $n-1$ of the deviations are free to vary.
+
+<!-- more-practice:end -->
+
 ---
