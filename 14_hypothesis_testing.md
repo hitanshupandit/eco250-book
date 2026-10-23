@@ -530,14 +530,14 @@ test with the wrong $H_a$ is worth nothing however neatly the rest is computed.
     (b) Does this agree with the interval? Explain how one interval answers infinitely
     many tests at once.
 
-11. Which of these is the correct definition of a p-value?
+11. Which of these is the correct definition of a p-value? For each of the other
+    four, say specifically what is wrong with it.
     (a) The probability that $H_0$ is true.
     (b) The probability that $H_0$ is false.
     (c) The probability of observing data at least as extreme as this, if $H_0$ is
     true.
     (d) The probability of making a Type I error.
     (e) The probability the result is due to chance.
-    For each wrong one, say specifically what is wrong with it.
 
 12. A test returns $p = 0.03$.
     (a) Conclude at $\alpha = 0.05$.
