@@ -102,6 +102,16 @@ converging and the $t$ interval is slightly too narrow. Raise $n$ to 200 and it
 improves to 939. That is Chapter 12's "it depends on the shape", shown in the one
 place where it costs you something.
 
+![One hundred intervals from the same population](figures/ci_coverage.png)
+
+That is the sentence above, drawn. One hundred repeats of the same study, drawn
+from a population whose $\mu$ we know because we chose it. Each grey bar is one 95%
+interval; six of them missed, against the five you would expect.
+
+**You only ever get one bar.** You never learn whether yours is grey or red, and no
+amount of staring at your own interval will tell you. That is why the 95% belongs to
+the procedure that generated the bars and not to any one of them.
+
 ## When $\sigma$ is unknown — which is always
 
 In the derivation above, $\sigma$ was handed to us. It never is. You have $s$,
@@ -172,6 +182,97 @@ studying a more homogeneous population.
 
 Nothing else works. Every "tighter interval" you read about came from one of these
 three, and it is worth asking which.
+
+![Margin of error against sample size](figures/precision_vs_n.png)
+
+The curve is the first lever drawn. It flattens because $n$ sits under a square
+root, and the flattening is why survey budgets stop where they do: the first
+decimal place is cheap and the second costs a hundred times as much.
+
+### The third lever, worked
+
+"Reduce $\sigma$" sounds like advice you cannot act on — $\sigma$ is a fact about
+the population, not a dial. But look at where it comes from.
+
+Suppose the 36 commuters are really two groups:
+
+| | share | mean | SD *within* the group |
+|---|---|---|---|
+| Walkers | 0.40 | 12 min | 3 |
+| Drivers | 0.60 | 38 min | 5 |
+
+Nobody in either group varies by much — three minutes and five minutes. Yet the
+standard deviation of all of them pooled together is $\sigma = 13.4477$. That number
+did not come from anybody's commute. It came from the gap between the two groups,
+and the arithmetic splits cleanly:
+
+$$\underbrace{180.84}_{\text{total}}
+= \underbrace{0.40(3^2) + 0.60(5^2)}_{\text{within} \;=\; 18.60}
++ \underbrace{0.40(12-27.6)^2 + 0.60(38-27.6)^2}_{\text{between} \;=\; 162.24}$$
+
+**Nearly 90% of the variation is the gap between walkers and drivers**, not variation
+in how long anyone's journey takes. So ask the 36 people which group they are in and
+sample within each:
+
+| | standard error |
+|---|---|
+| 36 people, chosen at random | $13.4477/\sqrt{36} = 2.2413$ |
+| 36 people, split into the two groups | $\sqrt{18.60/36} = \mathbf{0.7188}$ |
+
+Same 36 people, same budget, one extra question on the form — and a standard error
+three times smaller. Splitting a sample into groups that are alike on the inside is
+called **stratifying**, and it is the cheapest precision in the subject. It is also
+why a statistician's first question is about how you are collecting the data, not
+how much of it you plan to collect.
+
+### The three levers, side by side
+
+| Lever | What it costs you |
+|---|---|
+| Raise $n$ | **Money**, at four times the rate |
+| Lower the confidence level | **Meaning** — you are claiming less |
+| Reduce $\sigma$ | **Thought**, and sometimes nothing else |
+
+If an exam question asks how to narrow an interval, there are three admissible
+answers and only one of them is "collect more data".
+
+## One-sided intervals
+
+Everything so far has produced a two-sided interval, which makes **two** claims at
+once. For the commute data, $(26.3699,\ 30.4301)$ says the mean is at least 26.37
+*and* at most 30.43.
+
+Often you only want one of them. If a college is setting a timetable, the question
+is whether the mean commute is under half an hour; nobody is worried it might be too
+short. A buyer checking a supplier's guarantee cares whether the product falls
+short, never whether it is better than promised.
+
+In that case, stop splitting $\alpha$ between two tails and spend it all on the side
+you care about:
+
+| | tail area used | critical value | upper end |
+|---|---|---|---|
+| Two-sided 95% | 2.5% each side | $t_{0.025,35} = 2.0301$ | 30.4301 |
+| One-sided 95% | 5% on the right | $t_{0.05,35} = 1.6896$ | **30.0896** |
+
+$$\bar{x} + t_{0.05,\,35}\,\text{SE} = 28.4 + 1.6896(1.0) = 30.0896$$
+
+So we are 95% confident the mean commute is **at most 30.0896 minutes** — tighter
+than the two-sided upper end by 0.3405 minutes, from identical data.
+
+What paid for it is the lower end, which is gone. The one-sided interval is
+
+$$(-\infty,\ 30.0896]$$
+
+There is no bottom to it. You are not claiming the mean is above anything, and that
+is exactly the claim you traded away. A two-sided interval spends half its error
+budget guarding an end you said you did not care about; declining that guard is what
+buys the tighter top.
+
+**The catch.** You must choose the direction *before* seeing the data. Look first,
+then pick whichever side the data favours, and your stated 5% is really 10% — you
+gave yourself two chances. Nothing in the finished output reveals that you did it,
+which is precisely why the discipline matters.
 
 ## Choosing $n$ before you collect anything
 

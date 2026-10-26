@@ -339,6 +339,129 @@ def venn():
           % (PA + PB - PAB, PAB / PB, abs(PA * PB - PAB) > 1e-9))
 
 
+BLUE = "#1a4f8b"
+
+
+# ------------------------- 10. what "95% confident" refers to "95% confident" refers to
+def coverage(mu=28.4, sigma=6.0, n=36, reps=100, seed=250):
+    """100 intervals from the same population. Count how many miss mu."""
+    rng = np.random.default_rng(seed)
+    t = stats.t.ppf(0.975, n - 1)
+
+    lo, hi = [], []
+    for _ in range(reps):
+        x = rng.normal(mu, sigma, n)
+        me = t * x.std(ddof=1) / np.sqrt(n)
+        lo.append(x.mean() - me)
+        hi.append(x.mean() + me)
+    lo, hi = np.array(lo), np.array(hi)
+    miss = (lo > mu) | (hi < mu)
+
+    fig, ax = plt.subplots(figsize=(7.4, 3.5))
+    for i in range(reps):
+        c = RED if miss[i] else GREY
+        ax.plot([i, i], [lo[i], hi[i]], color=c, lw=1.6,
+                alpha=1.0 if miss[i] else 0.55, solid_capstyle="butt")
+    ax.axhline(mu, color=INK, lw=1.3)
+    ax.text(reps + 1.5, mu, r"  true $\mu$", va="center", fontsize=9, color=INK)
+
+    ax.set_xlim(-2, reps + 12)
+    ax.set_xlabel("100 repeats of the same study")
+    ax.set_ylabel("minutes")
+    ax.set_xticks([])
+    ax.set_title(f"{reps - miss.sum()} of {reps} intervals contain $\\mu$   "
+                 f"({miss.sum()} miss, in red)", color=INK, fontsize=10)
+    save(fig, "ci_coverage.png")
+
+    #  A 95% procedure should miss about 5 in 100. Anything outside 0-13 would
+    #  mean the picture is not showing what the slide says it shows.
+    assert 0 < miss.sum() <= 13, f"coverage simulation produced {miss.sum()} misses"
+    return int(miss.sum())
+
+# ---------------------------- 11. alpha and beta, as two areas and beta, as two areas
+def errors(mu0=100.0, mu1=106.0, sigma=15.0, n=25, alpha=0.05):
+    """The same test as the power table on the slide, drawn."""
+    se = sigma / np.sqrt(n)
+    crit = mu0 + stats.norm.ppf(1 - alpha) * se
+    power = stats.norm.sf((crit - mu1) / se)
+    beta = 1 - power
+
+    x = np.linspace(mu0 - 4 * se, mu1 + 4 * se, 800)
+    d0 = stats.norm.pdf(x, mu0, se)
+    d1 = stats.norm.pdf(x, mu1, se)
+
+    fig, ax = plt.subplots(figsize=(7.4, 3.4))
+    ax.plot(x, d0, color=INK, lw=1.6)
+    ax.plot(x, d1, color=BLUE, lw=1.6)
+
+    r = x >= crit
+    l = x <= crit
+    ax.fill_between(x[r], 0, d0[r], color=RED, alpha=0.65, lw=0)
+    ax.fill_between(x[l], 0, d1[l], color=BLUE, alpha=0.22, lw=0)
+    ax.axvline(crit, color=GREY, lw=1.1, ls="--")
+
+    top = max(d0.max(), d1.max())
+    #  The two peaks are only 2 SE apart, so centred labels overlap. Push each
+    #  one outward, away from the other, and anchor it on its own side.
+    ax.text(mu0 - 1.6 * se, top * 1.02, r"if $H_0$ true:  $\mu=100$",
+            ha="right", color=INK, fontsize=9)
+    ax.text(mu1 + 1.6 * se, top * 1.02, r"the truth:  $\mu=106$",
+            ha="left", color=BLUE, fontsize=9)
+    ax.annotate(rf"$\alpha={alpha:.2f}$" "\nfalse alarm",
+                xy=(crit + 0.7 * se, 0.012), xytext=(crit + 2.0 * se, top * 0.52),
+                color=RED, fontsize=9, ha="center",
+                arrowprops=dict(arrowstyle="->", color=RED, lw=1.0))
+    ax.annotate(rf"$\beta={beta:.4f}$" "\na miss",
+                xy=(crit - 1.1 * se, 0.012), xytext=(crit - 3.1 * se, top * 0.52),
+                color=BLUE, fontsize=9, ha="center",
+                arrowprops=dict(arrowstyle="->", color=BLUE, lw=1.0))
+    #  Sits inside the axes on the dashed line; below the axis it collided with
+    #  the tick labels.
+    ax.text(crit + 0.12 * se, top * 0.90, f"reject above {crit:.2f}",
+            ha="left", color=GREY, fontsize=8, rotation=90, va="top")
+
+    ax.set_ylim(0, top * 1.14)
+    ax.set_yticks([])
+    ax.set_xlabel(r"sample mean $\bar{x}$")
+    ax.set_title(f"Power = 1 - $\\beta$ = {power:.4f}", color=INK, fontsize=10)
+    save(fig, "type_i_ii.png")
+
+    #  must match the slide's table exactly
+    assert abs(crit - 104.9346) < 5e-5
+    assert abs(power - 0.6388) < 5e-5 and abs(beta - 0.3612) < 5e-5
+    #  the red area IS alpha, and the blue area IS beta -- check by integration
+    assert abs(np.trapezoid(d0[r], x[r]) - alpha) < 2e-3
+    assert abs(np.trapezoid(d1[l], x[l]) - beta) < 2e-3
+    return float(power)
+
+# ------------------- 12. diminishing returns to sample size returns to sample size
+def precision(sigma=6.0, marks=(9, 36, 144)):
+    n = np.arange(4, 401)
+    me = stats.t.ppf(0.975, n - 1) * sigma / np.sqrt(n)
+
+    fig, ax = plt.subplots(figsize=(7.4, 3.2))
+    ax.plot(n, me, color=INK, lw=1.8)
+    for m in marks:
+        y = float(stats.t.ppf(0.975, m - 1) * sigma / np.sqrt(m))
+        ax.plot([m, m], [0, y], color=RED, lw=1.0, ls=":")
+        ax.plot(m, y, "o", color=RED, ms=5)
+        ax.annotate(f"n={m}\n$\\pm${y:.2f}", xy=(m, y),
+                    xytext=(m + 14, y + 0.28), color=RED, fontsize=8.5)
+
+    ax.set_xlabel("sample size $n$")
+    ax.set_ylabel("margin of error (minutes)")
+    ax.set_ylim(0, None)
+    ax.set_title(r"Margin of error falls as $1/\sqrt{n}$ --- "
+                 "four times the data, half the width",
+                 color=INK, fontsize=10)
+    save(fig, "precision_vs_n.png")
+
+    a = float(stats.t.ppf(0.975, 35) * sigma / np.sqrt(36))
+    b = float(stats.t.ppf(0.975, 143) * sigma / np.sqrt(144))
+    assert abs(a - 2.0301) < 5e-5
+    assert 1.9 < a / b < 2.1, "quadrupling n should roughly halve the margin"
+    return a, b
+
 if __name__ == "__main__":
     print("Figures for the book\n")
     clt()
@@ -350,4 +473,7 @@ if __name__ == "__main__":
     mean_vs_median()
     correlation_grid()
     venn()
+    coverage()
+    errors()
+    precision()
     print("\n  all figures regenerated and their claims re-checked")

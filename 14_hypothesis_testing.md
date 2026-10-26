@@ -268,6 +268,73 @@ $\alpha = 0.05$ is a convention, not a law. Choose it by what the two mistakes c
 smoke alarm should have a high $\alpha$: false alarms are cheap and misses are not. A
 murder conviction should not.
 
+### The same table, with a pregnancy test
+
+The courtroom version above is the standard one. This version is worth having too,
+because it fixes three things people keep getting wrong.
+
+$H_0$: **she is not pregnant** — what we assume until the evidence overturns it.
+
+| | **Not pregnant** ($H_0$ true) | **Pregnant** ($H_0$ false) |
+|---|---|---|
+| Test says "pregnant" *(reject $H_0$)* | **Type I** — false alarm | correct |
+| Test says "not pregnant" *(fail to reject)* | correct | **Type II** — a miss |
+
+**$H_0$ is the default, not the interesting claim.** Nobody sets out to prove
+somebody is not pregnant. You assume it and ask whether the evidence is strong
+enough to abandon it.
+
+**Failing to reject is not proof.** A negative test taken too early does not mean
+she is not pregnant — it means the evidence is not there *yet*. This is the cleanest
+argument for why we say *fail to reject* rather than *accept*, and it is the error
+that costs most marks in this chapter.
+
+**The language is already familiar.** A test box quoting **99% sensitivity** is
+quoting its power, $1 - \beta = 0.99$. Its false-positive rate is $\alpha$. These are
+not exam-only quantities; they are printed on the packaging.
+
+### What tightening $\alpha$ actually costs
+
+"Lowering $\alpha$ raises $\beta$" is easy to say and easy to forget. Here it is in
+numbers. A right-tailed test of $H_0: \mu = 100$ with $\sigma = 15$, when the truth
+is $\mu = 106$:
+
+| $\alpha$ | $n$ | SE | Reject if $\bar{x} >$ | Power | $\beta$ |
+|---|---|---|---|---|---|
+| 0.05 | 25 | 3.0000 | 104.9346 | **0.6388** | 0.3612 |
+| 0.01 | 25 | 3.0000 | 106.9790 | **0.3721** | 0.6279 |
+| 0.05 | 100 | 1.5000 | 102.4673 | **0.9907** | 0.0093 |
+
+Rows 1 and 2 are the trade-off: tightening $\alpha$ from 0.05 to 0.01 cut the power
+from 0.6388 to 0.3721. You made false alarms rarer by making misses far commoner,
+and a test that misses a real six-unit effect 63% of the time is not a careful test.
+
+Row 3 is the only honest fix. At fixed $n$, $\alpha$ and $\beta$ trade against each
+other; raising $n$ is the one move that improves both.
+
+![Type I and Type II error as areas](figures/type_i_ii.png)
+
+The same three numbers, drawn. Two curves — where $\bar{x}$ lands if $H_0$ is true,
+and where it lands given the truth — and one cut-off between them. The red area is
+$\alpha$ and the blue area is $\beta$. Slide the dashed line left and the red region
+grows while the blue shrinks; slide it right and the reverse. You cannot shrink both
+by moving the line, which is the trade-off made geometric: the only way to shrink
+both areas at once is to pull the curves apart, and that means a larger $n$.
+
+### Why 95%?
+
+There is no mathematical reason. The figure comes from Fisher in the 1920s, choosing
+a round number for a printed table, and it stuck because everybody copied the table.
+
+Other fields chose differently, and were right to. Particle physics demands roughly
+$\alpha = 0.0000003$ before announcing a discovery. Some medical screening runs at
+$\alpha = 0.10$ deliberately, because missing a dangerous condition costs far more
+than calling a patient back for a second test.
+
+So 0.05 is a default, not a fact about the world. Use whatever level the question
+specifies — and if you are ever asked to *justify* a level, the answer is always
+about the relative cost of the two errors, never about statistics.
+
 ## The interval and the test are the same object
 
 One data set, two questions:
