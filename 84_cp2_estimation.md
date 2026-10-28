@@ -14,23 +14,23 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **2.** With $\bar{x} = 54.8$ and $t_{0.025,24} = 2.0639$, the 95% interval for the mean invoice value runs
 
-(A) (51.7042, 57.8958)   (B) (39.3208, 70.2792)   (C) (53.3000, 56.3000)   (D) (51.8601, 57.7399)
+(A) (39.3208, 70.2792)   (B) (53.3000, 56.3000)   (C) (51.8601, 57.7399)   (D) (51.7042, 57.8958)
 
 **3.** A market report widens its interval from 90% to 99% confidence. The interval becomes
 
-(A) narrower   (B) wider   (C) unchanged   (D) narrower then wider
+(A) wider   (B) narrower   (C) unchanged   (D) narrower then wider
 
 **4.** An auditor wants a narrower interval for mean order value. Which actually achieves it?
 
-(A) raising the confidence level   (B) reporting the variance instead   (C) sampling more orders   (D) sampling fewer but larger orders
+(A) raising the confidence level   (B) sampling more orders   (C) reporting the variance instead   (D) sampling fewer but larger orders
 
 **5.** A consultant reports a 95% interval for mean wait time of $(4.2, 6.8)$ minutes. The correct reading is
 
-(A) the true mean is in this interval with probability 0.95   (B) 95% of waits fall between 4.2 and 6.8   (C) the estimate is accurate to within 95%   (D) 95% of intervals built this way contain the true mean
+(A) 95% of intervals built this way contain the true mean   (B) the true mean is in this interval with probability 0.95   (C) 95% of waits fall between 4.2 and 6.8   (D) the estimate is accurate to within 95%
 
 **6.** A firm wants mean invoice value estimated within $\pm\$1$ at 95\% confidence, believing $\sigma \approx 7.5$. It must sample
 
-(A) 217   (B) 153   (C) 55   (D) 216
+(A) 153   (B) 55   (C) 216   (D) 217
 
 ## Worked questions
 
@@ -56,15 +56,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **1. D** — $s/\sqrt{n}$. The first distractor reports $s$ itself.
 
-**2. A** — The first distractor forgets to divide by $\sqrt{n}$; the last uses $z$ where $\sigma$ was estimated.
+**2. D** — The first distractor forgets to divide by $\sqrt{n}$; the last uses $z$ where $\sigma$ was estimated.
 
-**3. B** — More confidence is bought with more vagueness.
+**3. A** — More confidence is bought with more vagueness.
 
-**4. C** — Only $n$, the confidence level and $\sigma$ move the width, and only $n$ improves precision without giving something up.
+**4. B** — Only $n$, the confidence level and $\sigma$ move the width, and only $n$ improves precision without giving something up.
 
-**5. D** — The true mean is fixed; the interval is what was random.
+**5. A** — The true mean is fixed; the interval is what was random.
 
-**6. A** — $(1.96(7.5)/1)^2 = 216.08$, rounded up. The first uses the 90% value; the last forgets to round up.
+**6. D** — $(1.96(7.5)/1)^2 = 216.08$, rounded up. The first uses the 90% value; the last forgets to round up.
 
 
 ## Answers — worked questions

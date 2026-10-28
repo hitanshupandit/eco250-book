@@ -10,15 +10,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **1.** A help desk logs 0, 1, 2 or 3 escalations an hour with probabilities 0.15, 0.30, 0.35, 0.20. The expected number per hour is
 
-(A) 1.60   (B) 1.30   (C) 2.00   (D) 1.50
+(A) 1.30   (B) 2.00   (C) 1.60   (D) 1.50
 
 **2.** For that same help desk, the variance of escalations per hour is
 
-(A) 3.5000   (B) 0.9400   (C) 2.5600   (D) 1.4400
+(A) 3.5000   (B) 2.5600   (C) 1.4400   (D) 0.9400
 
 **3.** Each escalation costs \$90 to resolve and the desk carries \$200 of fixed hourly cost. Expected hourly cost is
 
-(A) 144.00   (B) 434.00   (C) 344.00   (D) 201.60
+(A) 344.00   (B) 144.00   (C) 434.00   (D) 201.60
 
 **4.** For that same cost, the standard deviation is closest to
 
@@ -26,15 +26,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **5.** A courier's daily profit has mean \$400 and variance 900. If a \$50 fixed fee is added to every day's profit, the new variance is
 
-(A) 900   (B) 950   (C) 2500   (D) 1000
+(A) 950   (B) 900   (C) 2500   (D) 1000
 
 **6.** Two warehouses have daily cost variances 25 and 16, with covariance $-10$. The variance of their combined daily cost is
 
-(A) 41   (B) 21   (C) 61   (D) 31
+(A) 21   (B) 41   (C) 61   (D) 31
 
 **7.** Two shops have sales variances 9 and 25, correlation 0.4. Their covariance is
 
-(A) 3.6   (B) 90   (C) 6   (D) 0.4
+(A) 3.6   (B) 6   (C) 90   (D) 0.4
 
 ## Worked questions
 
@@ -58,19 +58,19 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 ## Answers — multiple choice
 
-**1. A** — A weighted sum. **1.50** is the unweighted average of 0,1,2,3, which ignores how likely each is.
+**1. C** — A weighted sum. **1.50** is the unweighted average of 0,1,2,3, which ignores how likely each is.
 
-**2. B** — $E(X^2) = 3.50$, so $V(X) = 3.50 - 1.60^2$. The distractors are $E(X^2)$ and $[E(X)]^2$ reported on their own.
+**2. D** — $E(X^2) = 3.50$, so $V(X) = 3.50 - 1.60^2$. The distractors are $E(X^2)$ and $[E(X)]^2$ reported on their own.
 
-**3. C** — $90E(X) + 200$. The first distractor drops the fixed cost.
+**3. A** — $90E(X) + 200$. The first distractor drops the fixed cost.
 
 **4. D** — $|a|\sigma = 90\sqrt{V(X)}$. The first distractor is the variance, un-rooted.
 
-**5. A** — Adding a constant shifts the distribution without stretching it, so $V(X+b)=V(X)$.
+**5. B** — Adding a constant shifts the distribution without stretching it, so $V(X+b)=V(X)$.
 
-**6. B** — $25+16+2(-10)$. **41** omits the covariance entirely.
+**6. A** — $25+16+2(-10)$. **41** omits the covariance entirely.
 
-**7. C** — $\rho\sigma_x\sigma_y = 0.4(3)(5)$. **3.6** multiplies by the variances rather than the standard deviations.
+**7. B** — $\rho\sigma_x\sigma_y = 0.4(3)(5)$. **3.6** multiplies by the variances rather than the standard deviations.
 
 
 ## Answers — worked questions

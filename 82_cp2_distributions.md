@@ -10,19 +10,19 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **1.** A form takes between 8 and 32 minutes to process, any duration equally likely. The mean and standard deviation are
 
-(A) 20 and 12.0   (B) 12.0 and 6.9282   (C) 20 and 6.9282   (D) 20 and 9.7980
+(A) 20 and 6.9282   (B) 20 and 12.0   (C) 12.0 and 6.9282   (D) 20 and 9.7980
 
 **2.** For that same form, the probability it takes less than 17 minutes is
 
-(A) 0.6250   (B) 0.2500   (C) 0.7083   (D) 0.3750
+(A) 0.6250   (B) 0.2500   (C) 0.3750   (D) 0.7083
 
 **3.** For that same form, the probability it takes between 12 and 24 minutes is
 
-(A) 0.5000   (B) 0.3750   (C) 0.2500   (D) 0.6667
+(A) 0.3750   (B) 0.2500   (C) 0.5000   (D) 0.6667
 
 **4.** Time between arrivals at a counter is exponential with mean 6 minutes. The probability of waiting more than 9 minutes is
 
-(A) 0.7769   (B) 0.2231   (C) 0.1500   (D) 0.6667
+(A) 0.2231   (B) 0.7769   (C) 0.1500   (D) 0.6667
 
 **5.** For those same arrivals, the standard deviation of the waiting time is
 
@@ -38,23 +38,23 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **8.** The utility wants to contact the heaviest-using 2.5% of households. The threshold is closest to
 
-(A) 414.02   (B) 428.20   (C) 251.80   (D) 397.67
+(A) 414.02   (B) 251.80   (C) 397.67   (D) 428.20
 
 **9.** Packed cartons weigh normally with mean 500 g and standard deviation 8 g. The fraction below 486 g is closest to
 
-(A) 0.9599   (B) 0.0500   (C) 0.0401   (D) 0.1587
+(A) 0.9599   (B) 0.0500   (C) 0.1587   (D) 0.0401
 
 **10.** For those same cartons, 90% weigh more than
 
-(A) 510.25   (B) 486.84   (C) 484.32   (D) 489.75
+(A) 510.25   (B) 489.75   (C) 486.84   (D) 484.32
 
 **11.** Exam scores are normal with mean 68, standard deviation 12. A student scores 86. Their $z$-score and rough percentile are
 
-(A) 1.50 and the 93rd   (B) 1.50 and the 85th   (C) 18.0 and the 93rd   (D) 0.67 and the 75th
+(A) 1.50 and the 85th   (B) 1.50 and the 93rd   (C) 18.0 and the 93rd   (D) 0.67 and the 75th
 
 **12.** Component lifetimes are normal with mean 1{,}200 hours, standard deviation 150. A warranty is set so that only 5% fail within it. The warranty is
 
-(A) 906.01   (B) 953.27   (C) 1446.73   (D) 1007.77
+(A) 953.27   (B) 906.01   (C) 1446.73   (D) 1007.77
 
 ## Worked questions
 
@@ -78,13 +78,13 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 ## Answers — multiple choice
 
-**1. C** — Midpoint, and $(b-a)/\sqrt{12}$. **12.0** is half the range, which is not a standard deviation.
+**1. A** — Midpoint, and $(b-a)/\sqrt{12}$. **12.0** is half the range, which is not a standard deviation.
 
-**2. D** — The fraction of the interval below 17: $9/24$. **0.6250** is the complement.
+**2. C** — The fraction of the interval below 17: $9/24$. **0.6250** is the complement.
 
-**3. A** — $12/24$ of the interval.
+**3. C** — $12/24$ of the interval.
 
-**4. B** — $e^{-9/6}$. **0.7769** is the complement.
+**4. A** — $e^{-9/6}$. **0.7769** is the complement.
 
 **5. C** — For an exponential the standard deviation equals the mean — unusual, and worth remembering.
 
@@ -92,15 +92,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **7. A** — Subtract the two cumulative areas. The first distractor forgets the lower tail.
 
-**8. B** — $z = 1.959964$. The first distractor uses the one-tailed 5% value.
+**8. D** — $z = 1.959964$. The first distractor uses the one-tailed 5% value.
 
-**9. C** — $z = -1.7500$, lower tail.
+**9. D** — $z = -1.7500$, lower tail.
 
-**10. D** — 90% above means 10% below, so $z = -1.2816$. The first distractor finds the value 90% lie *below*.
+**10. B** — 90% above means 10% below, so $z = -1.2816$. The first distractor finds the value 90% lie *below*.
 
-**11. A** — $z = (86-68)/12$, and $\Phi(1.5) = 0.9332$. **18.0** is the raw gap, not standardised.
+**11. B** — $z = (86-68)/12$, and $\Phi(1.5) = 0.9332$. **18.0** is the raw gap, not standardised.
 
-**12. B** — 5% below means $z = -1.6449$. The second distractor goes the wrong way and would cover 95% of failures.
+**12. A** — 5% below means $z = -1.6449$. The second distractor goes the wrong way and would cover 95% of failures.
 
 
 ## Answers — worked questions

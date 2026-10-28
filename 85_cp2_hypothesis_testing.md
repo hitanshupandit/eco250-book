@@ -10,7 +10,7 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **1.** A transport authority asks whether mean journey time has changed from last year's 45 minutes. The appropriate test is
 
-(A) one-tailed, left   (B) two-tailed   (C) one-tailed, right   (D) chosen after seeing the sample mean
+(A) two-tailed   (B) one-tailed, left   (C) one-tailed, right   (D) chosen after seeing the sample mean
 
 **2.** A supplier guarantees mean battery life of at least 600 hours. As the buyer testing that claim, your alternative hypothesis is
 
@@ -18,7 +18,7 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **3.** A sample of 25 invoices gives $\bar{x} = 54.8$, $s = 7.5$, against a planning figure of \$50. The $t$ statistic is
 
-(A) 0.6400   (B) 6.4000   (C) 4.8000   (D) 3.2000
+(A) 0.6400   (B) 6.4000   (C) 3.2000   (D) 4.8000
 
 **4.** With that $t = 3.2$ on 24 degrees of freedom and $t_{0.025,24} = 2.0639$, at $\alpha = 0.05$ the auditor should
 
@@ -26,15 +26,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **5.** A trial of a new process reports $p = 0.03$. The correct interpretation is
 
-(A) there is a 3% chance the process is unchanged   (B) data this extreme would arise 3% of the time if the process were unchanged   (C) the improvement is small   (D) the new process works 97% of the time
+(A) data this extreme would arise 3% of the time if the process were unchanged   (B) there is a 3% chance the process is unchanged   (C) the improvement is small   (D) the new process works 97% of the time
 
 **6.** A study of 40{,}000 customers finds a 0.2-point difference significant at $p = 0.008$. The right response is
 
-(A) accept the finding, since $p$ is small   (B) reject the finding, since the effect is small   (C) ask for the confidence interval, since a huge sample makes trivial effects significant   (D) repeat the study with fewer customers
+(A) accept the finding, since $p$ is small   (B) reject the finding, since the effect is small   (C) repeat the study with fewer customers   (D) ask for the confidence interval, since a huge sample makes trivial effects significant
 
 **7.** A bakery's filling machine is set to 800 g. A sample of 16 loaves gives $\bar{x} = 793$ with $s = 12$. The $t$ statistic is
 
-(A) -0.5833   (B) -7.0000   (C) -9.3333   (D) -2.3333
+(A) -0.5833   (B) -7.0000   (C) -2.3333   (D) -9.3333
 
 **8.** For that bakery test at $\alpha = 0.05$ two-tailed, with $t_{0.025,15} = 2.1314$, the conclusion is
 
@@ -46,19 +46,19 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **10.** A chain claims mean wait is 25 minutes. A sample of 36 branches gives $\bar{x} = 23.6$, $s = 4.8$. The $t$ statistic is
 
-(A) -0.2917   (B) 1.7500   (C) -1.7500   (D) -3.5000
+(A) -0.2917   (B) 1.7500   (C) -3.5000   (D) -1.7500
 
 **11.** For that chain, two-tailed at $\alpha = 0.05$ with $t_{0.025,35} = 2.0301$, you
 
-(A) reject the claim   (B) accept the claim   (C) cannot decide without the $p$-value   (D) fail to reject the claim
+(A) reject the claim   (B) accept the claim   (C) fail to reject the claim   (D) cannot decide without the $p$-value
 
 **12.** For that same chain the two-tailed $p$ is 0.0889 and the one-tailed $p$ is 0.0444. This shows
 
-(A) the tail must be fixed by the question, not chosen afterwards   (B) the one-tailed test is more accurate   (C) the two-tailed test is wrong here   (D) the sample was too small
+(A) the one-tailed test is more accurate   (B) the tail must be fixed by the question, not chosen afterwards   (C) the two-tailed test is wrong here   (D) the sample was too small
 
 **13.** A maker claims mean fuel economy is 40 mpg. 25 cars give $\bar{x} = 41.2$, $s = 3.0$. The $t$ statistic is
 
-(A) 1.2000   (B) 2.0000   (C) 0.4000   (D) 1.0000
+(A) 1.2000   (B) 0.4000   (C) 2.0000   (D) 1.0000
 
 **14.** For those cars, two-tailed at $\alpha = 0.05$ with $t_{0.025,24} = 2.0639$, you
 
@@ -66,23 +66,23 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **15.** A supplier guarantees bulbs last at least 1200 hours. 20 bulbs give $\bar{x} = 1180$, $s = 95$. The appropriate alternative is
 
-(A) $\mu > 1200$   (B) $\mu \neq 1200$   (C) $\mu = 1200$   (D) $\mu < 1200$
+(A) $\mu > 1200$   (B) $\mu < 1200$   (C) $\mu \neq 1200$   (D) $\mu = 1200$
 
 **16.** For those bulbs $t = -0.9415$ with $t_{0.05,19} = 1.7291$. You
 
-(A) fail to reject the guarantee   (B) reject the guarantee   (C) prove the guarantee holds   (D) need a two-tailed test
+(A) reject the guarantee   (B) fail to reject the guarantee   (C) prove the guarantee holds   (D) need a two-tailed test
 
 **17.** A filling line targets 250 g. QC samples 16 and gets $\bar{x} = 248.5$, $s = 3.2$. The test should be
 
-(A) one-tailed left, since the sample is low   (B) two-tailed, because drift either way is a fault   (C) one-tailed right   (D) one-tailed, chosen from the sample mean
+(A) one-tailed left, since the sample is low   (B) one-tailed right   (C) two-tailed, because drift either way is a fault   (D) one-tailed, chosen from the sample mean
 
 **18.** For that filling line $t = -1.8750$ against $t_{0.025,15} = 2.1314$. The line is
 
-(A) shown to be off target   (B) proven on target   (C) not shown to be off target   (D) untestable at this $n$
+(A) shown to be off target   (B) proven on target   (C) untestable at this $n$   (D) not shown to be off target
 
 **19.** Twelve students improve by $\bar{x} = 74.5$ against a prior mean of 70, $s = 6$. With $t = 2.5981$ and $t_{0.025,11} = 2.2010$, you
 
-(A) fail to reject   (B) accept the prior mean   (C) need a larger sample first   (D) reject — scores have changed
+(A) fail to reject   (B) accept the prior mean   (C) reject — scores have changed   (D) need a larger sample first
 
 **20.** Cereal boxes are filled with known $\sigma = 6$ g. 64 boxes average 498 g against a target of 500. The right test uses
 
@@ -94,15 +94,15 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **22.** A plant reports mean cost per unit of \$18.7 against a budget of \$19.5, from 40 units with $s = 2.4$. Here $t = -2.1082$ and the two-tailed $p$ is 0.0415. At $\alpha = 0.05$ the plant is
 
-(A) exactly on budget   (B) over budget   (C) below budget by more than noise explains   (D) not distinguishable from budget
+(A) exactly on budget   (B) over budget   (C) not distinguishable from budget   (D) below budget by more than noise explains
 
 **23.** A manager runs 20 independent tests at $\alpha = 0.05$ on processes that are all working correctly, then reports the one significant result. The problem is
 
-(A) the tests should have used $\alpha = 0.01$   (B) 20 tests is too few to be reliable   (C) the significant process really is faulty   (D) about one false positive is expected, so the finding is unremarkable
+(A) about one false positive is expected, so the finding is unremarkable   (B) the tests should have used $\alpha = 0.01$   (C) 20 tests is too few to be reliable   (D) the significant process really is faulty
 
 **24.** A hospital sets $\alpha = 0.10$ rather than 0.05 when screening for a dangerous fault. The reasonable justification is
 
-(A) missing a real fault costs far more than a false alarm   (B) larger $\alpha$ gives more reliable results   (C) the sample size is small   (D) it makes rejection less likely
+(A) larger $\alpha$ gives more reliable results   (B) the sample size is small   (C) it makes rejection less likely   (D) missing a real fault costs far more than a false alarm
 
 ## Worked questions
 
@@ -160,53 +160,53 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 ## Answers — multiple choice
 
-**1. B** — 'Changed' names no direction, and the tail is never chosen from the data.
+**1. A** — 'Changed' names no direction, and the tail is never chosen from the data.
 
 **2. C** — A guarantee is tested from the side of whoever it protects.
 
-**3. D** — The first distractor divides by $s$ rather than the standard error.
+**3. C** — The first distractor divides by $s$ rather than the standard error.
 
 **4. A** — The statistic is beyond the critical value. Note you never *accept* a null hypothesis.
 
-**5. B** — The $p$-value is computed *assuming* the null, so it cannot be a probability about it.
+**5. A** — The $p$-value is computed *assuming* the null, so it cannot be a probability about it.
 
-**6. C** — Significance is a statement about $n$ as much as about the effect.
+**6. D** — Significance is a statement about $n$ as much as about the effect.
 
-**7. D** — SE $= 12/4 = 3$, so $t = (793-800)/3$. **-0.5833** divides by $s$ rather than the standard error.
+**7. C** — SE $= 12/4 = 3$, so $t = (793-800)/3$. **-0.5833** divides by $s$ rather than the standard error.
 
 **8. A** — $|-2.3333| > 2.1314$. Note that 'accept' is never the verdict.
 
 **9. B** — Failing to reject is not evidence of absence; a small sample misses real effects routinely.
 
-**10. C** — SE $= 0.8$, so $t = (23.6-25)/0.8$. The first distractor divides by $s$.
+**10. D** — SE $= 0.8$, so $t = (23.6-25)/0.8$. The first distractor divides by $s$.
 
-**11. D** — $|-1.75| < 2.0301$. 'Accept' is never the verdict.
+**11. C** — $|-1.75| < 2.0301$. 'Accept' is never the verdict.
 
-**12. A** — Same data, opposite verdicts at 5%. Choosing the tail after seeing the data halves the $p$-value for nothing.
+**12. B** — Same data, opposite verdicts at 5%. Choosing the tail after seeing the data halves the $p$-value for nothing.
 
-**13. B** — SE $= 0.6$, so $t = 1.2/0.6$.
+**13. C** — SE $= 0.6$, so $t = 1.2/0.6$.
 
 **14. C** — $2.0000 < 2.0639$ — narrowly. The one-tailed $p$ of 0.0285 would reject, which is why the tail matters.
 
-**15. D** — A guarantee is tested from the side of whoever it protects — the buyer needs evidence it fails.
+**15. B** — A guarantee is tested from the side of whoever it protects — the buyer needs evidence it fails.
 
-**16. A** — $-0.9415$ is nowhere near $-1.7291$. Failing to reject is not proof the guarantee holds — 20 bulbs simply cannot settle it.
+**16. B** — $-0.9415$ is nowhere near $-1.7291$. Failing to reject is not proof the guarantee holds — 20 bulbs simply cannot settle it.
 
-**17. B** — A target is missed in both directions. The sample mean never chooses the tail.
+**17. C** — A target is missed in both directions. The sample mean never chooses the tail.
 
-**18. C** — $|-1.875| < 2.1314$. Note the careful wording: not shown to be off target is not the same as shown to be on target.
+**18. D** — $|-1.875| < 2.1314$. Note the careful wording: not shown to be off target is not the same as shown to be on target.
 
-**19. D** — $2.5981 > 2.2010$, so the change is larger than sampling noise explains.
+**19. C** — $2.5981 > 2.2010$, so the change is larger than sampling noise explains.
 
 **20. A** — The question is whether the denominator is known or estimated — not the sample size.
 
 **21. B** — $|-2.6667| > 2.5758$, so the fill is off target even at 1%.
 
-**22. C** — $p < 0.05$ and the sample mean is below 19.5, so costs are genuinely lower.
+**22. D** — $p < 0.05$ and the sample mean is below 19.5, so costs are genuinely lower.
 
-**23. D** — $20 \times 0.05 = 1$. The arithmetic in the reported test is correct; omitting the other nineteen is what misleads.
+**23. A** — $20 \times 0.05 = 1$. The arithmetic in the reported test is correct; omitting the other nineteen is what misleads.
 
-**24. A** — Choosing $\alpha$ is a judgement about the relative cost of the two errors.
+**24. D** — Choosing $\alpha$ is a judgement about the relative cost of the two errors.
 
 
 ## Answers — worked questions

@@ -10,31 +10,31 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 **1.** Weekly study hours have $\sigma = 24$. For a sample of 36 students the standard error of the mean is
 
-(A) 24.0000   (B) 0.6667   (C) 4.0000   (D) 0.8165
+(A) 24.0000   (B) 4.0000   (C) 0.6667   (D) 0.8165
 
 **2.** If the true mean is 80 hours, the probability that a sample of 36 averages above 88 is closest to
 
-(A) 0.3694   (B) 0.9772   (C) 0.5000   (D) 0.0228
+(A) 0.3694   (B) 0.0228   (C) 0.9772   (D) 0.5000
 
 **3.** How many students must be sampled for that standard error to fall to 2?
 
-(A) 144   (B) 12   (C) 48   (D) 24
+(A) 12   (B) 48   (C) 24   (D) 144
 
 **4.** A market researcher quadruples her sample. The margin of error
 
-(A) quarters   (B) halves   (C) stays the same   (D) falls by three quarters
+(A) quarters   (B) stays the same   (C) halves   (D) falls by three quarters
 
 **5.** Household incomes in a city are strongly right-skewed. For a sample of 50 households, which is approximately normal?
 
-(A) a single household's income only   (B) both   (C) the sample mean income only   (D) neither
+(A) a single household's income only   (B) the sample mean income only   (C) both   (D) neither
 
 **6.** A factory's output per shift has $\sigma = 40$. A manager wants the standard error of mean output below 2.5. The smallest number of shifts is
 
-(A) 16   (B) 64   (C) 1024   (D) 256
+(A) 16   (B) 256   (C) 64   (D) 1024
 
 **7.** Claim sizes at an insurer have mean 60 and $\sigma = 15$. For 9 claims, the range containing the middle 95% of sample means is closest to
 
-(A) (50.2, 69.8)   (B) (30.6, 89.4)   (C) (55.1, 64.9)   (D) (58.4, 61.6)
+(A) (30.6, 89.4)   (B) (55.1, 64.9)   (C) (50.2, 69.8)   (D) (58.4, 61.6)
 
 **8.** A pollster draws 300 people by selecting 60 households and interviewing every adult. The true standard error is
 
@@ -66,19 +66,19 @@ These are the Checkpoint 2 practice questions for this topic. Work them with the
 
 ## Answers — multiple choice
 
-**1. C** — $\sigma/\sqrt{n}$. **0.6667** divides by $n$ rather than $\sqrt{n}$.
+**1. B** — $\sigma/\sqrt{n}$. **0.6667** divides by $n$ rather than $\sqrt{n}$.
 
-**2. D** — The first distractor uses $\sigma$ instead of the standard error — the commonest error in this material.
+**2. B** — The first distractor uses $\sigma$ instead of the standard error — the commonest error in this material.
 
-**3. A** — $\sigma/\sqrt{n}=2$ gives $\sqrt{n}=12$. **12** stops at $\sqrt{n}$.
+**3. D** — $\sigma/\sqrt{n}=2$ gives $\sqrt{n}=12$. **12** stops at $\sqrt{n}$.
 
-**4. B** — It falls with $\sqrt{n}$.
+**4. C** — It falls with $\sqrt{n}$.
 
-**5. C** — The CLT is about $\bar{X}$. Sampling does not reshape the population.
+**5. B** — The CLT is about $\bar{X}$. Sampling does not reshape the population.
 
-**6. D** — $40/\sqrt{n}\le 2.5$ gives $\sqrt{n}\ge 16$. **16** stops at $\sqrt{n}$.
+**6. B** — $40/\sqrt{n}\le 2.5$ gives $\sqrt{n}\ge 16$. **16** stops at $\sqrt{n}$.
 
-**7. A** — SE $= 5$, so $60 \pm 1.96(5)$. **(30.6, 89.4)** uses $\sigma = 15$ instead of the standard error.
+**7. C** — SE $= 5$, so $60 \pm 1.96(5)$. **(30.6, 89.4)** uses $\sigma = 15$ instead of the standard error.
 
 **8. B** — People in a household are not independent draws, so 300 clustered people carry less information than 300 unrelated ones.
 
