@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fitting a Line</title>
+<style>
+  body{max-width:760px;margin:0 auto;padding:40px 20px 80px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.6;color:#24292f;background:#fff;}
+  h1{font-size:2em;margin:0 0 .3em;padding-bottom:.3em;border-bottom:1px solid #d8dee4;font-weight:600}
+  h2{font-size:1.35em;margin:1.8em 0 .5em;padding-bottom:.3em;border-bottom:1px solid #d8dee4;font-weight:600}
+  h3{font-size:1.05em;margin:1.4em 0 .4em;font-weight:600}
+  p{margin:0 0 14px}
+  code,.num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+  blockquote{margin:14px 0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}
+  table{border-collapse:collapse;margin:14px 0;font-size:.9em}
+  th,td{padding:5px 12px;border:1px solid #d0d7de;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{background:#f6f8fa;font-weight:600}
+  .ctl{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+  .ctl label{min-width:120px;font-size:.92em}
+  .ctl input[type=range]{flex:1;min-width:200px;max-width:340px}
+  .val{font-family:ui-monospace,Menlo,Consolas,monospace;min-width:72px;text-align:right;font-size:.9em}
+  svg{display:block;width:100%;height:auto;margin:10px 0}
+  .axis{stroke:#8c959f;stroke-width:1}
+  .tick{fill:#57606a;font:11px ui-monospace,Menlo,monospace}
+  .line{stroke:#24292f;stroke-width:2;fill:none}
+  .fitline{stroke:#8c959f;stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+  .pt{fill:#24292f;fill-opacity:.65}
+  .resid{stroke:#cf222e;stroke-width:1;stroke-opacity:.5}
+  .guide{stroke:#8c959f;stroke-width:1;stroke-dasharray:3 3}
+  .curve{stroke:#24292f;stroke-width:2;fill:none}
+  button{font:inherit;font-size:.9em;padding:5px 12px;border:1px solid #d0d7de;
+    border-radius:6px;background:#f6f8fa;cursor:pointer}
+  button:hover{background:#eef1f4}
+  hr{border:0;border-top:1px solid #d8dee4;margin:2em 0}
+</style>
+</head>
+<body>
+
+<h1>Fitting a Line</h1>
+<p><em>ECON 250 &middot; Chapter 18 &middot; move the sliders and watch what happens</em></p>
+
+<p>Three steps. First a line on its own, with nothing to fit. Then the same line
+dropped onto the Camry data from lecture, where you try to find the best one by
+hand. Then the formula that finds it for you &mdash; and why covariance and
+variance are what turn up in it.</p>
+
+<h2>1. A line, before any data</h2>
+
+<p>A straight line needs two numbers. The <strong>intercept</strong> says where it
+crosses the vertical axis; the <strong>slope</strong> says how far it climbs for a
+one-unit step to the right. School writes it <code>y = mx + b</code>; statistics
+writes the same line <code>y = b&#8320; + b&#8321;x</code>, putting the intercept
+first.</p>
+
+<p class="num" id="eq1">y = 10.00 + 2.00x</p>
+<div class="ctl"><label>intercept b&#8320;</label>
+  <input type="range" id="s1b0" min="0" max="30" step="0.5" value="10">
+  <span class="val" id="v1b0">10.0</span></div>
+<div class="ctl"><label>slope b&#8321;</label>
+  <input type="range" id="s1b1" min="-2" max="5" step="0.1" value="2">
+  <span class="val" id="v1b1">2.0</span></div>
+<svg id="p1" viewBox="0 0 560 330"></svg>
+<p><em>The dashed triangle is one step right and <span id="risetxt">2.00</span> up.
+That ratio is the slope.</em></p>
+
+<blockquote>
+<p><strong>Things to try.</strong> Set the slope to zero &mdash; what is the line now
+saying about <em>x</em>? Make it negative, and watch the triangle flip. Change only
+the intercept: does the steepness change at all?</p>
+</blockquote>
+
+<h2>2. Now put data under it</h2>
+
+<p>The hundred Camrys from lecture. <em>x</em> is the odometer reading in thousands
+of miles, <em>y</em> is the auction price in thousands of dollars. No line passes
+through all hundred points, so every line misses. The thin red gaps are the
+<strong>residuals</strong>: what the line missed at each car.</p>
+
+<p>We square them and add. Squaring stops a miss above cancelling a miss below, and
+punishes one large miss more than several small ones. That total is
+<strong>SSE</strong>. Hunt for the smallest you can find.</p>
+
+<p class="num" id="eq2">y&#770; = 17.25 &minus; 0.0669x</p>
+<div class="ctl"><label>intercept b&#8320;</label>
+  <input type="range" id="s2b0" min="13" max="21" step="0.05" value="19">
+  <span class="val" id="v2b0">19.00</span></div>
+<div class="ctl"><label>slope b&#8321;</label>
+  <input type="range" id="s2b1" min="-0.16" max="0.02" step="0.0001" value="-0.12">
+  <span class="val" id="v2b1">-0.1200</span></div>
+<svg id="p2" viewBox="0 0 560 330"></svg>
+<div class="ctl">
+  <span>SSE = <strong class="num" id="sse">&mdash;</strong></span>
+  <span style="color:#57606a">best so far: <span class="num" id="best">&mdash;</span></span>
+  <button id="snap">Show the least-squares line</button>
+</div>
+
+<p>The first eight cars, at the line you have set:</p>
+<table id="restab">
+<thead><tr><th>odometer</th><th>price</th><th>y&#770;</th><th>residual</th><th>residual&sup2;</th></tr></thead>
+<tbody></tbody>
+</table>
+<p><em>&hellip; and 92 more rows, all of them counted in the SSE above.</em></p>
+
+<blockquote>
+<p><strong>Things to try.</strong> Get SSE below 11 by hand &mdash; how close to
+10.4447 can you get before it is guesswork? Find a line whose residuals sum to
+roughly zero but whose SSE is still large; zero-sum is not the same as best. Then
+press the button and notice the line passes through the point of means, the grey
+cross. It always does.</p>
+</blockquote>
+
+<h2>3. Why covariance and variance turn up</h2>
+
+<p>You do not have to hunt. Fix the intercept at its best value for whatever slope
+you pick &mdash; which forces the line through the point of means &mdash; and SSE
+becomes a function of the slope alone. That function is a <strong>parabola</strong>,
+and a parabola has exactly one lowest point.</p>
+
+<p>Setting its derivative to zero gives the slope at the bottom, and what falls out
+is a ratio you already know from Chapter 4:</p>
+
+<blockquote>
+<p class="num" style="font-size:1.1em">b&#8321; = s<sub>xy</sub> &divide;
+s&sup2;<sub>x</sub> = &minus;2.9063 &divide; 43.4686 = &minus;0.0669</p>
+<p>the covariance of <em>x</em> and <em>y</em>, divided by the variance of
+<em>x</em></p>
+</blockquote>
+
+<p>So the two summaries from Chapter 4 were not idle. <strong>Covariance</strong>
+carries the direction and the joint movement &mdash; negative here, because higher
+mileage goes with lower price. Dividing by the <strong>variance of x</strong>
+rescales it into dollars per thousand miles. That division is what turns a number
+nobody can interpret into a slope anybody can.</p>
+
+<div class="ctl"><label>slope b&#8321;</label>
+  <input type="range" id="s3b1" min="-0.14" max="0.01" step="0.001" value="-0.03">
+  <span class="val" id="v3b1">-0.030</span></div>
+<svg id="p3" viewBox="0 0 560 300"></svg>
+<p>At b&#8321; = <span class="num" id="o3b1">&minus;0.030</span>, SSE =
+<span class="num" id="o3sse">&mdash;</span>. <span id="o3msg"></span></p>
+
+<blockquote>
+<p><strong>Things to try.</strong> Walk the slider to the bottom of the curve &mdash;
+what value does it stop at? The curve is steep at the sides and flat at the bottom:
+what does that flatness say about how precisely the data pins the slope down?</p>
+</blockquote>
+
+<hr>
+
+<p><em>The hundred observations reproduce the summary statistics used in lecture.
+Least squares on them gives b&#8321; = &minus;0.0669, b&#8320; = 17.250,
+SSE = 10.4447 and R&sup2; = 0.648 &mdash; the figures Stata reports for</em>
+<code>regress y x</code>.</p>
+
+<script>
+(function(){
+  "use strict";
+  const X = [23.2,45.0,32.7,34.0,39.8,36.2,38.2,40.6,21.4,43.8,26.9,37.0,29.8,48.0,36.5,31.4,37.9,28.6,37.8,41.9,37.0,43.5,38.8,29.1,25.5,37.7,28.4,40.8,32.5,38.9,41.7,32.1,44.7,29.7,27.8,43.9,35.2,47.4,42.0,25.4,21.9,34.0,39.0,32.2,26.5,36.4,23.2,34.7,34.2,43.0,40.1,49.0,29.2,32.3,35.2,30.0,34.9,32.5,37.7,37.6,43.6,28.5,38.3,34.8,45.2,36.3,40.3,48.5,36.5,34.9,40.6,34.1,37.3,30.2,48.7,38.8,42.9,43.9,40.8,32.0,27.3,26.1,41.1,36.5,43.0,36.8,31.0,31.2,41.3,35.5,40.7,22.6,34.1,32.5,40.0,36.0,29.2,39.0,32.3,50.9];
+  const Y = [15.2774,14.4411,14.7231,15.3473,14.194,14.9434,14.4562,13.5307,15.8864,14.146,15.7749,15.0925,15.7295,13.8151,14.5991,15.1189,14.871,15.1103,15.0336,14.5799,15.0684,14.507,14.596,14.9201,15.5773,14.7586,14.9993,14.3682,15.2572,14.4309,14.3719,14.9477,14.2425,15.1427,15.6103,14.1334,14.9112,14.0074,14.1842,15.6212,16.0052,15.0194,14.7497,14.8302,15.3184,14.8084,15.1827,15.2561,15.0747,14.3733,14.7567,13.8693,14.7228,15.56,15.3977,15.0965,14.7486,15.2174,14.7902,14.9524,15.1808,15.2704,14.3146,14.5112,14.6326,14.7293,15.2729,14.1142,14.611,15.0813,15.0935,15.3086,14.2496,15.7386,13.3636,14.7411,14.2296,14.355,13.7691,15.7199,15.7619,15.5032,14.7376,14.8306,14.402,14.867,15.7759,14.8933,14.3506,14.6978,14.5634,15.7082,14.4143,15.1529,14.7505,15.1523,14.663,14.4096,15.4247,13.9035];
+  const n = X.length;
+  const xbar = X.reduce((a,b)=>a+b,0)/n;
+  const ybar = Y.reduce((a,b)=>a+b,0)/n;
+  let sxy=0, sxx=0;
+  for(let i=0;i<n;i++){ sxy += (X[i]-xbar)*(Y[i]-ybar); sxx += (X[i]-xbar)**2; }
+  sxy/=(n-1); sxx/=(n-1);
+  const B1 = sxy/sxx, B0 = ybar - B1*xbar;
+  const sse = (b0,b1)=>{ let s=0; for(let i=0;i<n;i++){ const e=Y[i]-(b0+b1*X[i]); s+=e*e; } return s; };
+  const fmt=(v,d)=>v.toFixed(d===undefined?2:d);
+  const el=id=>document.getElementById(id);
+  const NS="http://www.w3.org/2000/svg";
+  function mk(t,a,x){ const e=document.createElementNS(NS,t);
+    for(const k in a) e.setAttribute(k,a[k]); if(x!==undefined) e.textContent=x; return e; }
+  function frame(svg,xlo,xhi,ylo,yhi,xlab,ylab){
+    svg.textContent="";
+    const W=560,H=+svg.getAttribute("viewBox").split(" ")[3],L=52,R=14,T=28,B=38;
+    const px=x=>L+(x-xlo)/(xhi-xlo)*(W-L-R), py=y=>H-B-(y-ylo)/(yhi-ylo)*(H-T-B);
+    svg.appendChild(mk("line",{x1:L,y1:H-B,x2:W-R,y2:H-B,class:"axis"}));
+    svg.appendChild(mk("line",{x1:L,y1:T,x2:L,y2:H-B,class:"axis"}));
+    for(let i=0;i<=5;i++){
+      const xv=xlo+(xhi-xlo)*i/5, yv=ylo+(yhi-ylo)*i/5;
+      svg.appendChild(mk("text",{x:px(xv),y:H-B+16,class:"tick","text-anchor":"middle"},
+        fmt(xv,(xhi-xlo)<=1?3:((xhi-xlo)<=20?1:0))));
+      svg.appendChild(mk("text",{x:L-7,y:py(yv)+4,class:"tick","text-anchor":"end"},
+        fmt(yv,(yhi-ylo)<=6?1:0)));
+    }
+    svg.appendChild(mk("text",{x:(L+W-R)/2,y:H-6,class:"tick","text-anchor":"middle"},xlab));
+    svg.appendChild(mk("text",{x:4,y:12,class:"tick"},ylab));
+    return {px,py};
+  }
+  function draw1(){
+    const b0=+el("s1b0").value,b1=+el("s1b1").value;
+    el("v1b0").textContent=fmt(b0,1); el("v1b1").textContent=fmt(b1,1);
+    el("eq1").textContent="y = "+fmt(b0)+(b1<0?" − ":" + ")+fmt(Math.abs(b1))+"x";
+    el("risetxt").textContent=fmt(b1);
+    const svg=el("p1"), f=frame(svg,0,14,0,50,"x","y");
+    svg.appendChild(mk("line",{x1:f.px(0),y1:f.py(b0),x2:f.px(14),y2:f.py(b0+b1*14),class:"line"}));
+    const ya=b0+b1*6, yb=b0+b1*7;
+    svg.appendChild(mk("line",{x1:f.px(6),y1:f.py(ya),x2:f.px(7),y2:f.py(ya),class:"guide"}));
+    svg.appendChild(mk("line",{x1:f.px(7),y1:f.py(ya),x2:f.px(7),y2:f.py(yb),class:"guide"}));
+    svg.appendChild(mk("text",{x:f.px(7)+6,y:(f.py(ya)+f.py(yb))/2+4,class:"tick"},"rise "+fmt(b1)));
+    svg.appendChild(mk("text",{x:(f.px(6)+f.px(7))/2,y:f.py(ya)+15,class:"tick","text-anchor":"middle"},"run 1"));
+    svg.appendChild(mk("circle",{cx:f.px(0),cy:f.py(b0),r:4,class:"pt"}));
+  }
+  let bestSSE=Infinity;
+  function draw2(){
+    const b0=+el("s2b0").value,b1=+el("s2b1").value;
+    el("v2b0").textContent=fmt(b0,2); el("v2b1").textContent=fmt(b1,4);
+    el("eq2").textContent="ŷ = "+fmt(b0)+(b1<0?" − ":" + ")+fmt(Math.abs(b1),4)+"x";
+    const svg=el("p2"), f=frame(svg,18,54,13,17,"odometer (000 miles)","price ($000)");
+    svg.appendChild(mk("line",{x1:f.px(xbar)-6,y1:f.py(ybar),x2:f.px(xbar)+6,y2:f.py(ybar),class:"guide"}));
+    svg.appendChild(mk("line",{x1:f.px(xbar),y1:f.py(ybar)-6,x2:f.px(xbar),y2:f.py(ybar)+6,class:"guide"}));
+    svg.appendChild(mk("line",{x1:f.px(18),y1:f.py(b0+b1*18),x2:f.px(54),y2:f.py(b0+b1*54),class:"line"}));
+    const tb=document.querySelector("#restab tbody"); tb.textContent="";
+    let s=0;
+    for(let i=0;i<n;i++){
+      const yh=b0+b1*X[i], e=Y[i]-yh; s+=e*e;
+      svg.appendChild(mk("line",{x1:f.px(X[i]),y1:f.py(Y[i]),x2:f.px(X[i]),y2:f.py(yh),class:"resid"}));
+      svg.appendChild(mk("circle",{cx:f.px(X[i]),cy:f.py(Y[i]),r:3,class:"pt"}));
+      if(i<8){
+        const tr=document.createElement("tr");
+        [fmt(X[i],1),fmt(Y[i],3),fmt(yh,3),fmt(e,3),fmt(e*e,4)].forEach(v=>{
+          const td=document.createElement("td"); td.className="num"; td.textContent=v; tr.appendChild(td); });
+        tb.appendChild(tr);
+      }
+    }
+    el("sse").textContent=fmt(s,4);
+    if(s<bestSSE) bestSSE=s;
+    el("best").textContent=fmt(bestSSE,4)+(Math.abs(bestSSE-10.4447)<0.002?"  ← that is it":"");
+  }
+  el("snap").addEventListener("click",()=>{
+    el("s2b0").value=B0.toFixed(2); el("s2b1").value=B1.toFixed(4); draw2(); });
+  const sseAt=b1=>sse(ybar-b1*xbar,b1);
+  function draw3(){
+    const b1=+el("s3b1").value;
+    el("v3b1").textContent=fmt(b1,3); el("o3b1").textContent=fmt(b1,3);
+    const lo=-0.14, hi=0.01, ymax=Math.max(sseAt(lo),sseAt(hi));
+    const svg=el("p3"), f=frame(svg,lo,hi,0,ymax,"slope b₁","SSE");
+    let d="";
+    for(let i=0;i<=160;i++){ const b=lo+(hi-lo)*i/160;
+      d+=(i?" L":"M")+f.px(b)+" "+f.py(Math.min(sseAt(b),ymax)); }
+    svg.appendChild(mk("path",{d:d,class:"curve"}));
+    svg.appendChild(mk("line",{x1:f.px(B1),y1:f.py(0),x2:f.px(B1),y2:f.py(ymax),class:"fitline"}));
+    svg.appendChild(mk("text",{x:f.px(B1)+6,y:f.py(ymax)+14,class:"tick"},
+      "s_xy / s²_x = "+fmt(B1,4)));
+    const s=sseAt(b1);
+    svg.appendChild(mk("circle",{cx:f.px(b1),cy:f.py(Math.min(s,ymax)),r:5,class:"pt"}));
+    el("o3sse").textContent=fmt(s,4);
+    const d1=Math.abs(b1-B1);
+    el("o3msg").textContent = d1<0.0015 ? "You are at the bottom." :
+      (b1>B1 ? "Still falling — try a steeper (more negative) slope."
+             : "Past it — try a flatter slope.");
+    el("o3msg").style.color = d1<0.0015 ? "#1a7f37" : "#57606a";
+  }
+  ["s1b0","s1b1"].forEach(i=>el(i).addEventListener("input",draw1));
+  ["s2b0","s2b1"].forEach(i=>el(i).addEventListener("input",draw2));
+  el("s3b1").addEventListener("input",draw3);
+  draw1(); draw2(); draw3();
+})();
+</script>
+</body>
+</html>

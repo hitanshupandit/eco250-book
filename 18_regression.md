@@ -19,6 +19,39 @@ where $b_1$ is the **slope** — how much $\hat{y}$ moves per one-unit increase 
 The asymmetry is the point. Regressing $y$ on $x$ is a different exercise from
 regressing $x$ on $y$, while $r$ is the same either way.
 
+## Where the name comes from
+
+"Regression" is a strange word for fitting a line, and the reason is historical rather
+than mathematical.
+
+In the 1880s **Francis Galton** collected the heights of parents and their grown
+children, hoping to find a law of inheritance. He found something he had not expected.
+Tall parents did have tall children — but on average their children were *less* tall
+than they were. Short parents had short children, but less short. Whichever end you
+started from, the next generation sat closer to the population average than its
+parents did.
+
+Galton called this pull back toward the middle **regression toward mediocrity**; we
+now say *regression to the mean*. The name then transferred from the finding to the
+**method** he had used to measure it, and it has stayed there ever since.
+
+> **Two different things share one word.** *Regression to the mean* is a phenomenon
+> about repeated measurements. *Regression* is the method in this chapter. Nothing in
+> least squares regresses toward anything — fit a line to any cloud of points and it
+> simply sits where the squared residuals are smallest.
+
+The phenomenon is worth knowing in its own right, because it manufactures effects that
+are not there. Take the ten students who scored highest on one test and look at their
+next one: as a group they will usually do worse, not because anything went wrong but
+because an unusually high score takes some luck, and luck does not repeat. The same
+arithmetic explains why the player on the magazine cover has a quieter season
+afterwards, and why a policy introduced right after an unusually bad year tends to
+look effective. If you compare a group selected for being extreme against its own
+later performance, expect movement toward the mean before you reach for a cause.
+
+*The Galton anecdote is noted in Aurélien Géron,* Hands-on Machine Learning with
+Scikit-Learn, Keras and TensorFlow, *2nd ed. (O'Reilly, 2019), ch. 1 n. 1.*
+
 ## Choosing the line
 
 Infinitely many lines pass through a cloud of points. The one we fit is the one that
@@ -42,6 +75,13 @@ $$b_1 = \frac{s_{xy}}{s_x^2} \qquad\qquad b_0 = \bar{y} - b_1\bar{x}$$
 The slope is the covariance from Chapter 4 divided by the variance of $x$. And the
 intercept formula rearranges to $\bar{y} = b_0 + b_1\bar{x}$ — **the line always
 passes through the point of means**, which is a free check on your arithmetic.
+
+> **Try it.** [Fitting a Line](sim/regression-line.html) is an interactive version of
+> this section. It starts with a bare line you tilt and shift, drops it onto the
+> hundred Camrys from lecture so you can hunt for the smallest SSE by hand, and then
+> draws SSE as a function of the slope — a parabola whose lowest point sits exactly
+> at $s_{xy}/s_x^2$. Everything runs in the browser.
+
 
 ## How well does it fit?
 
@@ -125,6 +165,49 @@ explanations, unchanged.
 **The intercept is often meaningless.** Here $b_0 = 10.07$ is the predicted sales at
 zero advertising, which is an extrapolation to a point outside the data. Report it
 because the line needs it; interpret it only if $x = 0$ is genuinely in range.
+
+## The assumption behind unbiasedness
+
+Everything above is arithmetic: given the data, $b_1$ is what it is. The question this
+section asks is different — is that number aimed at the right target? It rests on one
+condition:
+
+$$E(\varepsilon \mid x) = 0$$
+
+In words: **whatever else affects $y$ averages out to zero at every value of $x$**.
+Not merely zero overall — at every value. Those are different claims, and the
+difference is the whole of what follows.
+
+**What goes wrong when it fails.** Suppose something you have left out moves with $x$
+and also moves $y$. Then $b_1$ cannot separate the two, and it quietly reports their
+combined effect. In the advertising data, if the firms spending more are also the ones
+in faster-growing markets, part of the 2,014 units belongs to the growth and not to
+the advertising. The slope is too big, and nothing in the output says so.
+
+The standard example outside business is schooling. Regress wages on years of
+education and the slope comes out around \$1.14 an hour per year. But if people with
+more ability tend to get more schooling *and* to earn more, some of that \$1.14 is the
+return to ability. Again too big, again invisible.
+
+> **Bias is not noise, and more data will not fix it.** A larger sample shrinks the
+> standard error, so the confidence interval tightens — around the wrong number. This
+> is the one problem in the course that sampling more cannot solve.
+
+**Sign the bias.** "There might be omitted variables" is not analysis; every
+regression has omitted variables. The useful sentence names one, says which way it
+pushes, and therefore says whether your estimate is too high or too low. If the
+omitted thing raises both $x$ and $y$ — ability, market growth — the slope is
+overstated. If it raises one and lowers the other, the slope is understated.
+
+> **You cannot check this one with a residual plot.** The normal equations force
+> $\sum e_i = 0$ and $\sum x_i e_i = 0$ — the residuals are *built* to average zero
+> and to be uncorrelated with $x$. So they will look obedient on exactly the dimension
+> you want to test, whether or not the assumption holds. The plot in the next section
+> catches curvature and changing spread. It cannot catch an omitted variable, and no
+> plot can.
+
+That is why the honest form of a regression result names the assumption rather than
+hiding it, and says what the estimate would mean if the assumption fails.
 
 ## Checking the assumptions
 
