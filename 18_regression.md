@@ -35,6 +35,12 @@ Galton called this pull back toward the middle **regression toward mediocrity**;
 now say *regression to the mean*. The name then transferred from the finding to the
 **method** he had used to measure it, and it has stayed there ever since.
 
+> **See it happen.** [Regression Toward the Mean](sim/regression-to-the-mean.html)
+> plots parents' heights against their children's. Slide the correlation and watch the
+> tallest tenth and the shortest tenth both pull toward the middle — and watch the
+> spread of the two generations stay identical, which is the answer to Galton's own
+> worry that everyone should end up the same height.
+
 > **Two different things share one word.** *Regression to the mean* is a phenomenon
 > about repeated measurements. *Regression* is the method in this chapter. Nothing in
 > least squares regresses toward anything — fit a line to any cloud of points and it

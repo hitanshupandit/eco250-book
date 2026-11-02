@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regression Toward the Mean</title>
+<style>
+  body{max-width:760px;margin:0 auto;padding:40px 20px 80px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.6;color:#24292f;background:#fff;}
+  h1{font-size:2em;margin:0 0 .3em;padding-bottom:.3em;border-bottom:1px solid #d8dee4;font-weight:600}
+  h2{font-size:1.35em;margin:1.8em 0 .5em;padding-bottom:.3em;border-bottom:1px solid #d8dee4;font-weight:600}
+  p{margin:0 0 14px}
+  code,.num{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+  blockquote{margin:14px 0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}
+  table{border-collapse:collapse;margin:14px 0;font-size:.92em}
+  th,td{padding:6px 14px;border:1px solid #d0d7de;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{background:#f6f8fa;font-weight:600}
+  .ctl{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+  .ctl label{min-width:190px;font-size:.92em}
+  .ctl input[type=range]{flex:1;min-width:200px;max-width:320px}
+  .val{font-family:ui-monospace,Menlo,Consolas,monospace;min-width:52px;text-align:right;font-size:.9em}
+  svg{display:block;width:100%;height:auto;margin:10px 0}
+  .axis{stroke:#8c959f;stroke-width:1}
+  .tick{fill:#57606a;font:11px ui-monospace,Menlo,monospace}
+  .line{stroke:#24292f;stroke-width:2;fill:none}
+  .eqline{stroke:#8c959f;stroke-width:1.5;stroke-dasharray:5 4;fill:none}
+  .pt{fill:#24292f;fill-opacity:.35}
+  .hi{fill:#cf222e;fill-opacity:.75}
+  .lo{fill:#0969da;fill-opacity:.75}
+  .mark{stroke-width:2;fill:none}
+  button{font:inherit;font-size:.9em;padding:5px 12px;border:1px solid #d0d7de;
+    border-radius:6px;background:#f6f8fa;cursor:pointer}
+  button:hover{background:#eef1f4}
+  hr{border:0;border-top:1px solid #d8dee4;margin:2em 0}
+  .red{color:#cf222e}.blue{color:#0969da}
+</style>
+</head>
+<body>
+
+<h1>Regression Toward the Mean</h1>
+<p><em>ECON 250 &middot; Chapter 18 &middot; what Galton actually found in 1886</em></p>
+
+<p>Galton measured the heights of parents and their grown children, looking for a law
+of inheritance. What he found instead was a pull back toward the average, and he
+called it <em>regression toward mediocrity</em>. The name later transferred to the
+method he used to measure it &mdash; which is why we call the technique regression,
+even though the technique does no such thing.</p>
+
+<p>Below, each dot is one family. The only thing you can change is how strongly
+parent and child heights are related.</p>
+
+<h2>1. The pull runs both ways</h2>
+
+<div class="ctl"><label>correlation r</label>
+  <input type="range" id="r" min="0" max="1" step="0.01" value="0.65">
+  <span class="val" id="rv">0.65</span>
+  <button id="resample">New families</button></div>
+<svg id="p1" viewBox="0 0 560 420"></svg>
+<p><em>Dashed: children exactly as tall as their parents. Solid: the fitted line.
+<span class="red">Red</span> &mdash; the tallest tenth of parents.
+<span class="blue">Blue</span> &mdash; the shortest tenth. The open circles are each
+group's average parent and average child.</em></p>
+
+<table>
+<thead><tr><th></th><th>parents average</th><th>their children average</th><th>moved toward the mean by</th></tr></thead>
+<tbody>
+<tr><td class="red">tallest tenth</td><td class="num" id="tp">&mdash;</td><td class="num" id="tc">&mdash;</td><td class="num" id="td">&mdash;</td></tr>
+<tr><td class="blue">shortest tenth</td><td class="num" id="sp">&mdash;</td><td class="num" id="sc">&mdash;</td><td class="num" id="sd">&mdash;</td></tr>
+</tbody>
+</table>
+
+<p id="story"></p>
+
+<blockquote>
+<p><strong>Things to try.</strong> Push r to 1. The fitted line lies on the dashed
+line and nobody moves &mdash; no regression to the mean at all. Now pull r to 0:
+every group's children average the same height, whatever their parents. Regression
+toward the mean is not a law of biology. It is simply what r below 1 looks like.</p>
+</blockquote>
+
+<h2>2. So why doesn't everyone end up the same height?</h2>
+
+<p>This is the objection Galton worried about. If tall parents have shorter children
+and short parents have taller ones, generation after generation, should the whole
+population not collapse to a single height?</p>
+
+<p>It does not, and the numbers below say why. Compare the spread of the parents with
+the spread of the children:</p>
+
+<table>
+<thead><tr><th></th><th>mean</th><th>standard deviation</th></tr></thead>
+<tbody>
+<tr><td>parents</td><td class="num" id="pm">&mdash;</td><td class="num" id="ps">&mdash;</td></tr>
+<tr><td>children</td><td class="num" id="cm">&mdash;</td><td class="num" id="cs">&mdash;</td></tr>
+</tbody>
+</table>
+
+<p>Near enough identical, at any value of r. The distribution is not shrinking. What
+regresses is the <strong>average of a group picked out for being extreme</strong>, not
+the population. The children of tall parents are shorter than their parents, but
+plenty of tall children are born to ordinary parents, and they refill the top of the
+distribution. Selection, not shrinkage.</p>
+
+<blockquote>
+<p><strong>Why this matters beyond heights.</strong> Take the ten students who scored
+highest on one test and they will usually do worse on the next &mdash; not because
+anything went wrong, but because an unusually high score takes some luck and luck does
+not repeat. The same arithmetic explains the athlete who has a quieter season after
+making the magazine cover, and why a policy brought in right after an unusually bad
+year tends to look effective. Whenever a group is selected for being extreme and then
+measured again, expect movement toward the mean <em>before</em> you reach for a
+cause.</p>
+</blockquote>
+
+<hr>
+
+<p><em>Two different things share one word. <strong>Regression toward the mean</strong>
+is the phenomenon on this page. <strong>Regression</strong> is the method in Chapter 18
+&mdash; fitting a line by least squares. Nothing in least squares regresses toward
+anything.</em></p>
+
+<script>
+(function(){
+  "use strict";
+  const MU = 68.0, SD = 2.5, N = 400;
+  let seed = 20261102;
+  function mulberry32(a){ return function(){
+    a|=0; a=a+0x6D2B79F5|0;
+    let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t;
+    return ((t^t>>>14)>>>0)/4294967296; };}
+  let Z1=[], Z2=[];
+  function makeNormals(){
+    const rnd = mulberry32(seed);
+    Z1=[]; Z2=[];
+    for(let i=0;i<N;i++){
+      let u=0,v=0; while(u===0)u=rnd(); while(v===0)v=rnd();
+      const R=Math.sqrt(-2*Math.log(u));
+      Z1.push(R*Math.cos(2*Math.PI*v));
+      Z2.push(R*Math.sin(2*Math.PI*v));
+    }
+    // Standardise both to mean 0, sd 1, and make Z2 exactly orthogonal to Z1.
+    // Without this the two generations differ in spread by a few per cent of
+    // sampling noise, which is precisely the thing section 2 claims does not
+    // happen. Now parents and children have identical spread at every r, and
+    // the sample correlation is exactly r.
+    const std = A => { const m=A.reduce((a,b)=>a+b,0)/A.length;
+      const s=Math.sqrt(A.reduce((a,b)=>a+(b-m)*(b-m),0)/(A.length-1));
+      for(let i=0;i<A.length;i++) A[i]=(A[i]-m)/s; };
+    std(Z1); std(Z2);
+    let dot=0; for(let i=0;i<N;i++) dot+=Z1[i]*Z2[i];
+    const c=dot/(N-1);
+    for(let i=0;i<N;i++) Z2[i]-=c*Z1[i];
+    std(Z2);
+  }
+  const fmt=(v,d)=>v.toFixed(d===undefined?2:d);
+  const el=id=>document.getElementById(id);
+  const NS="http://www.w3.org/2000/svg";
+  function mk(t,a,x){ const e=document.createElementNS(NS,t);
+    for(const k in a)e.setAttribute(k,a[k]); if(x!==undefined)e.textContent=x; return e; }
+
+  function draw(){
+    const r=+el("r").value;
+    el("rv").textContent=fmt(r,2);
+    const P = Z1.map(z=>MU+SD*z);
+    const C = P.map((p,i)=>MU + r*(p-MU) + Math.sqrt(1-r*r)*SD*Z2[i]);
+
+    const lo=60, hi=76;
+    const svg=el("p1"); svg.textContent="";
+    const W=560,H=420,L=56,R=14,T=16,B=40;
+    const px=x=>L+(x-lo)/(hi-lo)*(W-L-R), py=y=>H-B-(y-lo)/(hi-lo)*(H-T-B);
+    svg.appendChild(mk("line",{x1:L,y1:H-B,x2:W-R,y2:H-B,class:"axis"}));
+    svg.appendChild(mk("line",{x1:L,y1:T,x2:L,y2:H-B,class:"axis"}));
+    for(let v=60;v<=76;v+=4){
+      svg.appendChild(mk("text",{x:px(v),y:H-B+16,class:"tick","text-anchor":"middle"},v));
+      svg.appendChild(mk("text",{x:L-7,y:py(v)+4,class:"tick","text-anchor":"end"},v));
+    }
+    svg.appendChild(mk("text",{x:(L+W-R)/2,y:H-6,class:"tick","text-anchor":"middle"},
+      "parent height (inches)"));
+    svg.appendChild(mk("text",{x:4,y:12,class:"tick"},"child height (inches)"));
+    // y = x
+    svg.appendChild(mk("line",{x1:px(lo),y1:py(lo),x2:px(hi),y2:py(hi),class:"eqline"}));
+    // deciles of the parents
+    const order=P.map((p,i)=>i).sort((a,b)=>P[a]-P[b]);
+    const k=Math.round(N*0.10);
+    const botSet=new Set(order.slice(0,k)), topSet=new Set(order.slice(N-k));
+    for(let i=0;i<N;i++){
+      const cls = topSet.has(i)?"hi":(botSet.has(i)?"lo":"pt");
+      svg.appendChild(mk("circle",{cx:px(P[i]),cy:py(C[i]),r:3,class:cls}));
+    }
+    // fitted line: with this construction the population slope is r
+    svg.appendChild(mk("line",{x1:px(lo),y1:py(MU+r*(lo-MU)),
+                               x2:px(hi),y2:py(MU+r*(hi-MU)),class:"line"}));
+    const avg=(s,A)=>{ let t=0,c=0; s.forEach(i=>{t+=A[i];c++;}); return t/c; };
+    const tp=avg(topSet,P), tc=avg(topSet,C), sp=avg(botSet,P), sc=avg(botSet,C);
+    [[tp,tc,"#cf222e"],[sp,sc,"#0969da"]].forEach(([a,b,col])=>{
+      svg.appendChild(mk("circle",{cx:px(a),cy:py(b),r:7,class:"mark",stroke:col}));
+      svg.appendChild(mk("circle",{cx:px(a),cy:py(a),r:7,class:"mark",stroke:col,
+        "stroke-dasharray":"2 2"}));
+      svg.appendChild(mk("line",{x1:px(a),y1:py(a),x2:px(a),y2:py(b),
+        stroke:col,"stroke-width":1.5,"stroke-dasharray":"2 2"}));
+    });
+    el("tp").textContent=fmt(tp); el("tc").textContent=fmt(tc);
+    el("td").textContent=fmt(tp-tc);
+    el("sp").textContent=fmt(sp); el("sc").textContent=fmt(sc);
+    el("sd").textContent=fmt(sc-sp);
+    const stats=v=>{const m=v.reduce((a,b)=>a+b,0)/v.length;
+      return [m,Math.sqrt(v.reduce((a,b)=>a+(b-m)*(b-m),0)/(v.length-1))];};
+    const [pm,ps]=stats(P), [cm,cs]=stats(C);
+    el("pm").textContent=fmt(pm); el("ps").textContent=fmt(ps);
+    el("cm").textContent=fmt(cm); el("cs").textContent=fmt(cs);
+    el("story").innerHTML =
+      "The tallest tenth of parents average <strong>"+fmt(tp)+"</strong> inches and "+
+      "their children <strong>"+fmt(tc)+"</strong> &mdash; still well above average, "+
+      "but <strong>"+fmt(tp-tc)+"</strong> inches closer to it. The shortest tenth "+
+      "average <strong>"+fmt(sp)+"</strong> and their children <strong>"+fmt(sc)+
+      "</strong> &mdash; still below average, but <strong>"+fmt(sc-sp)+
+      "</strong> inches closer. Both groups moved the same way: toward the middle.";
+  }
+  el("r").addEventListener("input",draw);
+  el("resample").addEventListener("click",()=>{ seed=(seed*1664525+1013904223)>>>0;
+    makeNormals(); draw(); });
+  makeNormals(); draw();
+})();
+</script>
+</body>
+</html>
